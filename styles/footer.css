@@ -1,0 +1,18 @@
+.footer-copyright {
+  @apply text-sm;
+  @apply text-text;
+  @apply dark:text-text-dark;
+  @apply opacity-50;
+  @apply pt-4;
+  @apply md:pt-0;
+  @apply text-center;
+}
+
+.footer-edit {
+  @apply footer-copyright;
+  @apply transition;
+  @apply hover:opacity-75;
+  @apply hover:underline;
+  @apply hover:underline-offset-4;
+  @apply text-center;
+}

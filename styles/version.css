@@ -1,0 +1,60 @@
+.version {
+  @apply bg-button;
+  @apply dark:bg-button-dark;
+  @apply bg-opacity-10;
+  @apply px-4;
+  @apply pt-2;
+  @apply pb-1.5;
+  @apply text-text;
+  @apply dark:text-text-dark;
+  @apply text-sm;
+  @apply font-medium;
+  @apply inline-flex;
+  @apply w-full;
+  @apply justify-center;
+  @apply rounded-full;
+  @apply focus:outline-none;
+  @apply focus-visible:ring-2;
+  @apply focus-visible:ring-primary;
+  @apply focus-visible:ring-opacity-75;
+}
+
+.version-icon {
+  @apply sm:ml-4;
+  @apply ml-3;
+  @apply -mr-1;
+  @apply h-5;
+  @apply w-5;
+  @apply text-icon;
+}
+
+.version-items {
+  @apply absolute;
+  @apply left-0;
+  @apply mt-2;
+  @apply w-48;
+  @apply origin-top-right;
+  @apply rounded-lg;
+  @apply bg-white;
+  @apply dark:bg-button-dark;
+  @apply focus:outline-none;
+}
+
+.version-item {
+  @apply flex;
+  @apply w-full;
+  @apply items-center;
+  @apply rounded-md;
+  @apply p-2;
+  @apply text-sm;
+  @apply font-medium;
+}
+
+.version-item\:active {
+  @apply text-primary;
+}
+
+.version-item\:inactive {
+  @apply text-text;
+  @apply dark:text-text-dark;
+}

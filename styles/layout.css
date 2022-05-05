@@ -1,0 +1,39 @@
+.layout {
+  @apply bg-white;
+  @apply dark:bg-dark;
+  @apply transition;
+  @apply min-h-screen;
+  @apply w-full;
+  @apply flex;
+  @apply flex-col;
+  @apply items-center;
+  background-image: url("/lightbackground.png");
+  background-size: 640px;
+  background-repeat: no-repeat;
+}
+
+.dark .layout {
+  background-image: url("/darkbackground.png");
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 640px) and (max-width: 1212px) {
+  .layout {
+    background-position-x: right;
+    background-size: 768px;
+  }
+}
+
+@media (min-width: 1212px) and (max-width: 1588px) {
+  .layout {
+    background-position-x: right;
+    background-size: 1024px;
+  }
+}
+
+@media (min-width: 1588px) {
+  .layout {
+    background-position-x: right;
+    background-size: contain;
+  }
+}

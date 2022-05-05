@@ -1,0 +1,8 @@
+main {
+  @apply flex;
+  @apply w-full;
+  @apply lg:pt-20;
+  @apply pt-16;
+  @apply lg:space-x-8;
+  @apply max-w-screen-2xl;
+}

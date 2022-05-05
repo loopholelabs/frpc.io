@@ -1,0 +1,15 @@
+.table-of-content-header {
+  @apply py-3;
+  @apply text-sm;
+  @apply font-semibold;
+  @apply text-primary;
+}
+
+.table-of-content-subheader {
+  @apply pb-3;
+  @apply text-sm;
+  @apply pl-4;
+  @apply font-normal;
+  @apply text-text;
+  @apply dark:text-text-dark;
+}

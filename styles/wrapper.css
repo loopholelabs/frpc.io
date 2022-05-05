@@ -1,0 +1,19 @@
+.wrapper-sidebar {
+  @apply w-72;
+  @apply min-w-[18rem];
+  @apply hidden;
+  @apply lg:block;
+}
+
+.wrapper-table-of-contents {
+  @apply w-64;
+  @apply min-w-[16rem];
+  @apply hidden;
+  @apply md:block;
+}
+
+.wrapper-content {
+  @apply flex-grow;
+  @apply px-8;
+  @apply lg:px-0;
+}

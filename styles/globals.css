@@ -1,16 +1,36 @@
-html,
+@import "./tailwind.css";
+@import "./fonts.css";
+
+@import "./main.css";
+@import "./layout.css";
+@import "./wrapper.css";
+
+@import "./version.css";
+@import "./search.css";
+@import "./sidebar.css";
+@import "./table-of-contents.css";
+@import "./footer.css";
+@import "./content.css";
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  @apply overflow-x-hidden;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.button-border {
+  @apply border-button;
+  @apply border-black/10;
+  @apply dark:border-transparent;
 }
 
-* {
-  box-sizing: border-box;
+.no-select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.no-select:focus {
+  outline: none !important;
 }

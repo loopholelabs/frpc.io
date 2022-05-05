@@ -1,0 +1,28 @@
+.search {
+  @apply bg-white;
+  @apply dark:bg-button-dark;
+  @apply px-2.5;
+  @apply pt-2.5;
+  @apply pb-2.5;
+  @apply sm:pb-2;
+  @apply text-text;
+  @apply dark:text-text-dark;
+  @apply text-sm;
+  @apply font-normal;
+  @apply inline-flex;
+  @apply justify-start;
+  @apply items-center;
+  @apply rounded-lg;
+  @apply focus:outline-none;
+  @apply focus-visible:ring-2;
+  @apply focus-visible:ring-primary;
+  @apply focus-visible:ring-opacity-75;
+  @apply w-full;
+  @apply sm:w-64;
+}
+
+.search-icon {
+  @apply mr-3;
+  @apply text-text;
+  @apply dark:text-text-dark;
+}
