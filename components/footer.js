@@ -1,4 +1,8 @@
-export default function Footer() {
+export default function Footer(props) {
+  const editBase = props.editBase;
+  const currentVersion = props.currentVersion;
+  const currentSection = props.currentSection;
+  const currentSlug = props.currentSlug;
   return (
     <footer
       className={
@@ -13,7 +17,7 @@ export default function Footer() {
         <p className={"footer-copyright"}>
           Copyright &copy; {new Date().getFullYear()} Loophole Labs, Inc.
         </p>
-        <a href={"#"} className={"footer-edit"}>
+        <a href={`${editBase}/${currentVersion}/${currentSection}/${currentSlug}`} className={"footer-edit"}>
           Edit This Page on Github
         </a>
       </div>

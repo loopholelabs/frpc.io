@@ -1,2 +1,12 @@
 .content {
 }
+
+.content-h1 {
+    @apply capitalize py-4 text-2xl font-semibold text-dark dark:text-white;
+}
+
+.content-h1 a {
+    @apply absolute;
+    @apply w-0;
+    @apply h-0;
+}

@@ -1,3 +1,4 @@
 {
-  "defaultVersion": "v1.2.0"
+  "defaultVersion": "v1.2.0",
+  "editBase": "https://github.com/loopholelabs/frisbee.sh/tree/staging/docs"
 }

@@ -1,10 +1,13 @@
 import { ChevronRightIcon, MenuIcon } from "@heroicons/react/solid";
+import {CleanHyphen} from "../utils/string";
 export default function Breadcrumbs(props) {
   const set = props.set;
+  const currentSection = props.currentSection;
+  const currentSlug = props.currentSlug;
   return (
     <nav
       className={
-        "lg:hidden inline-flex px-8 py-4 w-full border-b border-divider border-opacity-10 dark:border-divider-dark dark:border-opacity-80"
+        "lg:hidden inline-flex lg:px-8 px-8 md:px-14 py-4 w-full border-b border-divider border-opacity-10 dark:border-divider-dark dark:border-opacity-80"
       }
       aria-label="Breadcrumb"
     >
@@ -18,26 +21,24 @@ export default function Breadcrumbs(props) {
 
       <div className={"ml-4 inline-flex space-x-1.5"}>
         <div className="flex items-center">
-          <a
-            href={"#"}
-            className="text-sm font-semibold text-text dark:text-text-dark"
+          <p
+            className="capitalize text-sm font-semibold text-text dark:text-text-dark"
             aria-current={"page"}
           >
-            Getting Started
-          </a>
+            {CleanHyphen(currentSection)}
+          </p>
         </div>
         <ChevronRightIcon
           className="flex-shrink-0 h-5 w-5 text-text dark:text-text-dark"
           aria-hidden="true"
         />
         <div className="flex items-center">
-          <a
-            href={"#"}
-            className="text-sm font-medium text-black dark:text-white"
+          <p
+            className="capitalize text-sm font-medium text-black dark:text-white"
             aria-current={"page"}
           >
-            Installation
-          </a>
+            {CleanHyphen(currentSlug)}
+          </p>
         </div>
       </div>
     </nav>

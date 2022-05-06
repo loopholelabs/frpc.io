@@ -55,11 +55,8 @@ module.exports = {
         icon: "#BFBFBF",
         search: "#F4F6F8",
       },
-      fontSize: {
-        header: "26.14px",
-      },
       lineHeight: {
-        header: "35.7px",
+        content: "28px",
       },
       borderWidth: {
         button: "1.8px",

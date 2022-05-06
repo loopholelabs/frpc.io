@@ -49,11 +49,8 @@ export default function Navbar(props) {
               "md:pl-4 md:pr-6 flex items-center space-x-4 md:space-x-8 w-full flex-grow"
             }
           >
-            <Version currentVersion={currentVersion} versionOrder={versionOrder} defaultVersion={defaultVersion} defaultPages={defaultPages}></Version>
-            <Search
-              className={"z-10"}
-              set={set}
-            ></Search>
+            <Version currentVersion={currentVersion} versionOrder={versionOrder} defaultVersion={defaultVersion} defaultPages={defaultPages}/>
+            <Search set={set}/>
           </div>
         </div>
         <Theme />

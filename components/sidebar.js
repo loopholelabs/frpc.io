@@ -3,10 +3,7 @@ import { Dialog } from "@headlessui/react";
 import { Fragment } from "react";
 import { XIcon } from "@heroicons/react/solid";
 import Link from "next/link";
-
-function Clean(text) {
-  return text.replaceAll(/-\/?/g, " ");
-}
+import {CleanHyphen} from "../utils/string";
 
 export default function Sidebar(props) {
   const sectionOrder=props.sectionOrder;
@@ -47,7 +44,7 @@ function UnwrappedSidebar(props) {
                   >
                     <a className={`sidebar-subheading ${
                         currentSlug === slug.slug && currentSection === section ? "sidebar-subheading-active" : ""
-                    }`}>{Clean(slug.slug)}</a>
+                    }`}>{CleanHyphen(slug.slug)}</a>
                   </Link>
                 );
               })}
@@ -58,7 +55,7 @@ function UnwrappedSidebar(props) {
           <div key={section}>
             {[
               <h1 key={section} className={"sidebar-heading"}>
-                {Clean(section)}
+                {CleanHyphen(section)}
               </h1>,
               subheadings,
             ]}

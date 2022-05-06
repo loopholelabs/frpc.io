@@ -6,10 +6,14 @@
 }
 
 .table-of-content-subheader {
+  @apply block;
   @apply pb-3;
   @apply text-sm;
   @apply pl-4;
   @apply font-normal;
   @apply text-text;
   @apply dark:text-text-dark;
+  @apply hover:text-primary;
+  @apply transition;
+  @apply cursor-pointer;
 }

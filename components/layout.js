@@ -22,7 +22,7 @@ export default function Layout(props) {
   const [showMenubar, setShowMenubar] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
 
-  CommandCapture(() => setShowSearch(true));
+  // CommandCapture(() => setShowSearch(true));
 
   useEffect(() => {
     const routeWatch = () => setShowMenubar(false) && setShowSearch(false)
@@ -49,7 +49,7 @@ export default function Layout(props) {
             defaultVersion={defaultVersion} sectionOrder={sectionOrder} currentVersion={currentVersion} currentSlug={currentSlug} currentSection={currentSection} docs={docs}
           />
           <CommandPalette set={setShowSearch} show={showSearch} />
-          <Breadcrumbs set={setShowMenubar} />
+          <Breadcrumbs currentSection={currentSection} currentSlug={currentSlug} set={setShowMenubar} />
           <main>{children}</main>
         </div>
       </ThemeProvider>

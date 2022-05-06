@@ -4,23 +4,26 @@ import Content from "../../../components/content";
 import TableOfContents from "../../../components/table-of-contents";
 import { allDocs } from "contentlayer/generated";
 import Config from "../../../current.config.json";
+import {GetHeadings} from "../../../utils/headings";
 
 export default function Documentation(props) {
   const currentVersion = props.currentVersion;
   const versionOrder = props.versionOrder;
-  const defaultVersion = props.defaultVersion;
   const defaultPages = props.defaultPages;
   const sectionOrder=props.sectionOrder;
   const currentSlug=props.currentSlug;
   const currentSection=props.currentSection;
+  const currentDoc = props.currentDoc;
   const docs = props.docs;
 
+  const defaultVersion = Config.defaultVersion;
+  const editBase = Config.editBase;
 
   return (
-    <Layout sectionOrder={sectionOrder} currentVersion={currentVersion} currentSlug={currentSlug} currentSection={currentSection} docs={docs} versionOrder={versionOrder} defaultVersion={defaultVersion} defaultPages={defaultPages} >
+    <Layout editBase={editBase} sectionOrder={sectionOrder} currentVersion={currentVersion} currentSlug={currentSlug} currentSection={currentSection} docs={docs} versionOrder={versionOrder} defaultVersion={defaultVersion} defaultPages={defaultPages} >
       <Sidebar defaultVersion={defaultVersion}  sectionOrder={sectionOrder} currentVersion={currentVersion} currentSlug={currentSlug} currentSection={currentSection} docs={docs} />
-      <Content  />
-      <TableOfContents  />
+      <Content currentVersion={currentVersion} currentSection={currentSection} currentSlug={currentSlug} currentDoc={currentDoc} editBase={editBase} />
+      <TableOfContents currentDoc={currentDoc} />
     </Layout>
   );
 }
@@ -90,7 +93,6 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      defaultVersion: Config.defaultVersion,
       defaultPages: defaultPages,
       docs: docs,
       versionOrder: versionOrder,

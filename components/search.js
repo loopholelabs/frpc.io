@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Search(props) {
   const set = props.set;
   return (
-    <div className={"relative flex-grow"}>
+    <div className={"relative flex-grow invisible"}>
       <button onClick={() => set(true)} className={"search button-border"}>
         <SearchIcon className={"fixed search-icon"} aria-hidden="true" />
         <div className={"w-full inline-flex justify-between mx-3"}>
