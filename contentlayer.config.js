@@ -10,9 +10,9 @@ export const Doc = defineDocumentType(() => ({
       description: "The title of the document",
       required: true,
     },
-    date: {
-      type: "date",
-      description: "The date of the document",
+    order: {
+      type: "number",
+      description: "The order the document should be shown",
       required: true,
     },
     default: {
@@ -29,7 +29,12 @@ export const Doc = defineDocumentType(() => ({
     },
     section: {
       type: "string",
-      resolve: (doc) => doc._raw.sourceFileDir.split("/")[1],
+      resolve: (doc) => doc._raw.sourceFileDir.split("/")[1].slice(2),
+    },
+    sectionOrder: {
+      type: "number",
+      resolve: (doc) =>
+        parseInt(doc._raw.sourceFileDir.split("/")[1].slice(0, 1)),
     },
     slug: {
       type: "string",

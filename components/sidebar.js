@@ -2,34 +2,53 @@ import { Transition } from "@headlessui/react";
 import { Dialog } from "@headlessui/react";
 import { Fragment } from "react";
 import { XIcon } from "@heroicons/react/solid";
+import Link from "next/link";
 
 function Clean(text) {
-  return text.replace(/-\/?/, " ");
+  return text.replaceAll(/-\/?/g, " ");
 }
 
 export default function Sidebar(props) {
+  const sectionOrder=props.sectionOrder;
+  const currentVersion=props.currentVersion;
+  const currentSlug=props.currentSlug;
+  const currentSection=props.currentSection;
+  const defaultVersion=props.defaultVersion;
+  const docs = props.docs;
+
   return (
     <div className={"wrapper-sidebar"}>
       <div className={"pl-12"}>
-        <UnwrappedSidebar sections={props.sections} />
+        <UnwrappedSidebar defaultVersion={defaultVersion} sectionOrder={sectionOrder} currentVersion={currentVersion} currentSlug={currentSlug} currentSection={currentSection} docs={docs} />
       </div>
     </div>
   );
 }
 
 function UnwrappedSidebar(props) {
-  const sections = props.sections;
+  const sectionOrder=props.sectionOrder;
+  const currentVersion=props.currentVersion;
+  const currentSlug=props.currentSlug;
+  const currentSection=props.currentSection;
+  const docs = props.docs;
+  const defaultVersion=props.defaultVersion;
+
   return (
     <nav className={"space-y-12"}>
-      {Object.keys(sections).map((section) => {
+      {sectionOrder[currentVersion].map((section) => {
         const subheadings = (
           <div key={`${section}-subheadings`} className={"sidebar-section"}>
             <div className={"px-3"}>
-              {sections[section].map((section) => {
+              {docs[currentVersion][section].map((slug) => {
                 return (
-                  <p key={section.slug} className={"sidebar-subheading"}>
-                    {Clean(section.slug)}
-                  </p>
+                  <Link
+                    key={slug.slug}
+                    href={defaultVersion === slug.version ? `/${slug.section}/${slug.slug}` : `/${slug.version}/${slug.section}/${slug.slug}`}
+                  >
+                    <a className={`sidebar-subheading ${
+                        currentSlug === slug.slug && currentSection === section ? "sidebar-subheading-active" : ""
+                    }`}>{Clean(slug.slug)}</a>
+                  </Link>
                 );
               })}
             </div>
@@ -51,8 +70,15 @@ function UnwrappedSidebar(props) {
 }
 
 export function OverlaySidebar(props) {
+  const sectionOrder=props.sectionOrder;
+  const currentVersion=props.currentVersion;
+  const currentSlug=props.currentSlug;
+  const currentSection=props.currentSection;
+  const docs = props.docs;
+  const defaultVersion=props.defaultVersion;
   const set = props.set;
   const show = props.show;
+
   return (
     <Transition.Root show={show} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={set}>
@@ -97,7 +123,7 @@ export function OverlaySidebar(props) {
                       </div>
                     </div>
                     <div className="relative mt-6 sm:mt-12 flex-1 px-6 sm:px-10">
-                      <UnwrappedSidebar sections={props.sections} />
+                      <UnwrappedSidebar defaultVersion={defaultVersion} sectionOrder={sectionOrder} currentVersion={currentVersion} currentSlug={currentSlug} currentSection={currentSection} docs={docs}/>
                     </div>
                   </div>
                 </Dialog.Panel>

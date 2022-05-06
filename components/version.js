@@ -27,12 +27,17 @@ function ChangeVersion(router, current, version, defaultVersion, defaultPages) {
 }
 
 export default function Version(props) {
+  const currentVersion = props.currentVersion;
+  const versionOrder = props.versionOrder;
+  const defaultVersion = props.defaultVersion;
+  const defaultPages = props.defaultPages;
+
   const router = useRouter();
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="version button-border">
-          {props.current}
+          {currentVersion}
           <ChevronDownIcon className="version-icon" aria-hidden="true" />
         </Menu.Button>
       </div>
@@ -47,7 +52,7 @@ export default function Version(props) {
       >
         <Menu.Items className="version-items button-border">
           <div className="px-1 py-1">
-            {props.versions.map((value) => {
+            {versionOrder.map((value) => {
               return (
                 <div key={value}>
                   <Menu.Item>
@@ -56,14 +61,14 @@ export default function Version(props) {
                         onClick={() =>
                           ChangeVersion(
                             router,
-                            props.current,
+                              currentVersion,
                             value,
-                            props.defaultVersion,
-                            props.defaultPages
+                              defaultVersion,
+                            defaultPages
                           )
                         }
                         className={`${
-                          active || props.current === value
+                          active || currentVersion === value
                             ? "version-item:active"
                             : "version-item:inactive"
                         } group version-item`}

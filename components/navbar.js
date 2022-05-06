@@ -4,6 +4,11 @@ import Search from "./search";
 import Theme from "./theme";
 
 export default function Navbar(props) {
+  const currentVersion = props.currentVersion;
+  const versionOrder = props.versionOrder;
+  const defaultVersion = props.defaultVersion;
+  const defaultPages = props.defaultPages;
+  const set = props.set;
   return (
     <div
       className={
@@ -44,17 +49,10 @@ export default function Navbar(props) {
               "md:pl-4 md:pr-6 flex items-center space-x-4 md:space-x-8 w-full flex-grow"
             }
           >
-            <Version
-              current={props.currentVersion}
-              versions={props.versions}
-              defaultPages={props.defaultPages}
-              defaultVersion={props.defaultVersion}
-            ></Version>
+            <Version currentVersion={currentVersion} versionOrder={versionOrder} defaultVersion={defaultVersion} defaultPages={defaultPages}></Version>
             <Search
               className={"z-10"}
-              current={props.currentVersion}
-              versions={props.versions}
-              set={props.set}
+              set={set}
             ></Search>
           </div>
         </div>

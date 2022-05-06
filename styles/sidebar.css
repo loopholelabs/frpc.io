@@ -10,6 +10,7 @@
   @apply text-text;
   @apply dark:text-text-dark;
   @apply font-normal;
+  @apply block;
 }
 
 .sidebar-subheading-hover {
