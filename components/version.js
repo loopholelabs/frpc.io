@@ -1,8 +1,33 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import { useRouter } from "next/router";
+
+function ChangeVersion(router, current, version, defaultVersion, defaultPages) {
+  if (current !== version) {
+    if (version === defaultVersion) {
+      router.push({
+        pathname: "/[section]/[slug]",
+        query: {
+          section: defaultPages[version].section,
+          slug: defaultPages[version].slug,
+        },
+      });
+    } else {
+      router.push({
+        pathname: "/[version]/[section]/[slug]",
+        query: {
+          version: version === defaultVersion ? "" : version,
+          section: defaultPages[version].section,
+          slug: defaultPages[version].slug,
+        },
+      });
+    }
+  }
+}
 
 export default function Version(props) {
+  const router = useRouter();
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -28,6 +53,15 @@ export default function Version(props) {
                   <Menu.Item>
                     {({ active }) => (
                       <button
+                        onClick={() =>
+                          ChangeVersion(
+                            router,
+                            props.current,
+                            value,
+                            props.defaultVersion,
+                            props.defaultPages
+                          )
+                        }
                         className={`${
                           active || props.current === value
                             ? "version-item:active"

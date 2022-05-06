@@ -47,6 +47,8 @@ export default function Navbar(props) {
             <Version
               current={props.currentVersion}
               versions={props.versions}
+              defaultPages={props.defaultPages}
+              defaultVersion={props.defaultVersion}
             ></Version>
             <Search
               className={"z-10"}

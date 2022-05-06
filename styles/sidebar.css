@@ -1,9 +1,11 @@
 .sidebar-heading {
+  @apply capitalize;
   @apply font-semibold;
   @apply text-lg;
 }
 
 .sidebar-subheading {
+  @apply capitalize;
   @apply py-3;
   @apply text-text;
   @apply dark:text-text-dark;

@@ -5,9 +5,7 @@ import Breadcrumbs from "./breadcrumbs";
 import { useState } from "react";
 import CommandPalette, { CommandCapture } from "./commandpalette";
 
-const versions = ["v0.3.0", "v3.0.22", "v0.1.0", "v0.1.0-alpha"];
-
-export default function Layout({ children }) {
+export default function Layout(props) {
   const [showMenubar, setShowMenubar] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
 
@@ -18,14 +16,20 @@ export default function Layout({ children }) {
       <ThemeProvider defaultTheme="dark" attribute="class">
         <div className={"layout"}>
           <Navbar
-            currentVersion={"v0.3.0"}
-            versions={versions}
+            currentVersion={props.version}
+            versions={props.versions}
+            defaultPages={props.defaultPages}
+            defaultVersion={props.config.defaultVersion}
             set={setShowSearch}
           />
-          <OverlaySidebar set={setShowMenubar} show={showMenubar} />
+          <OverlaySidebar
+            set={setShowMenubar}
+            show={showMenubar}
+            sections={props.sections}
+          />
           <CommandPalette set={setShowSearch} show={showSearch} />
           <Breadcrumbs set={setShowMenubar} />
-          <main>{children}</main>
+          <main>{props.children}</main>
         </div>
       </ThemeProvider>
     </>

@@ -1,47 +1,51 @@
 import { Transition } from "@headlessui/react";
 import { Dialog } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { XIcon } from "@heroicons/react/solid";
 
-export default function Sidebar() {
+function Clean(text) {
+  return text.replace(/-\/?/, " ");
+}
+
+export default function Sidebar(props) {
   return (
     <div className={"wrapper-sidebar"}>
       <div className={"pl-12"}>
-        <UnwrappedSidebar />
+        <UnwrappedSidebar sections={props.sections} />
       </div>
     </div>
   );
 }
 
-function UnwrappedSidebar() {
+function UnwrappedSidebar(props) {
+  const sections = props.sections;
   return (
     <nav className={"space-y-12"}>
-      <div>
-        <h1 className={"sidebar-heading"}>Getting Started</h1>
-        <div className={"sidebar-section"}>
-          <div className={"px-3"}>
-            <p className={"sidebar-subheading-active"}>Installation</p>
-            <p className={"sidebar-subheading"}>Editor Setup</p>
-            <p className={"sidebar-subheading"}>Using with Processors</p>
-            <p className={"sidebar-subheading"}>Optimization</p>
-            <p className={"sidebar-subheading"}>Browser Support</p>
-            <p className={"sidebar-subheading"}>Upgrade</p>
+      {Object.keys(sections).map((section) => {
+        const subheadings = (
+          <div key={`${section}-subheadings`} className={"sidebar-section"}>
+            <div className={"px-3"}>
+              {sections[section].map((section) => {
+                return (
+                  <p key={section.slug} className={"sidebar-subheading"}>
+                    {Clean(section.slug)}
+                  </p>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </div>
-      <div>
-        <h1 className={"sidebar-heading"}>Core Concepts</h1>
-        <div className={"sidebar-section"}>
-          <div className={"px-3"}>
-            <p className={"sidebar-subheading"}>Installation</p>
-            <p className={"sidebar-subheading"}>Editor Setup</p>
-            <p className={"sidebar-subheading"}>Using with Processors</p>
-            <p className={"sidebar-subheading"}>Optimization</p>
-            <p className={"sidebar-subheading"}>Browser Support</p>
-            <p className={"sidebar-subheading"}>Upgrade</p>
+        );
+        return (
+          <div key={section}>
+            {[
+              <h1 key={section} className={"sidebar-heading"}>
+                {Clean(section)}
+              </h1>,
+              subheadings,
+            ]}
           </div>
-        </div>
-      </div>
+        );
+      })}
     </nav>
   );
 }
@@ -93,7 +97,7 @@ export function OverlaySidebar(props) {
                       </div>
                     </div>
                     <div className="relative mt-6 sm:mt-12 flex-1 px-6 sm:px-10">
-                      <UnwrappedSidebar />
+                      <UnwrappedSidebar sections={props.sections} />
                     </div>
                   </div>
                 </Dialog.Panel>
