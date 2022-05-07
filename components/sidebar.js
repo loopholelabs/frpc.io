@@ -104,7 +104,7 @@ export function OverlaySidebar(props) {
                 leaveTo="-translate-x-full"
               >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-[18rem]">
-                  <div className="flex h-full flex-col overflow-y-scroll bg-white dark:bg-code-background py-6 shadow-xl">
+                  <div className="flex h-full flex-col overflow-y-scroll no-scroll bg-white dark:bg-code-background py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
                       <div className="flex justify-end">
                         <div className="ml-3 flex h-7 items-center">
