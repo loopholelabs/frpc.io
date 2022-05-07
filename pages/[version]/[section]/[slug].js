@@ -4,15 +4,14 @@ import Content from "../../../components/content";
 import TableOfContents from "../../../components/table-of-contents";
 import { allDocs } from "contentlayer/generated";
 import Config from "../../../current.config.json";
-import {GetHeadings} from "../../../utils/headings";
 
 export default function Documentation(props) {
   const currentVersion = props.currentVersion;
   const versionOrder = props.versionOrder;
   const defaultPages = props.defaultPages;
-  const sectionOrder=props.sectionOrder;
-  const currentSlug=props.currentSlug;
-  const currentSection=props.currentSection;
+  const sectionOrder = props.sectionOrder;
+  const currentSlug = props.currentSlug;
+  const currentSection = props.currentSection;
   const currentDoc = props.currentDoc;
   const docs = props.docs;
 
@@ -20,9 +19,32 @@ export default function Documentation(props) {
   const editBase = Config.editBase;
 
   return (
-    <Layout editBase={editBase} sectionOrder={sectionOrder} currentVersion={currentVersion} currentSlug={currentSlug} currentSection={currentSection} docs={docs} versionOrder={versionOrder} defaultVersion={defaultVersion} defaultPages={defaultPages} >
-      <Sidebar defaultVersion={defaultVersion}  sectionOrder={sectionOrder} currentVersion={currentVersion} currentSlug={currentSlug} currentSection={currentSection} docs={docs} />
-      <Content currentVersion={currentVersion} currentSection={currentSection} currentSlug={currentSlug} currentDoc={currentDoc} editBase={editBase} />
+    <Layout
+      editBase={editBase}
+      sectionOrder={sectionOrder}
+      currentVersion={currentVersion}
+      currentSlug={currentSlug}
+      currentSection={currentSection}
+      docs={docs}
+      versionOrder={versionOrder}
+      defaultVersion={defaultVersion}
+      defaultPages={defaultPages}
+    >
+      <Sidebar
+        defaultVersion={defaultVersion}
+        sectionOrder={sectionOrder}
+        currentVersion={currentVersion}
+        currentSlug={currentSlug}
+        currentSection={currentSection}
+        docs={docs}
+      />
+      <Content
+        currentVersion={currentVersion}
+        currentSection={currentSection}
+        currentSlug={currentSlug}
+        currentDoc={currentDoc}
+        editBase={editBase}
+      />
       <TableOfContents currentDoc={currentDoc} />
     </Layout>
   );
@@ -50,7 +72,7 @@ export async function getStaticProps({ params }) {
             slug: sectionItem.slug,
             order: sectionItem.order,
             sectionOrder: sectionItem.sectionOrder,
-          }
+          };
           if (section in accumulatedSections) {
             accumulatedSections[section] = [
               reducedSectionItem,

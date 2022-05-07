@@ -1,5 +1,5 @@
 import { ChevronRightIcon, MenuIcon } from "@heroicons/react/solid";
-import {CleanHyphen} from "../utils/string";
+import { CleanHyphen } from "../utils/string";
 export default function Breadcrumbs(props) {
   const set = props.set;
   const currentSection = props.currentSection;

@@ -17,7 +17,10 @@ export default function Footer(props) {
         <p className={"footer-copyright"}>
           Copyright &copy; {new Date().getFullYear()} Loophole Labs, Inc.
         </p>
-        <a href={`${editBase}/${currentVersion}/${currentSection}/${currentSlug}`} className={"footer-edit"}>
+        <a
+          href={`${editBase}/${currentVersion}/${currentSection}/${currentSlug}`}
+          className={"footer-edit"}
+        >
           Edit This Page on Github
         </a>
       </div>

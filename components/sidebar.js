@@ -3,32 +3,39 @@ import { Dialog } from "@headlessui/react";
 import { Fragment } from "react";
 import { XIcon } from "@heroicons/react/solid";
 import Link from "next/link";
-import {CleanHyphen} from "../utils/string";
+import { CleanHyphen } from "../utils/string";
 
 export default function Sidebar(props) {
-  const sectionOrder=props.sectionOrder;
-  const currentVersion=props.currentVersion;
-  const currentSlug=props.currentSlug;
-  const currentSection=props.currentSection;
-  const defaultVersion=props.defaultVersion;
+  const sectionOrder = props.sectionOrder;
+  const currentVersion = props.currentVersion;
+  const currentSlug = props.currentSlug;
+  const currentSection = props.currentSection;
+  const defaultVersion = props.defaultVersion;
   const docs = props.docs;
 
   return (
     <div className={"wrapper-sidebar"}>
       <div className={"pl-12"}>
-        <UnwrappedSidebar defaultVersion={defaultVersion} sectionOrder={sectionOrder} currentVersion={currentVersion} currentSlug={currentSlug} currentSection={currentSection} docs={docs} />
+        <UnwrappedSidebar
+          defaultVersion={defaultVersion}
+          sectionOrder={sectionOrder}
+          currentVersion={currentVersion}
+          currentSlug={currentSlug}
+          currentSection={currentSection}
+          docs={docs}
+        />
       </div>
     </div>
   );
 }
 
 function UnwrappedSidebar(props) {
-  const sectionOrder=props.sectionOrder;
-  const currentVersion=props.currentVersion;
-  const currentSlug=props.currentSlug;
-  const currentSection=props.currentSection;
+  const sectionOrder = props.sectionOrder;
+  const currentVersion = props.currentVersion;
+  const currentSlug = props.currentSlug;
+  const currentSection = props.currentSection;
   const docs = props.docs;
-  const defaultVersion=props.defaultVersion;
+  const defaultVersion = props.defaultVersion;
 
   return (
     <nav className={"space-y-12"}>
@@ -40,11 +47,21 @@ function UnwrappedSidebar(props) {
                 return (
                   <Link
                     key={slug.slug}
-                    href={defaultVersion === slug.version ? `/${slug.section}/${slug.slug}` : `/${slug.version}/${slug.section}/${slug.slug}`}
+                    href={
+                      defaultVersion === slug.version
+                        ? `/${slug.section}/${slug.slug}`
+                        : `/${slug.version}/${slug.section}/${slug.slug}`
+                    }
                   >
-                    <a className={`sidebar-subheading ${
-                        currentSlug === slug.slug && currentSection === section ? "sidebar-subheading-active" : ""
-                    }`}>{CleanHyphen(slug.slug)}</a>
+                    <a
+                      className={`sidebar-subheading ${
+                        currentSlug === slug.slug && currentSection === section
+                          ? "sidebar-subheading-active"
+                          : ""
+                      }`}
+                    >
+                      {CleanHyphen(slug.slug)}
+                    </a>
                   </Link>
                 );
               })}
@@ -67,12 +84,12 @@ function UnwrappedSidebar(props) {
 }
 
 export function OverlaySidebar(props) {
-  const sectionOrder=props.sectionOrder;
-  const currentVersion=props.currentVersion;
-  const currentSlug=props.currentSlug;
-  const currentSection=props.currentSection;
+  const sectionOrder = props.sectionOrder;
+  const currentVersion = props.currentVersion;
+  const currentSlug = props.currentSlug;
+  const currentSection = props.currentSection;
   const docs = props.docs;
-  const defaultVersion=props.defaultVersion;
+  const defaultVersion = props.defaultVersion;
   const set = props.set;
   const show = props.show;
 
@@ -120,7 +137,14 @@ export function OverlaySidebar(props) {
                       </div>
                     </div>
                     <div className="relative mt-6 sm:mt-12 flex-1 px-6 sm:px-10">
-                      <UnwrappedSidebar defaultVersion={defaultVersion} sectionOrder={sectionOrder} currentVersion={currentVersion} currentSlug={currentSlug} currentSection={currentSection} docs={docs}/>
+                      <UnwrappedSidebar
+                        defaultVersion={defaultVersion}
+                        sectionOrder={sectionOrder}
+                        currentVersion={currentVersion}
+                        currentSlug={currentSlug}
+                        currentSection={currentSection}
+                        docs={docs}
+                      />
                     </div>
                   </div>
                 </Dialog.Panel>

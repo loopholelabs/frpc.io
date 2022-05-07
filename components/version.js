@@ -61,9 +61,9 @@ export default function Version(props) {
                         onClick={() =>
                           ChangeVersion(
                             router,
-                              currentVersion,
+                            currentVersion,
                             value,
-                              defaultVersion,
+                            defaultVersion,
                             defaultPages
                           )
                         }

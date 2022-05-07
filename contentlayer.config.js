@@ -1,5 +1,5 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
-import {GetHeadings} from "./utils/headings";
+import { GetHeadings } from "./utils/headings";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
@@ -50,7 +50,7 @@ export const Doc = defineDocumentType(() => ({
     headings: {
       type: "json",
       resolve: (doc) => GetHeadings(doc.body.raw),
-    }
+    },
   },
 }));
 
