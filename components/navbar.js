@@ -12,7 +12,7 @@ export default function Navbar(props) {
   return (
     <div
       className={
-        "w-full mx-auto pt-4 pb-3.5 w-screen border-b border-divider border-opacity-10 dark:border-divider-dark dark:border-opacity-80"
+        "w-full mx-auto pt-4 pb-3.5 w-screen border-b border-divider border-opacity-10 dark:border-divider-dark dark:border-opacity-80 z-10"
       }
     >
       <div

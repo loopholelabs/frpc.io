@@ -208,7 +208,7 @@ export default function CommandPalette(props) {
                       aria-hidden="true"
                     />
                     <p className="mt-4 text-sm text-gray-900">
-                      We couldn't find any projects with that term. Please try
+                      We could not find any projects with that term. Please try
                       again.
                     </p>
                   </div>

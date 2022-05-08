@@ -2,6 +2,10 @@ import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import { GetHeadings } from "./utils/headings";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { remarkCodeHike } from "@code-hike/mdx";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const theme = require("shiki/themes/one-dark-pro.json");
 
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
@@ -54,8 +58,23 @@ export const Doc = defineDocumentType(() => ({
   },
 }));
 
-export default makeSource({
-  contentDirPath: "docs",
-  documentTypes: [Doc],
-  mdx: { rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] },
+export default makeSource(async () => {
+  return {
+    contentDirPath: "docs",
+    documentTypes: [Doc],
+    mdx: {
+      remarkPlugins: [
+        [
+          remarkCodeHike,
+          {
+            theme: theme,
+            lineNumbers: true,
+            autoImport: true,
+            showCopyButton: true,
+          },
+        ],
+      ],
+      rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+    },
+  };
 });

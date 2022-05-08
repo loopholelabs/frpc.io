@@ -5,4 +5,5 @@ main {
   @apply pt-8;
   @apply lg:space-x-8;
   @apply max-w-screen-2xl;
+  @apply relative;
 }

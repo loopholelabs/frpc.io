@@ -15,4 +15,6 @@
 .wrapper-content {
   @apply flex-grow;
   @apply lg:px-8 px-8 md:px-14;
+  @apply max-w-full;
+  @apply min-w-0;
 }

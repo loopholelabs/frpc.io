@@ -24,16 +24,9 @@
   }
 }
 
-@media (min-width: 1212px) and (max-width: 1588px) {
+@media (min-width: 1212px) {
   .layout {
     background-position-x: right;
     background-size: 1024px;
-  }
-}
-
-@media (min-width: 1588px) {
-  .layout {
-    background-position-x: right;
-    background-size: contain;
   }
 }

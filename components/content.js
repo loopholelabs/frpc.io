@@ -1,7 +1,7 @@
 import Footer from "./footer";
 import { CleanHyphen } from "../utils/string";
 import { getMDXComponent } from "mdx-bundler/client";
-import React from "react";
+import { useEffect, useMemo, useState } from "react";
 import P from "./render/p";
 import HR from "./render/hr";
 import H1 from "./render/h1";
@@ -23,7 +23,12 @@ export default function Content(props) {
   const currentSection = props.currentSection;
   const currentSlug = props.currentSlug;
 
-  const Component = React.useMemo(
+  const [showChild, setShowChild] = useState(false);
+  useEffect(() => {
+    setShowChild(true);
+  }, []);
+
+  const Component = useMemo(
     () => getMDXComponent(currentDoc.body.code),
     [currentDoc.body.code]
   );
@@ -35,7 +40,8 @@ export default function Content(props) {
           {CleanHyphen(currentSlug)}
         </p>
         <h1 className={"py-5 text-4xl font-semibold"}>{currentDoc.title}</h1>
-        <Component components={render} />
+        {showChild && <Component components={render} />}
+        {/*{JSON.stringify(currentDoc)}*/}
       </div>
       <Footer
         currentVersion={currentVersion}
