@@ -114,16 +114,16 @@ export async function getStaticProps({ params }) {
     .reduce((a, v) => ({ ...a, [v.version]: v }), {});
 
   const requiredDoc = allDocs.find(
-      (doc) =>
-          doc.version === params.version &&
-          doc.section === params.section &&
-          doc.slug === params.slug
-  )
+    (doc) =>
+      doc.version === params.version &&
+      doc.section === params.section &&
+      doc.slug === params.slug
+  );
   const currentDoc = {
     headings: requiredDoc.headings,
     code: requiredDoc.body.code,
     title: requiredDoc.title,
-  }
+  };
 
   return {
     props: {

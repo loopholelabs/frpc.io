@@ -74,7 +74,7 @@ export default makeSource(async () => {
         ],
       ],
       rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
-      globals: {'theme': 'theme', 'note': 'note'}
+      globals: { theme: "theme", note: "note" },
     },
   };
 });

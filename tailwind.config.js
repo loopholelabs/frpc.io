@@ -1,4 +1,4 @@
-const theme = require("shiki/themes/github-dark-dimmed.json")
+const theme = require("shiki/themes/github-dark-dimmed.json");
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",

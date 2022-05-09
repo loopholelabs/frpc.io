@@ -2,7 +2,7 @@ import Footer from "./footer";
 import { CleanHyphen } from "../utils/string";
 import { getMDXComponent } from "mdx-bundler/client";
 import { useEffect, useMemo, useState } from "react";
-import { CH } from "@code-hike/mdx/components"
+import { CH } from "@code-hike/mdx/components";
 
 import P from "./render/p";
 import HR from "./render/hr";
@@ -40,7 +40,7 @@ export default function Content(props) {
   }, []);
 
   const Component = useMemo(
-    () => getMDXComponent(currentDoc.code, {note: Note, theme: Theme}),
+    () => getMDXComponent(currentDoc.code, { note: Note, theme: Theme }),
     [currentDoc.code]
   );
 

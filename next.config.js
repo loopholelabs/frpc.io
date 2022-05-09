@@ -8,8 +8,8 @@ const nextConfig = {
     return [
       {
         source: "/:section/:slug",
-        destination: `/${config.defaultVersion}/:section/:slug`
-      }
+        destination: `/${config.defaultVersion}/:section/:slug`,
+      },
     ];
   },
   async redirects() {
@@ -17,10 +17,10 @@ const nextConfig = {
       {
         source: "/",
         destination: `${config.defaultRedirect}`,
-        permanent: false
-      }
+        permanent: false,
+      },
     ];
-  }
+  },
 };
 
 module.exports = withContentlayer(nextConfig);

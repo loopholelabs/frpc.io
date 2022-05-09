@@ -59,7 +59,7 @@ export default function Navbar(props) {
             <Search set={set} />
           </div>
         </div>
-        <NavButtons/>
+        <NavButtons />
       </div>
     </div>
   );
@@ -67,9 +67,9 @@ export default function Navbar(props) {
 
 function NavButtons() {
   return (
-      <div className={"inline-flex mt-1 sm:mt-0"}>
-        <Github />
-        <Theme />
-      </div>
-  )
+    <div className={"inline-flex mt-1 sm:mt-0"}>
+      <Github />
+      <Theme />
+    </div>
+  );
 }
