@@ -37,27 +37,27 @@ export default function Layout(props) {
         <div className={"w-full flex items-center justify-center"}>
           <div className={"layout"}>
             <Navbar
-                set={setShowSearch}
-                currentVersion={currentVersion}
-                versionOrder={versionOrder}
-                defaultVersion={defaultVersion}
-                defaultPages={defaultPages}
+              set={setShowSearch}
+              currentVersion={currentVersion}
+              versionOrder={versionOrder}
+              defaultVersion={defaultVersion}
+              defaultPages={defaultPages}
             />
             <OverlaySidebar
-                set={setShowMenubar}
-                show={showMenubar}
-                defaultVersion={defaultVersion}
-                sectionOrder={sectionOrder}
-                currentVersion={currentVersion}
-                currentSlug={currentSlug}
-                currentSection={currentSection}
-                docs={docs}
+              set={setShowMenubar}
+              show={showMenubar}
+              defaultVersion={defaultVersion}
+              sectionOrder={sectionOrder}
+              currentVersion={currentVersion}
+              currentSlug={currentSlug}
+              currentSection={currentSection}
+              docs={docs}
             />
             <CommandPalette set={setShowSearch} show={showSearch} />
             <Breadcrumbs
-                currentSection={currentSection}
-                currentSlug={currentSlug}
-                set={setShowMenubar}
+              currentSection={currentSection}
+              currentSlug={currentSlug}
+              set={setShowMenubar}
             />
             <main>{children}</main>
           </div>
