@@ -1,4 +1,10 @@
-.content {
+.content p a {
+  @apply text-primary;
+  @apply border-b;
+  @apply border-primary;
+  @apply border-opacity-0;
+  @apply hover:border-opacity-100;
+  @apply transition;
 }
 
 .content-h1 {
@@ -9,4 +15,61 @@
   @apply absolute;
   @apply w-0;
   @apply h-0;
+}
+
+.ch-codegroup {
+  box-shadow: 0 0 27px 0 rgba(50,50,93,.25),0 0 16px -8px rgba(0,0,0,.3),0 0 16px -6px rgba(0,0,0,.025) !important;
+}
+
+.ch-codeblock {
+  @apply mt-0 !important;
+  @apply rounded-b-lg !important;
+  @apply rounded-t-none !important;
+  @apply shadow-none !important;
+}
+
+.ch-frame-title-bar {
+  @apply h-12 !important;
+}
+
+.ch-editor-frame {
+  @apply max-h-full !important;
+  @apply h-full !important;
+}
+
+.ch-editor-frame div {
+  @apply min-h-0 !important;
+}
+
+.ch-code-scroll-parent {
+  @apply max-h-[512px] !important;
+}
+
+.ch-inline-code {
+  @apply pr-0.5 !important;
+}
+.ch-inline-code code {
+  @apply px-1.5 !important;
+  @apply py-0.5 !important;
+  @apply bg-code-background !important;
+  @apply border;
+  @apply border-control;
+}
+
+.ch-frame-button {
+  @apply h-3 !important;
+  @apply w-3 !important;
+}
+
+.ch-editor-tab {
+  @apply border-r-0 !important;
+}
+
+.ch-editor-tab div {
+  @apply font-sans !important;
+}
+
+.ch-code-scroll-content {
+  @apply text-sm !important;
+  @apply antialiased;
 }

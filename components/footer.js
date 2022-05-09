@@ -6,7 +6,7 @@ export default function Footer(props) {
   return (
     <footer
       className={
-        "border-t-2 border-divider border-opacity-10 dark:border-divider-dark dark:border-opacity-50"
+        "border-t-2 border-control"
       }
     >
       <div
@@ -14,10 +14,16 @@ export default function Footer(props) {
           "py-3 md:py-6 px-3 flex flex-col-reverse md:flex-row items-center md:justify-between"
         }
       >
-        <p className={"footer-copyright"}>
-          Copyright &copy; {new Date().getFullYear()} Loophole Labs, Inc.
-        </p>
-        <a
+        <div className={"inline-flex"}>
+          <p className={"footer-copyright"}>Copyright &copy; {new Date().getFullYear()}&nbsp;
+          </p>
+          <a
+              href={"https://loopholelabs.io"}
+              className={"footer-edit"}
+          >Loophole Labs, Inc.
+          </a>
+        </div>
+          <a
           href={`${editBase}/${currentVersion}/${currentSection}/${currentSlug}`}
           className={"footer-edit"}
         >

@@ -3,7 +3,7 @@ import Sidebar from "../../../components/sidebar";
 import Content from "../../../components/content";
 import TableOfContents from "../../../components/table-of-contents";
 import { allDocs } from "contentlayer/generated";
-import Config from "../../../current.config.json";
+import config from "../../../current.config.json";
 
 export default function Documentation(props) {
   const currentVersion = props.currentVersion;
@@ -15,8 +15,8 @@ export default function Documentation(props) {
   const currentDoc = props.currentDoc;
   const docs = props.docs;
 
-  const defaultVersion = Config.defaultVersion;
-  const editBase = Config.editBase;
+  const defaultVersion = config.defaultVersion;
+  const editBase = config.editBase;
 
   return (
     <Layout
@@ -113,18 +113,25 @@ export async function getStaticProps({ params }) {
     })
     .reduce((a, v) => ({ ...a, [v.version]: v }), {});
 
+  const requiredDoc = allDocs.find(
+      (doc) =>
+          doc.version === params.version &&
+          doc.section === params.section &&
+          doc.slug === params.slug
+  )
+  const currentDoc = {
+    headings: requiredDoc.headings,
+    code: requiredDoc.body.code,
+    title: requiredDoc.title,
+  }
+
   return {
     props: {
       defaultPages: defaultPages,
       docs: docs,
       versionOrder: versionOrder,
       sectionOrder: sectionOrder,
-      currentDoc: allDocs.find(
-        (doc) =>
-          doc.version === params.version &&
-          doc.section === params.section &&
-          doc.slug === params.slug
-      ),
+      currentDoc: currentDoc,
       currentVersion: params.version,
       currentSection: params.section,
       currentSlug: params.slug,

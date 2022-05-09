@@ -1,3 +1,4 @@
+const theme = require("shiki/themes/github-dark-dimmed.json")
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -23,28 +24,14 @@ module.exports = {
         "Segoe UI Symbol",
         "Noto Color Emoji",
       ],
-      mono: [
-        "IBM Plex Mono",
-        "ui-monospace",
-        "SFMono-Regular",
-        "Menlo",
-        "Monaco",
-        "Consolas",
-        "Liberation Mono",
-        "Courier New",
-        "monospace",
-      ],
     },
     extend: {
       colors: {
         dark: "#171717",
         black: "#000000",
         white: "#FFFFFF",
-        "code-background": "#20272C",
-        "code-comments": "#C2CFE1",
-        "code-primary": "#FF6CCD",
-        "code-secondary": "#5BC4FF",
-        "code-tertiary": "#5CE1B1",
+        "code-background": theme.colors["editor.background"],
+        "code-bar-background": theme.colors["titleBar.inactiveBackground"],
         text: "#334155",
         "text-dark": "#C2CFE1",
         divider: "#4E5D72",

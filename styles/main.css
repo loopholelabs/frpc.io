@@ -1,8 +1,9 @@
 main {
   @apply flex;
   @apply w-full;
-  @apply lg:pt-12;
   @apply pt-8;
+  @apply md:pt-14;
+  @apply lg:pt-16;
   @apply lg:space-x-8;
   @apply max-w-screen-2xl;
   @apply relative;

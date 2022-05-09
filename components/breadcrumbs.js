@@ -7,7 +7,7 @@ export default function Breadcrumbs(props) {
   return (
     <nav
       className={
-        "lg:hidden inline-flex lg:px-8 px-8 md:px-14 py-4 w-full border-b border-divider border-opacity-10 dark:border-divider-dark dark:border-opacity-80"
+        "lg:hidden inline-flex lg:px-8 px-8 md:px-14 py-4 w-full border-b border-control"
       }
       aria-label="Breadcrumb"
     >

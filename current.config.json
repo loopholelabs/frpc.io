@@ -1,4 +1,6 @@
 {
-  "defaultVersion": "v1.2.0",
+  "defaultVersion": "v0.4.5",
+  "defaultRedirect": "/introduction/what-is-frisbee",
+  "playgroundURL": "http://localhost:8080/compile",
   "editBase": "https://github.com/loopholelabs/frisbee.sh/tree/staging/docs"
 }

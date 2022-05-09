@@ -3,5 +3,5 @@ export function CleanHyphen(text) {
 }
 
 export function AddHyphen(text) {
-  return text.replaceAll(/ \/?/g, "-");
+  return text.replace(/[^\w\s]/gi, "").replaceAll(/ \/?/g, "-");
 }

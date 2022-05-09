@@ -2,6 +2,7 @@ import Image from "next/image";
 import Version from "./version";
 import Search from "./search";
 import Theme from "./theme";
+import Github from "./render/github";
 
 export default function Navbar(props) {
   const currentVersion = props.currentVersion;
@@ -12,12 +13,12 @@ export default function Navbar(props) {
   return (
     <div
       className={
-        "w-full mx-auto pt-4 pb-3.5 w-screen border-b border-divider border-opacity-10 dark:border-divider-dark dark:border-opacity-80 z-10"
+        "w-full mx-auto pt-4 pb-3.5 w-screen border-b border-control w-full z-10"
       }
     >
       <div
         className={
-          "px-6 md:px-12 flex items-center justify-between max-w-screen-2xl mx-auto"
+          "px-6 md:px-12 flex items-center justify-between max-w-screen-2xl w-full mx-auto"
         }
       >
         <div
@@ -58,8 +59,17 @@ export default function Navbar(props) {
             <Search set={set} />
           </div>
         </div>
-        <Theme />
+        <NavButtons/>
       </div>
     </div>
   );
+}
+
+function NavButtons() {
+  return (
+      <div className={"inline-flex mt-1 sm:mt-0"}>
+        <Github />
+        <Theme />
+      </div>
+  )
 }

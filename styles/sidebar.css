@@ -19,7 +19,7 @@
   @apply py-3;
   @apply pl-3;
   @apply -ml-3.5;
-  @apply text-primary;
+  @apply text-primary !important;
 }
 
 .sidebar-subheading:hover {

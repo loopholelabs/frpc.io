@@ -44,3 +44,12 @@ body {
 .no-scroll::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
+
+.border-control {
+  @apply border-divider border-opacity-10 dark:border-divider-dark dark:border-opacity-60;
+}
+
+strong {
+  @apply font-semibold;
+  @apply italic;
+}

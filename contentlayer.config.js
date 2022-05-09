@@ -5,7 +5,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { remarkCodeHike } from "@code-hike/mdx";
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
-const theme = require("shiki/themes/one-dark-pro.json");
+const theme = require("shiki/themes/github-dark-dimmed.json");
 
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
@@ -69,12 +69,12 @@ export default makeSource(async () => {
           {
             theme: theme,
             lineNumbers: true,
-            autoImport: true,
-            showCopyButton: true,
+            autoImport: false,
           },
         ],
       ],
       rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+      globals: {'theme': 'theme', 'note': 'note'}
     },
   };
 });

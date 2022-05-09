@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const { withContentlayer } = require("next-contentlayer");
-const Config = require("./current.config.json");
+const config = require("./current.config.json");
 
 const nextConfig = {
   reactStrictMode: true,
@@ -8,10 +8,19 @@ const nextConfig = {
     return [
       {
         source: "/:section/:slug",
-        destination: `/${Config.defaultVersion}/:section/:slug`,
-      },
+        destination: `/${config.defaultVersion}/:section/:slug`
+      }
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: `${config.defaultRedirect}`,
+        permanent: false
+      }
+    ];
+  }
 };
 
 module.exports = withContentlayer(nextConfig);
