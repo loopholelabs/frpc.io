@@ -15,6 +15,7 @@
     "@tailwindcss/forms": "^0.5.1",
     "axios": "^0.27.2",
     "contentlayer": "^0.2.4",
+    "cssnano": "^5.1.7",
     "mdx-bundler": "^9.0.0",
     "next": "12.1.5",
     "next-contentlayer": "^0.2.4",
@@ -22,6 +23,7 @@
     "react-dom": "18.1.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1",
+    "sharp": "^0.30.4",
     "shiki": "^0.10.1"
   },
   "devDependencies": {
