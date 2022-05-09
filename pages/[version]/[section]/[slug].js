@@ -69,6 +69,7 @@ export async function getStaticProps({ params }) {
           const reducedSectionItem = {
             section: sectionItem.section,
             version: sectionItem.version,
+            title: sectionItem.title,
             slug: sectionItem.slug,
             order: sectionItem.order,
             sectionOrder: sectionItem.sectionOrder,
@@ -96,7 +97,8 @@ export async function getStaticProps({ params }) {
 
   const sectionOrder = versionOrder.reduce((accumulatedVersions, version) => {
     accumulatedVersions[version] = Object.keys(docs[version]).sort(
-      (a, b) => docs[version][a][0].sectionOrder - docs[version][b][0].section
+      (a, b) =>
+        docs[version][a][0].sectionOrder - docs[version][b][0].sectionOrder
     );
     return accumulatedVersions;
   }, {});

@@ -9,7 +9,7 @@
   @apply py-3;
   @apply text-text;
   @apply dark:text-text-dark;
-  @apply font-normal;
+  @apply font-medium;
   @apply block;
 }
 

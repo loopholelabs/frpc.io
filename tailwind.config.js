@@ -32,6 +32,7 @@ module.exports = {
         white: "#FFFFFF",
         "code-background": theme.colors["editor.background"],
         "code-bar-background": theme.colors["titleBar.inactiveBackground"],
+        "code-keyword": theme.tokenColors[7].settings.foreground,
         text: "#334155",
         "text-dark": "#C2CFE1",
         divider: "#4E5D72",

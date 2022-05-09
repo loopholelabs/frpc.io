@@ -29,7 +29,7 @@ export default function Breadcrumbs(props) {
           </p>
         </div>
         <ChevronRightIcon
-          className="flex-shrink-0 h-5 w-5 text-text dark:text-text-dark"
+          className="flex-shrink-0 h-5 w-5 text-text dark:text-text-dark my-auto"
           aria-hidden="true"
         />
         <div className="flex items-center">
