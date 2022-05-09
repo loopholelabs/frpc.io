@@ -60,7 +60,7 @@ function UnwrappedSidebar(props) {
                           : ""
                       }`}
                     >
-                      {CleanHyphen(slug.slug)}
+                      {slug.title}
                     </a>
                   </Link>
                 );

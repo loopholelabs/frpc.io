@@ -5,6 +5,7 @@
   @apply border-opacity-0;
   @apply hover:border-opacity-100;
   @apply transition;
+  @apply font-medium;
 }
 
 .content-h1 {
@@ -49,12 +50,16 @@
 .ch-inline-code {
   @apply pr-0.5 !important;
 }
+
 .ch-inline-code code {
   @apply px-1.5 !important;
   @apply py-0.5 !important;
-  @apply bg-code-background !important;
   @apply border;
   @apply border-control;
+}
+
+.ch-inline-code code span {
+  @apply text-code-keyword !important;
 }
 
 .ch-frame-button {
