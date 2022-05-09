@@ -3,20 +3,14 @@ title: What Makes Frisbee Better?
 order: 1
 ---
 
-With **Zero Allocations**
-in the hot-path and an 8-Byte Packet Header, the overhead of Frisbee is also significantly lower than that of
-protocols like GRPC (performance comparisons available in our [Performance Section](https://frisbee.sh/performance/introduction))
-making it feasible to use Frisbee for real-time streaming or data-heavy applications.
+With **Zero Allocations** in the hot-path and an 8-Byte Packet Header, the network overhead of Frisbee is significantly
+lower than that of existing protocols like GRPC (performance comparisons available in our [Performance Section](https://frisbee.sh/performance/introduction)).
 
-One of the most interesting
+This makes it feasible to use Frisbee (and [Frisbee RPC]()) for real-time streaming applications or in data-heavy pipelines.
 
-And most importantly, Developers are **able to turn off Frisbee** whenever
-they like. This means
+One of the most exciting features in Frisbee is the ability to **turn Frisbee off** whenever you like. This means it's
+possible to establish a Frisbee connection, stream some data (or use RPCs), and then turn Frisbee off and retrieve a
+complete normal TCP socket with zero overhead.
 
-two high-level primitive types: the <CH.InlineCode>Server</CH.InlineCode>
-and the <CH.InlineCode>Client</CH.InlineCode>. Unlike a standard server/client architecture, Frisbee defines the
-
-<CH.InlineCode>Server</CH.InlineCode> component that are meant to be customized to
-fit whatever messaging pattern and protocol you require.
-
-With most messaging frameworks there is the. <CH.InlineCode>Server</CH.InlineCode>.
+This opens up a world of interesting messaging patterns - like authenticating a connection using Frisbee RPC then turning
+Frisbee off and using the resulting TCP socket to proxy HTTP traffic.

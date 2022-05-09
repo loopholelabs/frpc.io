@@ -123,6 +123,7 @@ export async function getStaticProps({ params }) {
     headings: requiredDoc.headings,
     code: requiredDoc.body.code,
     title: requiredDoc.title,
+    sectionOrder: requiredDoc.sectionOrder,
   };
 
   return {

@@ -57,6 +57,7 @@ export default function Content(props) {
         currentVersion={currentVersion}
         currentSection={currentSection}
         currentSlug={currentSlug}
+        currentDoc={currentDoc}
         editBase={editBase}
       />
     </div>

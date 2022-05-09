@@ -3,6 +3,7 @@ export default function Footer(props) {
   const currentVersion = props.currentVersion;
   const currentSection = props.currentSection;
   const currentSlug = props.currentSlug;
+  const currentDoc = props.currentDoc;
   return (
     <footer className={"border-t-2 border-control"}>
       <div
@@ -19,7 +20,7 @@ export default function Footer(props) {
           </a>
         </div>
         <a
-          href={`${editBase}/${currentVersion}/${currentSection}/${currentSlug}`}
+          href={`${editBase}/${currentVersion}/${currentDoc.sectionOrder}-${currentSection}/${currentSlug}.mdx`}
           className={"footer-edit"}
         >
           Edit This Page on Github
