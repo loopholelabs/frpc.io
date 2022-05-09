@@ -34,31 +34,33 @@ export default function Layout(props) {
   return (
     <>
       <ThemeProvider defaultTheme="dark" attribute="class">
-        <div className={"layout"}>
-          <Navbar
-            set={setShowSearch}
-            currentVersion={currentVersion}
-            versionOrder={versionOrder}
-            defaultVersion={defaultVersion}
-            defaultPages={defaultPages}
-          />
-          <OverlaySidebar
-            set={setShowMenubar}
-            show={showMenubar}
-            defaultVersion={defaultVersion}
-            sectionOrder={sectionOrder}
-            currentVersion={currentVersion}
-            currentSlug={currentSlug}
-            currentSection={currentSection}
-            docs={docs}
-          />
-          <CommandPalette set={setShowSearch} show={showSearch} />
-          <Breadcrumbs
-            currentSection={currentSection}
-            currentSlug={currentSlug}
-            set={setShowMenubar}
-          />
-          <main>{children}</main>
+        <div className={"w-full flex items-center justify-center"}>
+          <div className={"layout"}>
+            <Navbar
+                set={setShowSearch}
+                currentVersion={currentVersion}
+                versionOrder={versionOrder}
+                defaultVersion={defaultVersion}
+                defaultPages={defaultPages}
+            />
+            <OverlaySidebar
+                set={setShowMenubar}
+                show={showMenubar}
+                defaultVersion={defaultVersion}
+                sectionOrder={sectionOrder}
+                currentVersion={currentVersion}
+                currentSlug={currentSlug}
+                currentSection={currentSection}
+                docs={docs}
+            />
+            <CommandPalette set={setShowSearch} show={showSearch} />
+            <Breadcrumbs
+                currentSection={currentSection}
+                currentSlug={currentSlug}
+                set={setShowMenubar}
+            />
+            <main>{children}</main>
+          </div>
         </div>
       </ThemeProvider>
     </>

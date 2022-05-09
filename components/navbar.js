@@ -13,12 +13,12 @@ export default function Navbar(props) {
   return (
     <div
       className={
-        "w-full mx-auto pt-4 pb-3.5 w-screen border-b border-control w-full z-10"
+        "w-full mx-auto pt-4 pb-3.5 border-b border-control w-full z-10"
       }
     >
       <div
         className={
-          "px-6 md:px-12 flex items-center justify-between max-w-screen-2xl w-full mx-auto"
+          "px-6 md:px-12 flex items-center max-w-screen-2xl justify-between w-full mx-auto"
         }
       >
         <div
