@@ -13,7 +13,7 @@ import Note from "./alert/note";
 import Theme from "./theme";
 import Code from "./render/ch/code";
 import InlineCode from "./render/ch/inlineCode";
-import {Tooltip} from "./tooltip";
+import { Tooltip } from "./tooltip";
 
 const render = {
   p: P,
