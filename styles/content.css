@@ -8,6 +8,16 @@
   @apply font-medium;
 }
 
+.content ul li a {
+  @apply text-primary;
+  @apply border-b;
+  @apply border-primary;
+  @apply border-opacity-0;
+  @apply hover:border-opacity-100;
+  @apply transition;
+  @apply font-medium;
+}
+
 .content-h1 {
   @apply capitalize py-4 text-2xl font-semibold text-dark dark:text-white;
 }
@@ -60,6 +70,7 @@
 
 .ch-inline-code code span {
   @apply text-code-keyword !important;
+  @apply whitespace-nowrap !important;
 }
 
 .ch-frame-button {

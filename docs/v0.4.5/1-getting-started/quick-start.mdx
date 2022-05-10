@@ -6,11 +6,22 @@ order: 1
 In this section we'll be going over how you can quickly get started with <Tooltip text={"Frisbee RPC"} content={"FRPC"}/>,
 from defining your message types in a <Tooltip text={"Syntax used to describe protocol buffers"} content={"proto3"}/> file, to writing your first server and client.
 
-In this example we'll be building a simple echo service that will echo back the message it receives. Later on we'll use
-the Frisbee framework to build a more complex PUB/SUB service.
+We'll be building a simple echo service that will echo back the message it receives, and later on we'll also show how
+you can use the Frisbee framework itself to build a more complex PUB/SUB service.
 
 # Installation
 
-To get started with <Tooltip text={"Frisbee RPC"} content={"FRPC"}/>, you'll need to make sure you have the
+To get started with <Tooltip text={"Frisbee RPC"} content={"FRPC"}/>, you'll need to make sure you have <CH.InlineCode>Go</CH.InlineCode>
+and the <CH.InlineCode>protoc</CH.InlineCode> compiler installed. Then, you'll need to install
+the <CH.InlineCode>protoc-gen-frisbee</CH.InlineCode> <Tooltip text={"Plugins hook into the protoc compiler and allow for custom code generation"} content={"protoc plugin"}/>
+which we will use to generate the server and client code.
 
+## Prerequisites
 
+- [Go](https://golang.org/doc/install) - FRPC works with <CH.InlineCode>Go</CH.InlineCode> version 1.17 or later. For installation instructions see [Go's Getting Started Guide](https://golang.org/doc/install).
+- [Protocol Buffer Compiler (protoc)](https://developers.google.com/protocol-buffers) - FRPC works with <CH.InlineCode>protoc</CH.InlineCode> version 3. For installation instructions see the [Protoc Getting Started Guide](https://developers.google.com/protoc/docs/getting_started).
+
+If you're using MacOS and have [Brew](https://brew.sh/) installed, you can use <CH.InlineCode>brew install go</CH.InlineCode>
+to install Golang, and <CH.InlineCode>brew install protoc</CH.InlineCode> to install the protoc compiler.
+
+## Install the FRPC Plugin

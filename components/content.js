@@ -14,6 +14,7 @@ import Theme from "./theme";
 import Code from "./render/ch/code";
 import InlineCode from "./render/ch/inlineCode";
 import { Tooltip } from "./tooltip";
+import UL from "./render/ul";
 
 const render = {
   p: P,
@@ -21,6 +22,7 @@ const render = {
   h1: H1,
   h2: H2,
   h3: H3,
+  ul: UL,
   CH: {
     ...CH,
     Code: Code,
