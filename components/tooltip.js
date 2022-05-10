@@ -11,6 +11,7 @@ export function Tooltip({ children, text, content }) {
   const { triggerProps, layerProps, arrowProps, renderLayer } = useLayer({
     isOpen: isOver,
     auto: true,
+    snap: true,
     possiblePlacements: [
       "top-center",
       "bottom-center",

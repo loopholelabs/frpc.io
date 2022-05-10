@@ -21,7 +21,7 @@ export default function Discord() {
 function LightMode() {
   return (
     <Image
-      src={"/githublight.svg"}
+      src={"/discordlight.svg"}
       alt={"Discord Light Mode Icon"}
       width={"28px"}
       height={"28px"}

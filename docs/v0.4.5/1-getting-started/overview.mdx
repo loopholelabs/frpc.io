@@ -14,7 +14,7 @@ lower-level implementations done for them by the library.
 We built <Tooltip text={"Frisbee RPC"} content={"FRPC"}/> because we loved the idea of defining our message types in a standardized
 [proto3](https://developers.google.com/protocol-buffers/docs/proto3) format and having the [protobuf](https://github.com/protocolbuffers/protobuf) compiler generate all the necessary
 glue code for us, but we didn't like the [overhead](https://github.com/boguslaw-wojcik/encoding-benchmarks) of encoding and decoding
-messages in the <Tooltip text={"Data format used to serialize structured data"} content={"protobuf"}/> format, and wanted a wire protocol that was lighter than HTTP/2.
+messages in the <Tooltip text={"Data format used to serialize structured data"} content={"protobuf"}/> format, and wanted a wire protocol that was lighter than  <Tooltip text={"Wire format used for GRPC"} content={"HTTP\/2"}/>.
 
 FRPC works by making use of protobuf plugins, and allows developers to use their existing proto3 files to generate a
 full RPC Framework that uses Frisbee under the hood. Moreover, Frisbee is a **drop-in replacement for GRPC** thanks to
