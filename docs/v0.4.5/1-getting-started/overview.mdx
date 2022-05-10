@@ -1,12 +1,27 @@
 ---
-title: What Is Frisbee?
+title: Overview
 order: 0
 default: true
 ---
 
-Frisbee is best described as a <CH.InlineCode>bring-your-own-protocol</CH.InlineCode> messaging framework. Our goal was
+At its core, **Frisbee** is best described as a <CH.InlineCode>bring-your-own-protocol</CH.InlineCode> messaging framework. Our goal was
 to make it possible for Developers to define their **own** messaging patterns and protocols, and have the actual
 lower-level implementations done for them by the library.
+
+**FRPC** (or **Frisbee RPC**), on the other hand, is an <Tooltip text={"Remote Procedure Call"} content={"RPC"}/> Framework (similar to [GRPC](https://grpc.io) or
+[Apache Thrift](https://thrift.apache.org/)) that uses the Frisbee messaging framework as its underlying transport mechanism.
+
+We built <Tooltip text={"Frisbee RPC"} content={"FRPC"}/> because we loved the idea of defining our message types in a standardized
+[proto3](https://developers.google.com/protocol-buffers/docs/proto3) format and having the [protobuf](https://github.com/protocolbuffers/protobuf) compiler generate all the necessary
+glue code for us, but we didn't like the [overhead](https://github.com/boguslaw-wojcik/encoding-benchmarks) of encoding and decoding
+messages in the <Tooltip text={"Data format used to serialize structured data"} content={"protobuf"}/> format, and wanted a wire protocol that was lighter than HTTP/2.
+
+FRPC works by making use of protobuf plugins, and allows developers to use their existing proto3 files to generate a
+full RPC Framework that uses Frisbee under the hood. Moreover, Frisbee is a **drop-in replacement for GRPC** thanks to
+our generated interfaces matching GRPC's, and in an apples-to-apples comparison,
+[Frisbee RPC blows GRPC's performance out of the water]().
+
+In general we expect that most developers will want to start by using FRPC
 
 # Why is Frisbee Necessary?
 
@@ -28,19 +43,3 @@ and instead provides building blocks that can be used to build protocols on top 
 As an example, we wanted to create a simple PUB/SUB application using Frisbee that would perform on-par (or better) than
 NATS in an apples-to-apples comparison. The resulting [repository](https://github.com/loopholelabs/frisbee-benchmarks/tree/master/nats-benchmark/frisbee)
 is only **300 lines of code** and [out-performs NATS in a real-world test by 10%]().
-
-# Frisbee RPC
-
-Before we built Frisbee, our team at [Loophole Labs](https://loopholelabs.io) was evaluating GRPC for use in our backend.
-We loved the idea of defining our message types in a standardized [proto3](https://developers.google.com/protocol-buffers/docs/proto3)
-format and having the [protobuf](https://github.com/protocolbuffers/protobuf) compiler generate all the necessary
-glue code for us.
-
-What we didn't like was the [overhead](https://github.com/boguslaw-wojcik/encoding-benchmarks) of encoding and decoding
-messages in the Protobuf format, and wanted something light-weight and much more flexible.
-
-As a result, we ended up building [Frisbee RPC](). By making use of protobuf plugins, Frisbee RPC allows developers to
-use their existing proto3 files to generate a full RPC Framework that uses Frisbee under the hood.
-
-Moreover, Frisbee is a **drop-in replacement for GRPC** thanks to our generated interfaces matching GRPC's, and in an
-apples-to-apples comparison, [Frisbee RPC blows GRPC's performance out of the water]().

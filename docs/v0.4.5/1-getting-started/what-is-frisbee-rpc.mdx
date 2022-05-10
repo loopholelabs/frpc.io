@@ -1,0 +1,22 @@
+---
+title: What Is Frisbee RPC?
+order: 1
+---
+
+Before we built Frisbee, our team at [Loophole Labs](https://loopholelabs.io) was evaluating GRPC for use in our backend.
+We loved the idea of defining our message types in a standardized [proto3](https://developers.google.com/protocol-buffers/docs/proto3)
+format and having the [protobuf](https://github.com/protocolbuffers/protobuf) compiler generate all the necessary
+glue code for us.
+
+What we didn't like was the [overhead](https://github.com/boguslaw-wojcik/encoding-benchmarks) of encoding and decoding
+messages in the Protobuf format, and wanted something light-weight and much more flexible.
+
+As a result, we ended up building [Frisbee RPC](). By making use of protobuf plugins, Frisbee RPC allows developers to
+use their existing proto3 files to generate a full RPC Framework that uses Frisbee under the hood.
+
+Moreover, Frisbee is a **drop-in replacement for GRPC** thanks to our generated interfaces matching GRPC's, and in an
+apples-to-apples comparison, [Frisbee RPC blows GRPC's performance out of the water]().
+
+# Example Echo Application
+
+To demonstrate just how easy it is to get started with Frisbee RPC, we're going to quickly spin up

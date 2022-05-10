@@ -2,7 +2,8 @@ import Image from "next/image";
 import Version from "./version";
 import Search from "./search";
 import Theme from "./theme";
-import Github from "./render/github";
+import Github from "./github";
+import Discord from "./discord";
 
 export default function Navbar(props) {
   const currentVersion = props.currentVersion;
@@ -68,6 +69,7 @@ export default function Navbar(props) {
 function NavButtons() {
   return (
     <div className={"inline-flex mt-1 sm:mt-0"}>
+      <Discord />
       <Github />
       <Theme />
     </div>

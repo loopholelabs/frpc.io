@@ -51,5 +51,4 @@ body {
 
 strong {
   @apply font-semibold;
-  @apply italic;
 }
