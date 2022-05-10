@@ -43,6 +43,8 @@ export default function Documentation(props) {
         currentSection={currentSection}
         currentSlug={currentSlug}
         currentDoc={currentDoc}
+        docs={docs}
+        defaultVersion={defaultVersion}
         editBase={editBase}
       />
       <TableOfContents currentDoc={currentDoc} />

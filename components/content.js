@@ -30,7 +30,9 @@ const render = {
 };
 
 export default function Content(props) {
+  const docs = props.docs;
   const currentDoc = props.currentDoc;
+  const defaultVersion = props.defaultVersion;
   const editBase = props.editBase;
   const currentVersion = props.currentVersion;
   const currentSection = props.currentSection;
@@ -56,6 +58,8 @@ export default function Content(props) {
         {showChild && <Component components={render} />}
       </div>
       <Footer
+        docs={docs}
+        defaultVersion={defaultVersion}
         currentVersion={currentVersion}
         currentSection={currentSection}
         currentSlug={currentSlug}

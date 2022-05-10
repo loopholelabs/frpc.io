@@ -1,0 +1,23 @@
+---
+title: Motivations
+order: 1
+---
+
+Messaging frameworks in general have been around for years, and as distributed systems become the norm, it's more and
+more important to have efficient, reliable communication protocols.
+
+Well-defined protocols like [NATS](https://nats.io) or [Kafka](https://kafka.apache.org/) are good at what they do,
+however they are designed for very specific use cases, are difficult to embed, and in general aren't very flexible.
+
+Systems like [GRPC](https://grpc.io) on the other hand are supposed to provide more flexibility by allowing developers
+to specify message types and handlers on the server-side, however the overhead of GRPC and the requirement of Protocol
+Buffers adds unnecessary bloat to applications - not to mention that only the Request/Reply pattern is supported.
+
+[Frisbee](https://github.com/loopholelabs/frisbee), on the other hand allows Developers to implement any messaging
+pattern they choose - whether that's PUB/SUB, or Request/Reply or something completely custom. Frisbee is also
+significantly more flexible than protocols like GRPC or NATS because it was not designed for just a single use-case,
+and instead provides building blocks that can be used to build protocols on top of.
+
+As an example, we wanted to create a simple PUB/SUB application using Frisbee that would perform on-par (or better) than
+NATS in an apples-to-apples comparison. The resulting [repository](https://github.com/loopholelabs/frisbee-benchmarks/tree/master/nats-benchmark/frisbee)
+is only **300 lines of code** and [out-performs NATS in a real-world test by 10%]().

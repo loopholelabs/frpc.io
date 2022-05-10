@@ -1,6 +1,6 @@
 ---
-title: What Makes Frisbee Better?
-order: 0
+title: Optimizations
+order: 1
 ---
 
 With **Zero Allocations** in the hot-path and an 8-Byte Packet Header, the network overhead of Frisbee is significantly
@@ -12,6 +12,8 @@ to send both large and small amounts of data in a latency-sensitive manner. We a
 able to handle thousands of concurrent connections and able to send millions of messages.
 
 To fulfill these requirements we spent a lot of time architecting the Frisbee data path to be extremely fast and extremely efficient.
+
+# Data Path Optimizations
 
 Our optimizations began with the <CH.InlineCode>Packet</CH.InlineCode> package, which efficiently recycles the byte buffers
 that are used throughout Frisbee to hold interstitial data. On top of this, we built our custom <CH.InlineCode>Encoding</CH.InlineCode>
@@ -38,18 +40,3 @@ problem.
 
 For Frisbee, however, we wanted to make use of the existing performance optimizations that networking software and hardware
 have for TCP traffic, and we wanted the strong guarantees around packet delivery that TCP already provides.
-
-# Unique Features
-
-There are a number of exciting features built into Frisbee that allow it to be as extendable and flexible as it is.
-
-One of those features is the ability for your application to **turn Frisbee off** whenever you like. This means it's possible to establish a
-Frisbee connection, stream some data over it (or use RPCs), and then turn Frisbee off and retrieve a complete normal TCP socket with zero overhead.
-
-This opens up a world of interesting messaging patterns that simply aren't possible with other frameworks and protocol -
-like authenticating a connection using Frisbee RPC then turning Frisbee off and using the resulting TCP socket to proxy HTTP traffic.
-
-Frisbee is also designed to deviate from the standard client-server model, where the client sends a request and receives
-a response. Instead, Frisbee makes it possible for either the client or the server to send requests once a connection
-is established. Within Frisbee, we refer to the <CH.InlineCode>Server</CH.InlineCode> as the component that the <CH.InlineCode>Client</CH.InlineCode>
-initiates a connection to. After the connection itself is established, the messaging pattern is completely up to the developer.
