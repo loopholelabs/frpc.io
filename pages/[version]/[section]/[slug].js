@@ -53,7 +53,7 @@ export default function Documentation(props) {
 }
 
 export async function getStaticProps({ params }) {
-  const versionIndex = allDocs.reduce((accumulated, item) => {
+  const versionIndex = allDocs.filter((doc) => !doc.draft).reduce((accumulated, item) => {
     const version = item.version;
     if (version in accumulated) {
       accumulated[version].push(item);
@@ -93,7 +93,7 @@ export async function getStaticProps({ params }) {
     {}
   );
 
-  const versionOrder = [...new Set(allDocs.map((doc) => doc.version))].sort(
+  const versionOrder = [...new Set(allDocs.filter((doc) => !doc.draft).map((doc) => doc.version))].sort(
     (a, b) => b.localeCompare(a)
   );
 
@@ -106,6 +106,7 @@ export async function getStaticProps({ params }) {
   }, {});
 
   const defaultPages = allDocs
+    .filter((doc) => !doc.draft)
     .filter((doc) => doc.default)
     .sort((a, b) => b.version.localeCompare(a.version))
     .map((doc) => {
@@ -117,7 +118,7 @@ export async function getStaticProps({ params }) {
     })
     .reduce((a, v) => ({ ...a, [v.version]: v }), {});
 
-  const requiredDoc = allDocs.find(
+  const requiredDoc = allDocs.filter((doc) => !doc.draft).find(
     (doc) =>
       doc.version === params.version &&
       doc.section === params.section &&
@@ -145,7 +146,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const paths = allDocs.map((doc) => {
+  const paths = allDocs.filter((doc) => !doc.draft).map((doc) => {
     return {
       params: {
         version: doc.version,

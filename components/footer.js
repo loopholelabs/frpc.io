@@ -71,12 +71,12 @@ export default function Footer(props) {
             <a>
               <div
                 className={
-                  "float-left border border-control py-2 px-2.5 rounded-md"
+                  "float-left rounded-md text-text dark:text-text-dark transition hover:dark:text-primary"
                 }
               >
                 <p
                   className={
-                    "text-text dark:text-text-dark text-sm text-right pb-0.5"
+                    "text-sm text-left pb-0.5"
                   }
                 >
                   Previous
@@ -97,12 +97,12 @@ export default function Footer(props) {
             <a>
               <div
                 className={
-                  "float-right border border-control py-2 px-2.5 rounded-md"
+                  "float-right rounded-md text-text dark:text-text-dark transition hover:dark:text-primary"
                 }
               >
                 <p
                   className={
-                    "text-text dark:text-text-dark text-sm text-right pb-0.5"
+                    "text-sm text-right pb-0.5"
                   }
                 >
                   Next
@@ -116,7 +116,7 @@ export default function Footer(props) {
       <footer className={"border-t-2 border-control"}>
         <div
           className={
-            "py-3 md:py-6 px-3 flex flex-col-reverse md:flex-row items-center md:justify-between"
+            "py-3 md:py-6 flex flex-col-reverse md:flex-row items-center md:justify-between"
           }
         >
           <div className={"inline-flex"}>

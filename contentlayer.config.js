@@ -28,6 +28,11 @@ export const Doc = defineDocumentType(() => ({
         "Whether the document should be considered the default page for its section",
       required: false,
     },
+    draft: {
+        type: "boolean",
+        description: "Whether the document should not be published because it is a draft",
+        required: false,
+    }
   },
   computedFields: {
     version: {

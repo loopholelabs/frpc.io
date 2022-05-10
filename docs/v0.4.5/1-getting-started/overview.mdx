@@ -16,14 +16,12 @@ We built <Tooltip text={"Frisbee RPC"} content={"FRPC"}/> because we loved the i
 glue code for us, but we didn't like the [overhead](https://github.com/boguslaw-wojcik/encoding-benchmarks) of encoding and decoding
 messages in the <Tooltip text={"Data format used to serialize structured data"} content={"protobuf"}/> format, and wanted a wire protocol that was lighter than <Tooltip text={"Wire format used for GRPC"} content={"HTTP\/2"}/>.
 
-FRPC works by making use of protobuf plugins, and allows developers to use their existing proto3 files to generate a
+<Tooltip text={"Frisbee RPC"} content={"FRPC"}/> works by making use of protobuf plugins, and allows developers to use their existing proto3 files to generate a
 full RPC Framework that uses Frisbee under the hood. Moreover, Frisbee is a **drop-in replacement for GRPC** thanks to
 our generated interfaces matching GRPC's, and in an apples-to-apples comparison,
-[Frisbee RPC blows GRPC's performance out of the water]().
+[FRPC blows GRPC's performance out of the water]().
 
-# Example Echo Application
+Over the next few pages we'll walk you through the process of getting started with <Tooltip text={"Frisbee RPC"} content={"FRPC"}/>,
+from defining your message types in a <Tooltip text={"Syntax used to describe protocol buffers"} content={"proto3"}/> file, to writing your first server and client.
 
-In general we expect that most developers will want to start by using FRPC because of how quick and easy it is to
-get started.
-
-To demonstrate just how easy it is to get started with Frisbee RPC, we're going to quickly spin up
+We'll also introduce the core concepts around Frisbee as well as how you can use the Framework to build your own messaging protocols.
