@@ -15,10 +15,10 @@ To fulfill these requirements we spent a lot of time architecting the Frisbee da
 
 # Data Path Optimizations
 
-Our optimizations began with the <CH.InlineCode>Packet</CH.InlineCode> package, which efficiently recycles the byte buffers
-that are used throughout Frisbee to hold interstitial data. On top of this, we built our custom <CH.InlineCode>Encoding</CH.InlineCode>
-and <CH.InlineCode>Decoding</CH.InlineCode> packages, which read and write directly from the <CH.InlineCode>Packet.packet</CH.InlineCode>
-structure. By recycling the <CH.InlineCode>Packet.packet</CH.InlineCode> structures throughout Frisbee, we can significantly reduce
+Our optimizations began with the `Packet{:.keyword}` package, which efficiently recycles the byte buffers
+that are used throughout Frisbee to hold interstitial data. On top of this, we built our custom `Encoding{:.keyword}`
+and `Decoding{:.keyword}` packages, which read and write directly from the `Packet.packet{:.keyword}`
+structure. By recycling the `Packet.packet{:.keyword}` structures throughout Frisbee, we can significantly reduce
 the number of allocations in the encoding and decoding functions.
 
 Most of our other optimizations center around our network I/O. Actually reading and writing data from a TCP socket

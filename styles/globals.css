@@ -11,7 +11,7 @@
 @import "./table-of-contents.css";
 @import "./footer.css";
 @import "./content.css";
-@import "./codehike.css";
+@import "./code.css";
 
 @import "@code-hike/mdx/dist/index.css";
 

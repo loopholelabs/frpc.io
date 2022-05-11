@@ -11,53 +11,53 @@ you can use the Frisbee framework itself to build a more complex <Tooltip text={
 
 # Installation
 
-To get started with <Tooltip text={"Frisbee RPC"} content={"FRPC"}/>, you'll need to make sure you have <CH.InlineCode>Go</CH.InlineCode>
-and the <CH.InlineCode>protoc</CH.InlineCode> compiler installed. Then, you'll need to install
-the <CH.InlineCode>protoc-gen-frisbee</CH.InlineCode> <Tooltip text={"Plugins hook into the protoc compiler and allow for custom code generation"} content={"protoc plugin"}/>
+To get started with <Tooltip text={"Frisbee RPC"} content={"FRPC"}/>, you'll need to make sure you have `Go{:.keyword}`
+and the `protoc{:.keyword}` compiler installed. Then, you'll need to install
+the `protoc-gen-frisbee{:.keyword}` <Tooltip text={"Plugins hook into the protoc compiler and allow for custom code generation"} content={"protoc plugin"}/>
 which we will use to generate the server and client code.
 
 ## Prerequisites
 
-- [Go](https://golang.org/doc/install) - FRPC works with <CH.InlineCode>Go</CH.InlineCode> version 1.17 or later. For installation instructions see [Go's Getting Started Guide](https://golang.org/doc/install).
-- [Protocol Buffer Compiler (protoc)](https://developers.google.com/protocol-buffers) - FRPC works with <CH.InlineCode>protoc</CH.InlineCode> version 3. For installation instructions see the [Protoc Getting Started Guide](https://developers.google.com/protoc/docs/getting_started).
+- [Go](https://golang.org/doc/install) - FRPC works with `Go` version 1.17 or later. For installation instructions see [Go's Getting Started Guide](https://golang.org/doc/install).
+- [Protocol Buffer Compiler (protoc)](https://developers.google.com/protocol-buffers) - FRPC works with `protoc{:.keyword}` version 3. For installation instructions see the [Protoc Getting Started Guide](https://developers.google.com/protoc/docs/getting_started).
 
-If you're using MacOS and have [Brew](https://brew.sh/) installed, you can use <CH.InlineCode>brew install go</CH.InlineCode>
-to install Golang, and <CH.InlineCode>brew install protoc</CH.InlineCode> to install the protoc compiler.
+If you're using MacOS and have [Brew](https://brew.sh/) installed, you can use `brew install go{:.keyword}`
+to install Golang, and `brew install protoc{:.keyword}` to install the protoc compiler.
 
 ## Install the FRPC Plugin
 
-To install the <CH.InlineCode>protoc-gen-frisbee</CH.InlineCode> plugin, you'll first need to make sure that your
+To install the `protoc-gen-frisbee{:.keyword}` plugin, you'll first need to make sure that your
 
-<CH.InlineCode>$GOBIN</CH.InlineCode> environment variable is set and available in
+`$GOBIN{:.keyword}` environment variable is set and available in
 your system path. See the [Go Environment Variables](https://golang.org/doc/code.html#GOPATH)
 for more information, but in general, you can do this by adding the following to
-your <CH.InlineCode>~/.bashrc</CH.InlineCode> file:
+your `~/.bashrc{:.keyword}` file:
 
-```nix ~/.bashrc
+```bash title="~/.bashrc"
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 ```
 
-To install the <CH.InlineCode>protoc-gen-frisbee</CH.InlineCode> plugin itself, you'll need to run the following command:
+To install the `protoc-gen-frisbee{:.keyword}` plugin itself, you'll need to run the following command:
 
 ```nix
 $ go install github.com/loopholelabs/frisbee/protoc-gen-frisbee@latest
 ```
 
-This will install the <CH.InlineCode>protoc-gen-frisbee</CH.InlineCode> plugin into your <CH.InlineCode>$GOBIN</CH.InlineCode> directory
-where it will be available for use by the <CH.InlineCode>protoc</CH.InlineCode> compiler.
+This will install the `protoc-gen-frisbee{:.keyword}` plugin into your `$GOBIN{:.keyword}` directory
+where it will be available for use by the `protoc{:.keyword}` compiler.
 
 You can check that the plugin is installed and available by running the following command:
 
 ```nix
 $ which protoc-gen-frisbee
 
-/Users/<username>/go/bin/protoc-gen-frisbee # or $GOPATH/bin/protoc-gen-frisbee
+/Users/<username>/go/bin/protoc-gen-frisbee # or $GOPATH/bin/protoc-gen-frisbee asdf asdfa sdfads
 ```
 
 # Create a Proto3 File
 
-Now that we have the prerequisites and the <CH.InlineCode>protoc-gen-frisbee</CH.InlineCode> plugin installed,
+Now that we have the prerequisites and the `protoc-gen-frisbee{:.keyword}` plugin installed,
 we can start writing our echo service. Let's start by creating a directory to house our project:
 
 ```nix
@@ -65,7 +65,7 @@ $ mkdir -p ~/frpc/echo
 $ cd ~/frpc/echo
 ```
 
-Now we'll create an <CH.InlineCode>echo.proto</CH.InlineCode> file and define our message types:
+Now we'll create an `echo.proto{:.keyword}` file and define our message types:
 
 ```rust ~/echo/echo.proto
 syntax = "proto3";
@@ -81,9 +81,9 @@ message Response{
 }
 ```
 
-You can see that we've defined two message types, one for the <CH.InlineCode>Request</CH.InlineCode> and one for the <CH.InlineCode>Response</CH.InlineCode>.
+You can see that we've defined two message types, one for the `Request{:.keyword}` and one for the `Response{:.keyword}`.
 
-Next, we will define a new **Echo Service** in our <CH.InlineCode>proto3</CH.InlineCode> file. This tells the compiler that we want to generate a server and client for this service.
+Next, we will define a new **Echo Service** in our `proto3{:.keyword}` file. This tells the compiler that we want to generate a server and client for this service.
 
 ```rust ~/echo/echo.proto
 syntax = "proto3";
@@ -104,7 +104,7 @@ message Response{
 }
 ```
 
-And with that you should be ready. Next we'll start the <CH.InlineCode>protoc</CH.InlineCode> compiler to generate
+And with that you should be ready. Next we'll start the `protoc{:.keyword}` compiler to generate
 our FRPC server and client.
 
 # Generate the Server and Client
@@ -115,10 +115,10 @@ Let's run the following command to generate the server and client code:
 $ protoc --frisbee_out=. echo.proto
 ```
 
-This command tells the <CH.InlineCode>protoc</CH.InlineCode> compiler to generate the server and client code for us and
-by specifying the <CH.InlineCode>--frisbee_out</CH.InlineCode> flag, we're implicitly specifying that we want to use the
+This command tells the `protoc{:.keyword}` compiler to generate the server and client code for us and
+by specifying the `--frisbee_out{:.keyword}` flag, we're implicitly specifying that we want to use the
 
-<CH.InlineCode>protoc-gen-frisbee</CH.InlineCode> plugin.
+`protoc-gen-frisbee{:.keyword}` plugin.
 
 If we wanted to be more explicit, we could have run the following command:
 
@@ -126,8 +126,8 @@ If we wanted to be more explicit, we could have run the following command:
 $ protoc --plugin=protoc-gen-frisbee=$GOBIN/protoc-gen-frisbee --frisbee_out=. echo.proto
 ```
 
-These commands should have generated a new folder at <CH.InlineCode>~/echo/echo</CH.InlineCode>, which
-contains an <CH.InlineCode>echo.frisbee.go</CH.InlineCode> file containing the server and client code. Within
+These commands should have generated a new folder at `~/echo/echo{:.keyword}`, which
+contains an `echo.frisbee.go{:.keyword}` file containing the server and client code. Within
 that file, you'll find the following interface:
 
 ```go echo.frisbee.go
@@ -140,13 +140,13 @@ type EchoService interface {
 ...
 ```
 
-All we have left to do is implement the <CH.InlineCode>EchoService</CH.InlineCode> interface with our server-side logic,
+All we have left to do is implement the `EchoService{:.keyword}` interface with our server-side logic,
 and pass that into the server. The generated library will then be able to handle everything else for us.
 
 # Setting up the Server
 
-To set up our server, we simply need to implement the <CH.InlineCode>EchoService</CH.InlineCode> interface and then start
-the server. We'll start by creating a new <CH.InlineCode>server/main.go</CH.InlineCode> file in our <CH.InlineCode>~/frpc/echo</CH.InlineCode> directory:
+To set up our server, we simply need to implement the `EchoService{:.keyword}` interface and then start
+the server. We'll start by creating a new `server/main.go{:.keyword}` file in our `~/frpc/echo{:.keyword}` directory:
 
 ```go ~/echo/server/server.go
 package main
@@ -165,9 +165,9 @@ func (s *svc) Echo(_ context.Context, req *echo.Request) (*echo.Response, error)
 }
 ```
 
-As you can see we've created a new struct called <CH.InlineCode>svc</CH.InlineCode> and implemented the <CH.InlineCode>EchoService</CH.InlineCode> interface by
-creating a new function called <CH.InlineCode>Echo</CH.InlineCode> which takes a <CH.InlineCode>context.Context</CH.InlineCode> and an <CH.InlineCode>*echo.Request</CH.InlineCode> object.
-We aren't really using the context in this example so we just ignore that and instead return an <CH.InlineCode>*echo.Response</CH.InlineCode> object with the
+As you can see we've created a new struct called `svc{:.keyword}` and implemented the `EchoService{:.keyword}` interface by
+creating a new function called `Echo{:.keyword}` which takes a `context.Context{:.keyword}` and an `*echo.Request{:.keyword}` object.
+We aren't really using the context in this example so we just ignore that and instead return an `*echo.Response{:.keyword}` object with the
 same message as the request.
 
 Now we can implement the server itself:

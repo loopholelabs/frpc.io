@@ -2,10 +2,9 @@ import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import { GetHeadings } from "./utils/headings";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { remarkCodeHike } from "@code-hike/mdx";
 import { createRequire } from "module";
+import rehypePrettyCode from "@loopholelabs/rehype-pretty-code";
 const require = createRequire(import.meta.url);
-const theme = require("shiki/themes/github-dark-dimmed.json");
 
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
@@ -69,17 +68,12 @@ export default makeSource(async () => {
     contentDirPath: "docs",
     documentTypes: [Doc],
     mdx: {
-      remarkPlugins: [
-        [
-          remarkCodeHike,
-          {
-            theme: theme,
-            autoImport: false,
-          },
-        ],
-      ],
-      rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
-      globals: { theme: "theme", note: "note" },
+      rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, [rehypePrettyCode, {
+        theme: {
+          dark: require("shiki/themes/github-dark-dimmed.json"),
+          light: require("shiki/themes/github-light.json"),
+        }
+      }]],
     },
   };
 });

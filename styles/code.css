@@ -1,0 +1,57 @@
+.code pre > code {
+    display: grid;
+}
+
+.code code[data-theme='light'] {
+    @apply dark:hidden;
+}
+
+.code pre[data-theme='light'] {
+    @apply dark:hidden;
+}
+
+.code div[data-theme='light'] {
+    @apply dark:hidden;
+}
+
+.code code[data-theme='dark'] {
+    @apply hidden;
+    @apply dark:block;
+}
+
+.code pre[data-theme='dark'] {
+    @apply hidden;
+    @apply dark:block;
+}
+
+.code div[data-theme='dark'] {
+    @apply hidden;
+    @apply dark:block;
+}
+
+.code .pretty-code-inline {
+    @apply inline-flex;
+    @apply bg-code-background;
+    @apply dark:bg-code-dark-background;
+    @apply px-1;
+    @apply py-0.5;
+    @apply text-base;
+    @apply leading-[1.125rem];
+    @apply rounded-md;
+    @apply border;
+    @apply border-control;
+}
+
+.code .pretty-code-title {
+    @apply hidden !important;
+}
+
+.code .pretty-code-fragment {
+}
+
+.code .pretty-code-fragment pre {
+    @apply bg-code-background;
+    @apply dark:bg-code-dark-background;
+
+}
+

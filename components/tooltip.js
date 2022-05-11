@@ -2,7 +2,7 @@ import * as React from "react";
 import { useLayer, useHover, Arrow } from "react-laag";
 import { motion, AnimatePresence } from "framer-motion";
 
-export function Tooltip({ children, text, content }) {
+export default function Tooltip({ children, text, content }) {
   // We use `useHover()` to determine whether we should show the tooltip.
   // Notice how we're configuring a small delay on enter / leave.
   const [isOver, hoverProps] = useHover({ delayEnter: 50, delayLeave: 200 });

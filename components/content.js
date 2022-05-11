@@ -11,9 +11,8 @@ import H3 from "./render/h3";
 import H2 from "./render/h2";
 import Note from "./alert/note";
 import Theme from "./theme";
-import Code from "./render/ch/code";
-import InlineCode from "./render/ch/inlineCode";
-import { Tooltip } from "./tooltip";
+import Code from "./render/code";
+import Tooltip from "./tooltip";
 import UL from "./render/ul";
 
 const render = {
@@ -23,12 +22,13 @@ const render = {
   h2: H2,
   h3: H3,
   ul: UL,
-  CH: {
-    ...CH,
-    Code: Code,
-    InlineCode: InlineCode,
-  },
   Tooltip: Tooltip,
+  div: function(props) {
+    if (props["data-rehype-pretty-code-fragment"] === "") {
+      return <Code {...props} />;
+    }
+    return <div {...props} />;
+  }
 };
 
 export default function Content(props) {
@@ -52,7 +52,7 @@ export default function Content(props) {
 
   return (
     <div className={"wrapper-content"}>
-      <div className={"pb-4 content"}>
+      <div className={"pb-4 content code"}>
         <p className={"font-semibold text-primary capitalize"}>
           {CleanHyphen(currentSection)}
         </p>
