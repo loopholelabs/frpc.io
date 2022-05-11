@@ -74,13 +74,7 @@ export default function Footer(props) {
                   "float-left rounded-md text-text dark:text-text-dark transition hover:dark:text-primary"
                 }
               >
-                <p
-                  className={
-                    "text-sm text-left pb-0.5"
-                  }
-                >
-                  Previous
-                </p>
+                <p className={"text-sm text-left pb-0.5"}>Previous</p>
                 <p>{previousDoc.title}</p>
               </div>
             </a>
@@ -100,13 +94,7 @@ export default function Footer(props) {
                   "float-right rounded-md text-text dark:text-text-dark transition hover:dark:text-primary"
                 }
               >
-                <p
-                  className={
-                    "text-sm text-right pb-0.5"
-                  }
-                >
-                  Next
-                </p>
+                <p className={"text-sm text-right pb-0.5"}>Next</p>
                 <p>{nextDoc.title}</p>
               </div>
             </a>

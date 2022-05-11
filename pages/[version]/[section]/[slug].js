@@ -53,15 +53,17 @@ export default function Documentation(props) {
 }
 
 export async function getStaticProps({ params }) {
-  const versionIndex = allDocs.filter((doc) => !doc.draft).reduce((accumulated, item) => {
-    const version = item.version;
-    if (version in accumulated) {
-      accumulated[version].push(item);
-    } else {
-      accumulated[version] = [item];
-    }
-    return accumulated;
-  }, {});
+  const versionIndex = allDocs
+    .filter((doc) => !doc.draft)
+    .reduce((accumulated, item) => {
+      const version = item.version;
+      if (version in accumulated) {
+        accumulated[version].push(item);
+      } else {
+        accumulated[version] = [item];
+      }
+      return accumulated;
+    }, {});
 
   const docs = Object.keys(versionIndex).reduce(
     (accumulatedVersions, version) => {
@@ -93,9 +95,9 @@ export async function getStaticProps({ params }) {
     {}
   );
 
-  const versionOrder = [...new Set(allDocs.filter((doc) => !doc.draft).map((doc) => doc.version))].sort(
-    (a, b) => b.localeCompare(a)
-  );
+  const versionOrder = [
+    ...new Set(allDocs.filter((doc) => !doc.draft).map((doc) => doc.version)),
+  ].sort((a, b) => b.localeCompare(a));
 
   const sectionOrder = versionOrder.reduce((accumulatedVersions, version) => {
     accumulatedVersions[version] = Object.keys(docs[version]).sort(
@@ -118,12 +120,14 @@ export async function getStaticProps({ params }) {
     })
     .reduce((a, v) => ({ ...a, [v.version]: v }), {});
 
-  const requiredDoc = allDocs.filter((doc) => !doc.draft).find(
-    (doc) =>
-      doc.version === params.version &&
-      doc.section === params.section &&
-      doc.slug === params.slug
-  );
+  const requiredDoc = allDocs
+    .filter((doc) => !doc.draft)
+    .find(
+      (doc) =>
+        doc.version === params.version &&
+        doc.section === params.section &&
+        doc.slug === params.slug
+    );
   const currentDoc = {
     headings: requiredDoc.headings,
     code: requiredDoc.body.code,
@@ -146,15 +150,17 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const paths = allDocs.filter((doc) => !doc.draft).map((doc) => {
-    return {
-      params: {
-        version: doc.version,
-        section: doc.section,
-        slug: doc.slug,
-      },
-    };
-  });
+  const paths = allDocs
+    .filter((doc) => !doc.draft)
+    .map((doc) => {
+      return {
+        params: {
+          version: doc.version,
+          section: doc.section,
+          slug: doc.slug,
+        },
+      };
+    });
 
   return {
     paths,

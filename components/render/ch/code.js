@@ -70,7 +70,7 @@ export default function Code(props) {
 // }
 
 function CopyButton(props) {
-  const copyString = props.copyString;
+  const copyString = (props.copyString || "").replace(/\$ /g, "");
   const [copySuccess, setCopySuccess] = useState(false);
 
   function copy() {

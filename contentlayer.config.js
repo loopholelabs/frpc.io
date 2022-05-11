@@ -29,10 +29,11 @@ export const Doc = defineDocumentType(() => ({
       required: false,
     },
     draft: {
-        type: "boolean",
-        description: "Whether the document should not be published because it is a draft",
-        required: false,
-    }
+      type: "boolean",
+      description:
+        "Whether the document should not be published because it is a draft",
+      required: false,
+    },
   },
   computedFields: {
     version: {
@@ -73,7 +74,6 @@ export default makeSource(async () => {
           remarkCodeHike,
           {
             theme: theme,
-            lineNumbers: true,
             autoImport: false,
           },
         ],

@@ -7,7 +7,7 @@ In this section we'll be going over how you can quickly get started with <Toolti
 from defining your message types in a <Tooltip text={"Syntax used to describe protocol buffers"} content={"proto3"}/> file, to writing your first server and client.
 
 We'll be building a simple echo service that will echo back the message it receives, and later on we'll also show how
-you can use the Frisbee framework itself to build a more complex PUB/SUB service.
+you can use the Frisbee framework itself to build a more complex <Tooltip text={"Publish and Subscribe"} content={"PUB\/SUB"}/> service.
 
 # Installation
 
@@ -25,3 +25,98 @@ If you're using MacOS and have [Brew](https://brew.sh/) installed, you can use <
 to install Golang, and <CH.InlineCode>brew install protoc</CH.InlineCode> to install the protoc compiler.
 
 ## Install the FRPC Plugin
+
+To install the <CH.InlineCode>protoc-gen-frisbee</CH.InlineCode> plugin, you'll first need to make sure that your
+
+<CH.InlineCode>$GOBIN</CH.InlineCode> environment variable is set and available in
+your system path. See the [Go Environment Variables](https://golang.org/doc/code.html#GOPATH)
+for more information, but in general, you can do this by adding the following to
+your <CH.InlineCode>~/.bashrc</CH.InlineCode> file:
+
+```nix ~/.bashrc
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
+```
+
+To install the <CH.InlineCode>protoc-gen-frisbee</CH.InlineCode> plugin itself, you'll need to run the following command:
+
+```nix
+$ go install github.com/loopholelabs/frisbee/protoc-gen-frisbee@latest
+```
+
+This will install the <CH.InlineCode>protoc-gen-frisbee</CH.InlineCode> plugin into your <CH.InlineCode>$GOBIN</CH.InlineCode> directory
+where it will be available for use by the <CH.InlineCode>protoc</CH.InlineCode> compiler.
+
+You can check that the plugin is installed and available by running the following command:
+
+```nix
+$ which protoc-gen-frisbee
+
+/Users/<username>/go/bin/protoc-gen-frisbee # or $GOPATH/bin/protoc-gen-frisbee
+```
+
+# Create a Proto3 File
+
+Now that we have the prerequisites and the <CH.InlineCode>protoc-gen-frisbee</CH.InlineCode> plugin installed,
+we can start writing our echo service. Let's start by creating a directory to house our project:
+
+```nix
+$ mkdir -p ~/frpc-examples/echo
+$ cd ~/frpc-examples/echo
+```
+
+Now we'll create an <CH.InlineCode>echo.proto</CH.InlineCode> file and define our message types:
+
+```rust echo.proto
+syntax = "proto3";
+
+option go_package = "/echo";
+
+message Request {
+  string Message = 1;
+}
+
+message Response{
+  string Message = 1;
+}
+```
+
+You can see that we've defined two message types, one for the <CH.InlineCode>Request</CH.InlineCode> and one for the <CH.InlineCode>Response</CH.InlineCode>.
+
+Next, we will define a new **Echo Service** in our <CH.InlineCode>proto3</CH.InlineCode> file. This tells the compiler that we want to generate a server and client for this service.
+
+```rust echo.proto
+syntax = "proto3";
+
+option go_package = "/echo";
+
+// focus(1:3)
+service EchoService {
+  rpc Echo(Request) returns (Response);
+}
+
+message Request {
+  string Message = 1;
+}
+
+message Response{
+  string Message = 1;
+}
+```
+
+And with that you should be ready. Let's run the following command to generate the server and client code:
+
+```nix
+$ protoc --frisbee_out=. echo.proto
+```
+
+This command tells the <CH.InlineCode>protoc</CH.InlineCode> compiler to generate the server and client code for us and
+by specifying the <CH.InlineCode>--frisbee_out</CH.InlineCode> flag, we're implicitly specifying that we want to use the
+
+<CH.InlineCode>protoc-gen-frisbee</CH.InlineCode> plugin.
+
+If we wanted to be more explicit, we could have run the following command:
+
+```nix
+$ protoc --plugin=protoc-gen-frisbee=$GOBIN/protoc-gen-frisbee --frisbee_out=. echo.proto
+```

@@ -16,10 +16,11 @@ We built <Tooltip text={"Frisbee RPC"} content={"FRPC"}/> because we loved the i
 glue code for us, but we didn't like the [overhead](https://github.com/boguslaw-wojcik/encoding-benchmarks) of encoding and decoding
 messages in the <Tooltip text={"Data format used to serialize structured data"} content={"protobuf"}/> format, and wanted a wire protocol that was lighter than <Tooltip text={"Wire format used for GRPC"} content={"HTTP\/2"}/>.
 
-<Tooltip text={"Frisbee RPC"} content={"FRPC"}/> works by making use of protobuf plugins, and allows developers to use their existing proto3 files to generate a
-full RPC Framework that uses Frisbee under the hood. Moreover, Frisbee is a **drop-in replacement for GRPC** thanks to
-our generated interfaces matching GRPC's, and in an apples-to-apples comparison,
-[FRPC blows GRPC's performance out of the water]().
+<Tooltip text={"Frisbee RPC"} content={"FRPC"} /> works by making use of protobuf
+plugins, and allows developers to use their existing proto3 files to generate a full
+RPC Framework that uses Frisbee under the hood. Moreover, Frisbee is a **drop-in
+replacement for GRPC** thanks to our generated interfaces matching GRPC's, and in
+an apples-to-apples comparison, [FRPC blows GRPC's performance out of the water]().
 
 Over the next few pages we'll walk you through the process of getting started with <Tooltip text={"Frisbee RPC"} content={"FRPC"}/>,
 from defining your message types in a <Tooltip text={"Syntax used to describe protocol buffers"} content={"proto3"}/> file, to writing your first server and client.

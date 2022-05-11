@@ -84,6 +84,7 @@
 
 .ch-editor-tab div {
   @apply font-sans !important;
+  @apply text-base !important;
 }
 
 .ch-code-scroll-content {
