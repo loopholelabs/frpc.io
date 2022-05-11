@@ -224,6 +224,13 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@loopholelabs/rehype-pretty-code@^0.3.1-1":
+  version "0.3.1-1"
+  resolved "https://registry.yarnpkg.com/@loopholelabs/rehype-pretty-code/-/rehype-pretty-code-0.3.1-1.tgz#3c7374d418910535a28214104bce8c48aecfbf34"
+  integrity sha512-463Qq0Fi7xRCRlr6X56W8ZgI0Ox68dKIcteoRDKHcw40ANJZj7PUhiuZxPrnhsirF5H/AHZtANR/oGC0ZQ4n1Q==
+  dependencies:
+    parse-numeric-range "^1.3.0"
+
 "@mdx-js/esbuild@^2.0.0":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@mdx-js/esbuild/-/esbuild-2.1.1.tgz#1e7102fabf1f5f64c2aa5f42147533ff4bb76af0"
@@ -3538,6 +3545,11 @@ parse-entities@^4.0.0:
     is-alphanumerical "^2.0.0"
     is-decimal "^2.0.0"
     is-hexadecimal "^2.0.0"
+
+parse-numeric-range@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/parse-numeric-range/-/parse-numeric-range-1.3.0.tgz#7c63b61190d61e4d53a1197f0c83c47bb670ffa3"
+  integrity sha512-twN+njEipszzlMJd4ONUYgSfZPDxgHhT9Ahed5uTigpQn90FggW4SA/AIPq/6a149fTbE9qBEcSwE3FAEp6wQQ==
 
 pascal-case@^3.1.2:
   version "3.1.2"

@@ -61,13 +61,13 @@ Now that we have the prerequisites and the <CH.InlineCode>protoc-gen-frisbee</CH
 we can start writing our echo service. Let's start by creating a directory to house our project:
 
 ```nix
-$ mkdir -p ~/frpc-examples/echo
-$ cd ~/frpc-examples/echo
+$ mkdir -p ~/frpc/echo
+$ cd ~/frpc/echo
 ```
 
 Now we'll create an <CH.InlineCode>echo.proto</CH.InlineCode> file and define our message types:
 
-```rust echo.proto
+```rust ~/echo/echo.proto
 syntax = "proto3";
 
 option go_package = "/echo";
@@ -85,7 +85,7 @@ You can see that we've defined two message types, one for the <CH.InlineCode>Req
 
 Next, we will define a new **Echo Service** in our <CH.InlineCode>proto3</CH.InlineCode> file. This tells the compiler that we want to generate a server and client for this service.
 
-```rust echo.proto
+```rust ~/echo/echo.proto
 syntax = "proto3";
 
 option go_package = "/echo";
@@ -104,7 +104,12 @@ message Response{
 }
 ```
 
-And with that you should be ready. Let's run the following command to generate the server and client code:
+And with that you should be ready. Next we'll start the <CH.InlineCode>protoc</CH.InlineCode> compiler to generate
+our FRPC server and client.
+
+# Generate the Server and Client
+
+Let's run the following command to generate the server and client code:
 
 ```nix
 $ protoc --frisbee_out=. echo.proto
@@ -119,4 +124,87 @@ If we wanted to be more explicit, we could have run the following command:
 
 ```nix
 $ protoc --plugin=protoc-gen-frisbee=$GOBIN/protoc-gen-frisbee --frisbee_out=. echo.proto
+```
+
+These commands should have generated a new folder at <CH.InlineCode>~/echo/echo</CH.InlineCode>, which
+contains an <CH.InlineCode>echo.frisbee.go</CH.InlineCode> file containing the server and client code. Within
+that file, you'll find the following interface:
+
+```go echo.frisbee.go
+...
+
+type EchoService interface {
+	Echo(context.Context, *Request) (*Response, error)
+}
+
+...
+```
+
+All we have left to do is implement the <CH.InlineCode>EchoService</CH.InlineCode> interface with our server-side logic,
+and pass that into the server. The generated library will then be able to handle everything else for us.
+
+# Setting up the Server
+
+To set up our server, we simply need to implement the <CH.InlineCode>EchoService</CH.InlineCode> interface and then start
+the server. We'll start by creating a new <CH.InlineCode>server/main.go</CH.InlineCode> file in our <CH.InlineCode>~/frpc/echo</CH.InlineCode> directory:
+
+```go ~/echo/server/server.go
+package main
+
+import (
+	"context"
+     "frisbee-examples/echo/echo"
+)
+
+type svc struct{}
+
+func (s *svc) Echo(_ context.Context, req *echo.Request) (*echo.Response, error) {
+	res := new(echo.Response)
+	res.Message = req.Message
+	return res, nil
+}
+```
+
+As you can see we've created a new struct called <CH.InlineCode>svc</CH.InlineCode> and implemented the <CH.InlineCode>EchoService</CH.InlineCode> interface by
+creating a new function called <CH.InlineCode>Echo</CH.InlineCode> which takes a <CH.InlineCode>context.Context</CH.InlineCode> and an <CH.InlineCode>*echo.Request</CH.InlineCode> object.
+We aren't really using the context in this example so we just ignore that and instead return an <CH.InlineCode>*echo.Response</CH.InlineCode> object with the
+same message as the request.
+
+Now we can implement the server itself:
+
+```go ~/echo/server/server.go
+package main
+
+import (
+	"context"
+	"github.com/loopholelabs/frisbee"
+	"github.com/rs/zerolog"
+     "frisbee-examples/echo/echo"
+	"log"
+	"os"
+	"runtime"
+	"time"
+)
+
+type svc struct{}
+
+func (s *svc) Echo(_ context.Context, req *echo.Request) (*echo.Response, error) {
+	res := new(echo.Response)
+	res.Message = req.Message
+	return res, nil
+}
+
+// focus(1:11)
+func main() {
+	frpcServer, err := echo.NewServer(new(svc), nil, nil)
+	if err != nil {
+		panic(err)
+	}
+
+	err = frisbeeServer.Start(":8080")
+    if err != nil {
+        panic(err)
+    }
+}
+
 ```
