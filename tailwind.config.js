@@ -34,11 +34,12 @@ module.exports = {
         "code-background": lightTheme.colors["editor.background"],
         "code-bar-background": lightTheme.colors["titleBar.inactiveBackground"],
         "code-dark-background": darkTheme.colors["editor.background"],
-        "code-dark-bar-background": darkTheme.colors["titleBar.inactiveBackground"],
+        "code-dark-bar-background":
+          darkTheme.colors["titleBar.inactiveBackground"],
         text: "#334155",
         "text-dark": "#C2CFE1",
         divider: "#4E5D72",
-        "divider-dark": "#393741",
+        "divider-dark": "#514e5b",
         primary: "#C854FF",
         button: "#94A3B8",
         "button-dark": "#20272C",
@@ -57,5 +58,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/forms")],
 };

@@ -2,7 +2,6 @@ import Footer from "./footer";
 import { CleanHyphen } from "../utils/string";
 import { getMDXComponent } from "mdx-bundler/client";
 import { useEffect, useMemo, useState } from "react";
-import { CH } from "@code-hike/mdx/components";
 
 import P from "./render/p";
 import HR from "./render/hr";
@@ -14,6 +13,7 @@ import Theme from "./theme";
 import Code from "./render/code";
 import Tooltip from "./tooltip";
 import UL from "./render/ul";
+import LI from "./render/li";
 
 const render = {
   p: P,
@@ -22,13 +22,15 @@ const render = {
   h2: H2,
   h3: H3,
   ul: UL,
-  Tooltip: Tooltip,
-  div: function(props) {
+  li: LI,
+  div: function (props) {
     if (props["data-rehype-pretty-code-fragment"] === "") {
       return <Code {...props} />;
     }
     return <div {...props} />;
-  }
+  },
+  Tooltip: Tooltip,
+  Note: Note,
 };
 
 export default function Content(props) {

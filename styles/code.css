@@ -1,57 +1,55 @@
 .code pre > code {
-    display: grid;
+  display: grid;
 }
 
-.code code[data-theme='light'] {
-    @apply dark:hidden;
+.code code[data-theme="light"] {
+  @apply dark:hidden;
 }
 
-.code pre[data-theme='light'] {
-    @apply dark:hidden;
+.code pre[data-theme="light"] {
+  @apply dark:hidden;
 }
 
-.code div[data-theme='light'] {
-    @apply dark:hidden;
+.code div[data-theme="light"] {
+  @apply dark:hidden;
 }
 
-.code code[data-theme='dark'] {
-    @apply hidden;
-    @apply dark:block;
+.code code[data-theme="dark"] {
+  @apply hidden;
+  @apply dark:block;
 }
 
-.code pre[data-theme='dark'] {
-    @apply hidden;
-    @apply dark:block;
+.code pre[data-theme="dark"] {
+  @apply hidden;
+  @apply dark:block;
 }
 
-.code div[data-theme='dark'] {
-    @apply hidden;
-    @apply dark:block;
+.code div[data-theme="dark"] {
+  @apply hidden;
+  @apply dark:block;
 }
 
-.code .pretty-code-inline {
-    @apply inline-flex;
-    @apply bg-code-background;
-    @apply dark:bg-code-dark-background;
-    @apply px-1;
-    @apply py-0.5;
-    @apply text-base;
-    @apply leading-[1.125rem];
-    @apply rounded-md;
-    @apply border;
-    @apply border-control;
+.pretty-code-inline {
+  @apply inline-flex;
+  @apply bg-code-background;
+  @apply dark:bg-code-dark-background;
+  @apply px-1;
+  @apply py-0.5;
+  @apply text-base;
+  @apply leading-[1.125rem];
+  @apply rounded-md;
+  @apply border;
+  @apply border-control;
 }
 
 .code .pretty-code-title {
-    @apply hidden !important;
+  @apply hidden !important;
 }
 
-.code .pretty-code-fragment {
+.line {
+  @apply pr-4;
 }
 
-.code .pretty-code-fragment pre {
-    @apply bg-code-background;
-    @apply dark:bg-code-dark-background;
-
+.copybutton {
+  @apply top-3 h-6 w-6 opacity-70 hover:opacity-100 right-0 absolute text-text dark:text-text-dark;
 }
-

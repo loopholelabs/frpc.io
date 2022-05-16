@@ -101,10 +101,10 @@ export default function Footer(props) {
           </Link>
         )}
       </div>
-      <footer className={"border-t-2 border-control"}>
+      <footer className={"mb-8 mt-4 border-t-2 border-control"}>
         <div
           className={
-            "py-3 md:py-6 flex flex-col-reverse md:flex-row items-center md:justify-between"
+            "py-3 md:py-4 flex flex-col-reverse md:flex-row items-center md:justify-between"
           }
         >
           <div className={"inline-flex"}>

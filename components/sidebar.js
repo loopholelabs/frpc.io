@@ -15,7 +15,7 @@ export default function Sidebar(props) {
 
   return (
     <div className={"wrapper-sidebar"}>
-      <div className={"pl-12"}>
+      <div className={"sticky top-14 pl-12"}>
         <UnwrappedSidebar
           defaultVersion={defaultVersion}
           sectionOrder={sectionOrder}

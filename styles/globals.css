@@ -13,8 +13,6 @@
 @import "./content.css";
 @import "./code.css";
 
-@import "@code-hike/mdx/dist/index.css";
-
 body {
   @apply overflow-x-hidden;
 }

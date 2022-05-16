@@ -11,6 +11,12 @@ you can use the Frisbee framework itself to build a more complex <Tooltip text={
 
 # Installation
 
+<Note>
+  It's important for you to note you can use the Frisbee framework itself to
+  build a more complex{" "}
+  <Tooltip text={"Publish and Subscribe"} content={"PUB/SUB"} /> service.{" "}
+</Note>
+
 To get started with <Tooltip text={"Frisbee RPC"} content={"FRPC"}/>, you'll need to make sure you have `Go{:.keyword}`
 and the `protoc{:.keyword}` compiler installed. Then, you'll need to install
 the `protoc-gen-frisbee{:.keyword}` <Tooltip text={"Plugins hook into the protoc compiler and allow for custom code generation"} content={"protoc plugin"}/>
@@ -33,14 +39,14 @@ your system path. See the [Go Environment Variables](https://golang.org/doc/code
 for more information, but in general, you can do this by adding the following to
 your `~/.bashrc{:.keyword}` file:
 
-```bash title="~/.bashrc"
+```bash {1-2} title="~/.bashrc"
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 ```
 
 To install the `protoc-gen-frisbee{:.keyword}` plugin itself, you'll need to run the following command:
 
-```nix
+```bash
 $ go install github.com/loopholelabs/frisbee/protoc-gen-frisbee@latest
 ```
 
@@ -49,10 +55,9 @@ where it will be available for use by the `protoc{:.keyword}` compiler.
 
 You can check that the plugin is installed and available by running the following command:
 
-```nix
+```bash
 $ which protoc-gen-frisbee
-
-/Users/<username>/go/bin/protoc-gen-frisbee # or $GOPATH/bin/protoc-gen-frisbee asdf asdfa sdfads
+/Users/<username>/go/bin/protoc-gen-frisbee # or $GOPATH/bin/protoc-gen-frisbee
 ```
 
 # Create a Proto3 File
@@ -60,14 +65,14 @@ $ which protoc-gen-frisbee
 Now that we have the prerequisites and the `protoc-gen-frisbee{:.keyword}` plugin installed,
 we can start writing our echo service. Let's start by creating a directory to house our project:
 
-```nix
+```bash
 $ mkdir -p ~/frpc/echo
 $ cd ~/frpc/echo
 ```
 
 Now we'll create an `echo.proto{:.keyword}` file and define our message types:
 
-```rust ~/echo/echo.proto
+```proto ~/echo/echo.proto
 syntax = "proto3";
 
 option go_package = "/echo";
@@ -85,7 +90,7 @@ You can see that we've defined two message types, one for the `Request{:.keyword
 
 Next, we will define a new **Echo Service** in our `proto3{:.keyword}` file. This tells the compiler that we want to generate a server and client for this service.
 
-```rust ~/echo/echo.proto
+```proto ~/echo/echo.proto
 syntax = "proto3";
 
 option go_package = "/echo";
@@ -111,7 +116,7 @@ our FRPC server and client.
 
 Let's run the following command to generate the server and client code:
 
-```nix
+```bash
 $ protoc --frisbee_out=. echo.proto
 ```
 
@@ -122,7 +127,7 @@ by specifying the `--frisbee_out{:.keyword}` flag, we're implicitly specifying t
 
 If we wanted to be more explicit, we could have run the following command:
 
-```nix
+```bash
 $ protoc --plugin=protoc-gen-frisbee=$GOBIN/protoc-gen-frisbee --frisbee_out=. echo.proto
 ```
 

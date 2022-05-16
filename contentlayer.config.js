@@ -2,9 +2,16 @@ import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import { GetHeadings } from "./utils/headings";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { createRequire } from "module";
 import rehypePrettyCode from "@loopholelabs/rehype-pretty-code";
+import { getHighlighter } from "shiki";
+
+import { createRequire } from "module";
 const require = createRequire(import.meta.url);
+
+const darkTheme = require("shiki/themes/github-dark-dimmed.json");
+const lightTheme = require("shiki/themes/github-light.json");
+
+const protoGrammar = require("../../../textmate/proto.tmLanguage.json");
 
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
@@ -63,17 +70,40 @@ export const Doc = defineDocumentType(() => ({
   },
 }));
 
+const prettyCode = [
+  rehypePrettyCode,
+  {
+    theme: {
+      dark: darkTheme,
+      light: lightTheme,
+    },
+    onVisitHighlightedLine(node) {
+      node.properties.className.push("highlighted-line");
+    },
+    onVisitHighlightedWord(node) {
+      node.properties.className = ["highlighted-word"];
+    },
+    getHighlighter: async (options) => {
+      const highlighter = await getHighlighter(options);
+
+      await highlighter.loadLanguage({
+        id: "proto",
+        scopeName: "source.proto",
+        grammar: protoGrammar,
+        aliases: ["proto3"],
+      });
+
+      return highlighter;
+    },
+  },
+];
+
 export default makeSource(async () => {
   return {
     contentDirPath: "docs",
     documentTypes: [Doc],
     mdx: {
-      rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, [rehypePrettyCode, {
-        theme: {
-          dark: require("shiki/themes/github-dark-dimmed.json"),
-          light: require("shiki/themes/github-light.json"),
-        }
-      }]],
+      rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, prettyCode],
     },
   };
 });
