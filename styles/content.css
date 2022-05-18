@@ -19,7 +19,7 @@
 }
 
 .content-h1 {
-  @apply capitalize py-4 text-xl md:text-2xl font-semibold text-dark dark:text-white;
+  @apply py-4 text-xl md:text-2xl font-semibold text-dark dark:text-white;
 }
 
 .content-h1 a {

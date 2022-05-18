@@ -8,7 +8,7 @@ import HR from "./render/hr";
 import H1 from "./render/h1";
 import H3 from "./render/h3";
 import H2 from "./render/h2";
-import Note from "./alert/note";
+import Note from "./render/alert/note";
 import Theme from "./theme";
 import Code from "./render/code";
 import Tooltip from "./tooltip";
