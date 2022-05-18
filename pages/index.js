@@ -35,7 +35,7 @@ export default function Index(props) {
           </P>
           <div className={"my-8"}>
             <Image
-              src={"/landing.png"}
+              src={"/landing.webp"}
               layout={"intrinsic"}
               width={1080}
               height={388}
