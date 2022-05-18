@@ -39,7 +39,7 @@ export default function Index(props) {
               layout={"intrinsic"}
               width={1080}
               height={388}
-                alt={"hero image"}
+              alt={"hero image"}
             />
           </div>
           <div className={"space-y-6"}>
