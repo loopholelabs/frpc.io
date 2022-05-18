@@ -39,6 +39,7 @@ export default function Index(props) {
               layout={"intrinsic"}
               width={1080}
               height={388}
+              quality={100}
               alt={"hero image"}
             />
           </div>
