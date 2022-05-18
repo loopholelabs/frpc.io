@@ -12,15 +12,6 @@ const nextConfig = {
       },
     ];
   },
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: `${config.defaultRedirect}`,
-        permanent: false,
-      },
-    ];
-  },
 };
 
 module.exports = withContentlayer(nextConfig);

@@ -58,7 +58,9 @@ export default function Content(props) {
         <p className={"font-semibold text-primary capitalize"}>
           {CleanHyphen(currentSection)}
         </p>
-        <h1 className={"py-5 text-4xl font-semibold"}>{currentDoc.title}</h1>
+        <h1 className={"py-3 md:py-5 text-4xl font-semibold"}>
+          {currentDoc.title}
+        </h1>
         {showChild && <Component components={render} />}
       </div>
       <Footer

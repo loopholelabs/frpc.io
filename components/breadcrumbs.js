@@ -25,21 +25,25 @@ export default function Breadcrumbs(props) {
             className="capitalize text-sm font-semibold text-text dark:text-text-dark"
             aria-current={"page"}
           >
-            {CleanHyphen(currentSection)}
+            {CleanHyphen(currentSection || "Welcome")}
           </p>
         </div>
-        <ChevronRightIcon
-          className="flex-shrink-0 h-5 w-5 text-text dark:text-text-dark my-auto"
-          aria-hidden="true"
-        />
-        <div className="flex items-center">
-          <p
-            className="capitalize text-sm font-medium text-black dark:text-white"
-            aria-current={"page"}
-          >
-            {CleanHyphen(currentSlug)}
-          </p>
-        </div>
+        {currentSlug && (
+          <>
+            <ChevronRightIcon
+              className="flex-shrink-0 h-5 w-5 text-text dark:text-text-dark my-auto"
+              aria-hidden="true"
+            />
+            <div className="flex items-center">
+              <p
+                className="capitalize text-sm font-medium text-black dark:text-white"
+                aria-current={"page"}
+              >
+                {CleanHyphen(currentSlug)}
+              </p>
+            </div>
+          </>
+        )}
       </div>
     </nav>
   );

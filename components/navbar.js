@@ -4,6 +4,7 @@ import Search from "./search";
 import Theme from "./theme";
 import Github from "./github";
 import Discord from "./discord";
+import Link from "next/link";
 
 export default function Navbar(props) {
   const currentVersion = props.currentVersion;
@@ -11,6 +12,7 @@ export default function Navbar(props) {
   const defaultVersion = props.defaultVersion;
   const defaultPages = props.defaultPages;
   const set = props.set;
+
   return (
     <div
       className={
@@ -27,25 +29,27 @@ export default function Navbar(props) {
             "flex items-center justify-center space-x-4 md:space-x-8 w-full sm:w-auto"
           }
         >
-          <div className={"flex items-center justify-center space-x-2"}>
-            <div className={"w-10 md:w-12"}>
-              <Image
-                src={"/logo.png"}
-                alt={"Frisbee Logo"}
-                sizes={"100vw"}
-                width={"100%"}
-                height={"100%"}
-                layout={"responsive"}
-              />
-            </div>
-            <h1
-              className={
-                "font-semibold md:mt-1 hidden sm:block text-2xl md:text-3xl text-dark dark:text-white"
-              }
-            >
-              Frisbee
-            </h1>
-          </div>
+          <Link href={"/"}>
+            <a className={"flex items-center justify-center space-x-2"}>
+              <div className={"w-10 md:w-12"}>
+                <Image
+                  src={"/logo.png"}
+                  alt={"Frisbee Logo"}
+                  sizes={"100vw"}
+                  width={"100%"}
+                  height={"100%"}
+                  layout={"responsive"}
+                />
+              </div>
+              <h1
+                className={
+                  "font-semibold md:mt-1 hidden sm:block text-2xl md:text-3xl text-dark dark:text-white"
+                }
+              >
+                FRPC
+              </h1>
+            </a>
+          </Link>
           <div
             className={
               "md:pl-4 md:pr-6 flex items-center space-x-4 md:space-x-8 w-full flex-grow"
