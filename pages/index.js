@@ -196,7 +196,7 @@ function Button(props) {
     <Link href={href}>
       <a
         className={
-          "border border-control hover:bg-primary hover:bg-opacity-10 transition-all rounded-xl max-h-36 md:max-h-44 w-full px-4 flex items-center justify-start"
+          "border border-control hover:bg-primary hover:bg-opacity-10 transition-all rounded-xl max-h-48 w-full px-4 flex items-center justify-start"
         }
       >
         <div className={"w-auto py-5"}>
