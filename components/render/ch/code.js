@@ -23,11 +23,11 @@ export default function Code(props) {
         >
           <div className={"flex items-center"}>
             <div className="ch-frame-buttons">
-              <div className="ch-frame-button ch-frame-button-left"></div>
-              <div className="ch-frame-button-space"></div>
-              <div className="ch-frame-button ch-frame-button-middle"></div>
-              <div className="ch-frame-button-space"></div>
-              <div className="ch-frame-button ch-frame-button-right"></div>
+              <div className="ch-frame-button ch-frame-button-left" />
+              <div className="ch-frame-button-space" />
+              <div className="ch-frame-button ch-frame-button-middle" />
+              <div className="ch-frame-button-space" />
+              <div className="ch-frame-button ch-frame-button-right" />
             </div>
           </div>
           <div className={"float-right h-full px-4 inline-flex"}>
