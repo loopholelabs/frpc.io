@@ -1,5 +1,6 @@
 const darkTheme = require("shiki/themes/github-dark-dimmed.json");
 const lightTheme = require("shiki/themes/github-light.json");
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -36,6 +37,7 @@ module.exports = {
         "code-dark-background": darkTheme.colors["editor.background"],
         "code-dark-bar-background":
           darkTheme.colors["titleBar.inactiveBackground"],
+        "code-highlight-dark-background": "#303A41",
         text: "#334155",
         "text-dark": "#C2CFE1",
         divider: "#4E5D72",
@@ -60,3 +62,4 @@ module.exports = {
   },
   plugins: [require("@tailwindcss/forms")],
 };
+

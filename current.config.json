@@ -2,5 +2,5 @@
   "defaultVersion": "v0.4.5",
   "defaultRedirect": "/getting-started/overview",
   "playgroundURL": "http://localhost:8080/compile",
-  "editBase": "https://github.com/loopholelabs/frisbee.sh/tree/staging/docs"
+  "editBase": "https://github.com/loopholelabs/frpc.io/tree/staging/docs"
 }

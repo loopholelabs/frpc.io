@@ -1,5 +1,9 @@
 .code pre > code {
-  display: grid;
+ @apply grid;
+}
+
+.code pre {
+  @apply py-3
 }
 
 .code code[data-theme="light"] {
@@ -16,17 +20,17 @@
 
 .code code[data-theme="dark"] {
   @apply hidden;
-  @apply dark:block;
+  @apply dark:grid;
 }
 
 .code pre[data-theme="dark"] {
   @apply hidden;
-  @apply dark:block;
+  @apply dark:grid;
 }
 
 .code div[data-theme="dark"] {
   @apply hidden;
-  @apply dark:block;
+  @apply dark:grid;
 }
 
 .pretty-code-inline {
@@ -46,10 +50,22 @@
   @apply hidden !important;
 }
 
-.line {
-  @apply pr-4;
+.code .code-wrapper .line {
+  @apply inline-block;
+  @apply py-1;
+  @apply px-4;
+  @apply border-l-[3px];
+  @apply border-transparent;
+  @apply min-h-[22px];
 }
 
 .copybutton {
-  @apply top-3 h-6 w-6 opacity-70 hover:opacity-100 right-0 absolute text-text dark:text-text-dark;
+  @apply top-4 h-6 w-6 opacity-70 hover:opacity-100 right-0 absolute text-text dark:text-text-dark;
+}
+
+.code .code-wrapper .highlighted-line {
+  @apply bg-code-highlight-dark-background;
+  @apply bg-opacity-[0.06];
+  @apply dark:bg-opacity-60;
+  @apply border-primary;
 }

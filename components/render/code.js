@@ -140,7 +140,7 @@ function Header(props) {
     >
       <div
         className={
-          "h-12 w-full bg-code-bar-background dark:bg-code-dark-bar-background rounded-t-lg flex justify-between"
+          "h-14 w-full bg-code-bar-background dark:bg-code-dark-bar-background rounded-t-lg flex justify-between"
         }
       >
         <div className={"flex items-center justify-between"}>
@@ -154,7 +154,7 @@ function Header(props) {
           <CopyButton lang={lang} copyString={copyString.join("")} />
         </div>
       </div>
-      <div className={"overflow-auto px-4 py-3 text-base"}>{children}</div>
+      <div className={"overflow-auto text-base code-wrapper"}>{children}</div>
     </div>
   );
 }

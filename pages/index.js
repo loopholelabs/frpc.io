@@ -125,7 +125,7 @@ export default function Index(props) {
                   Frisbee Repo <ArrowRightIcon className={"ml-2 w-5"} />
                 </a>
                 <a
-                  href={"https://github.com/loopholelabs/frisbee.sh"}
+                  href={"https://github.com/loopholelabs/frpc.io"}
                   className={
                     "-ml-2 px-4 py-2 text-primary hover:bg-primary hover:bg-opacity-5 transition rounded-3xl inline-flex"
                   }
@@ -156,10 +156,10 @@ export default function Index(props) {
                   className="pretty-code-inline"
                 >
                   <code data-language=".token" data-theme="dark">
-                    <span className={"text-[#F47067]"}>#FRPC</span>
+                    <span className={"text-[#F47067]"}>#Frisbee</span>
                   </code>
                   <code data-language=".token" data-theme="light">
-                    <span className={"text-[#CF222E]"}>#FRPC</span>
+                    <span className={"text-[#CF222E]"}>#Frisbee</span>
                   </code>
                 </span>{" "}
                 Channel in our Discord server is a great place to get help with
