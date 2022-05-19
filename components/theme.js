@@ -11,7 +11,7 @@ export default function Theme() {
   return (
     <button
       className={`text-text dark:text-icon sm:px-5 no-select ${
-        mounted && theme === "light" ? " pl-2 -mb-0.5" : " pl-3 -mb-1.5"
+        mounted && theme === "light" ? " pl-2 -mb-0.5" : " pl-2 -mb-1.5"
       }`}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >

@@ -1,5 +1,5 @@
 import Navbar from "./navbar";
-import { OverlaySidebar } from "./sidebar";
+import Sidebar, { OverlaySidebar } from "./sidebar";
 import { ThemeProvider } from "next-themes";
 import Breadcrumbs from "./breadcrumbs";
 import { useEffect, useState } from "react";
@@ -59,7 +59,17 @@ export default function Layout(props) {
               currentSlug={currentSlug}
               set={setShowMenubar}
             />
-            <main>{children}</main>
+            <main>
+              <Sidebar
+                defaultVersion={defaultVersion}
+                sectionOrder={sectionOrder}
+                currentVersion={currentVersion}
+                currentSlug={currentSlug}
+                currentSection={currentSection}
+                docs={docs}
+              />
+              {children}
+            </main>
           </div>
         </div>
       </ThemeProvider>

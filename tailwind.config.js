@@ -1,4 +1,6 @@
-const theme = require("shiki/themes/github-dark-dimmed.json");
+const darkTheme = require("shiki/themes/github-dark-dimmed.json");
+const lightTheme = require("shiki/themes/github-light.json");
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -30,13 +32,16 @@ module.exports = {
         dark: "#171717",
         black: "#000000",
         white: "#FFFFFF",
-        "code-background": theme.colors["editor.background"],
-        "code-bar-background": theme.colors["titleBar.inactiveBackground"],
-        "code-keyword": theme.tokenColors[7].settings.foreground,
+        "code-background": lightTheme.colors["editor.background"],
+        "code-bar-background": lightTheme.colors["titleBar.inactiveBackground"],
+        "code-dark-background": darkTheme.colors["editor.background"],
+        "code-dark-bar-background":
+          darkTheme.colors["titleBar.inactiveBackground"],
+        "code-highlight-dark-background": "#303A41",
         text: "#334155",
         "text-dark": "#C2CFE1",
         divider: "#4E5D72",
-        "divider-dark": "#393741",
+        "divider-dark": "#514e5b",
         primary: "#C854FF",
         button: "#94A3B8",
         "button-dark": "#20272C",

@@ -5,7 +5,7 @@ export default function TableOfContents(props) {
   return (
     <div className={"wrapper-table-of-contents"}>
       <div className={"sticky top-14"}>
-        <h2 className={"font-semibold pb-0.5"}>On This Page</h2>
+        <h2 className={"font-semibold pb-0.5 text-lg"}>On This Page</h2>
         <h3 className={"table-of-content-header"}>{currentDoc.title}</h3>
         {currentDoc.headings
           .filter((heading) => heading.level === 1)

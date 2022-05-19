@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { XIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import { CleanHyphen } from "../utils/string";
+import Image from "next/image";
 
 export default function Sidebar(props) {
   const sectionOrder = props.sectionOrder;
@@ -15,7 +16,7 @@ export default function Sidebar(props) {
 
   return (
     <div className={"wrapper-sidebar"}>
-      <div className={"pl-12"}>
+      <div className={"sticky top-14 pl-12"}>
         <UnwrappedSidebar
           defaultVersion={defaultVersion}
           sectionOrder={sectionOrder}
@@ -121,9 +122,33 @@ export function OverlaySidebar(props) {
                 leaveTo="-translate-x-full"
               >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-[18rem]">
-                  <div className="flex h-full flex-col overflow-y-scroll no-scroll bg-white dark:bg-code-background py-6 shadow-xl">
-                    <div className="px-4 sm:px-6">
-                      <div className="flex justify-end">
+                  <div className="flex h-full flex-col overflow-y-scroll no-scroll bg-white dark:bg-code-dark-background pt-8 pb-6 shadow-xl">
+                    <div className="pl-8 pr-6">
+                      <div className="flex justify-between">
+                        <a
+                          href={"/"}
+                          className={
+                            "flex items-center justify-center space-x-2 -mt-1"
+                          }
+                        >
+                          <div className={"w-10"}>
+                            <Image
+                              src={"/logo.png"}
+                              alt={"Frisbee Logo"}
+                              sizes={"100vw"}
+                              width={"100%"}
+                              height={"100%"}
+                              layout={"responsive"}
+                            />
+                          </div>
+                          <h1
+                            className={
+                              "font-semibold text-2xl text-dark dark:text-white"
+                            }
+                          >
+                            FRPC
+                          </h1>
+                        </a>
                         <div className="ml-3 flex h-7 items-center">
                           <button
                             type="button"
@@ -136,15 +161,17 @@ export function OverlaySidebar(props) {
                         </div>
                       </div>
                     </div>
-                    <div className="relative mt-6 sm:mt-12 flex-1 px-6 sm:px-10">
-                      <UnwrappedSidebar
-                        defaultVersion={defaultVersion}
-                        sectionOrder={sectionOrder}
-                        currentVersion={currentVersion}
-                        currentSlug={currentSlug}
-                        currentSection={currentSection}
-                        docs={docs}
-                      />
+                    <div className="relative flex-1 px-10">
+                      <div className={"mt-12"}>
+                        <UnwrappedSidebar
+                          defaultVersion={defaultVersion}
+                          sectionOrder={sectionOrder}
+                          currentVersion={currentVersion}
+                          currentSlug={currentSlug}
+                          currentSection={currentSection}
+                          docs={docs}
+                        />
+                      </div>
                     </div>
                   </div>
                 </Dialog.Panel>

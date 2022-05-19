@@ -1,6 +1,8 @@
 .sidebar-heading {
   @apply capitalize;
   @apply font-semibold;
+  @apply text-text;
+  @apply dark:text-white;
   @apply text-lg;
 }
 
