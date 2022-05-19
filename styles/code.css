@@ -1,9 +1,9 @@
 .code pre > code {
- @apply grid;
+  @apply grid;
 }
 
 .code pre {
-  @apply py-3
+  @apply py-3;
 }
 
 .code code[data-theme="light"] {
