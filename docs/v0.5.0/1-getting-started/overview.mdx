@@ -5,7 +5,7 @@ default: true
 ---
 
 **FRPC** (or **Frisbee RPC**), is an <Tooltip text={"Remote Procedure Call"} content={"RPC"}/> Framework (similar to [GRPC](https://grpc.io) or
-[Apache Thrift](https://thrift.apache.org/)) that uses the [Frisbee](/concepts/frisbee) messaging framework as its underlying transport mechanism.
+[Apache Thrift](https://thrift.apache.org/)) that uses the [Frisbee](/frisbee/overview) messaging framework as its underlying transport mechanism.
 
 We built <Tooltip text={"Frisbee RPC"} content={"FRPC"}/> because we loved the idea of defining our message types in a standardized
 [proto3](https://developers.google.com/protocol-buffers/docs/proto3) format and having the [protobuf](https://github.com/protocolbuffers/protobuf) compiler generate all the necessary
@@ -16,7 +16,7 @@ messages in the <Tooltip text={"Data format used to serialize structured data"} 
 plugins, and allows developers to use their existing proto3 files to generate a full
 RPC Framework that uses Frisbee under the hood. Moreover, FRPC is a **drop-in replacement
 for GRPC** thanks to its generated interfaces matching GRPC's, and in an apples-to-apples
-comparison it [outperforms existing RPC frameworks]() by a significant margin.
+comparison it [outperforms existing RPC frameworks](/performance/grpc-benchmarks) by a significant margin.
 
 # FRPC vs Frisbee
 
