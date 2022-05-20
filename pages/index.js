@@ -62,7 +62,7 @@ export default function Index(props) {
                 text={
                   "Take a look at how FRPC works and how it differs from other RPC frameworks."
                 }
-                href={"/concepts/frpc"}
+                href={"/getting-started/concepts"}
               />
             </div>
             <div
@@ -75,14 +75,14 @@ export default function Index(props) {
                 text={
                   "Frisbee allows you to create your own custom protocols in just a couple of minutes."
                 }
-                href={"/getting-started/custom-protocols"}
+                href={"/frisbee/custom-protocols"}
               />
               <Button
                 title={"How Frisbee Works"}
                 text={
                   "FRPC uses Frisbee at its core - check out how Frisbee works under the hood."
                 }
-                href={"/concepts/frisbee"}
+                href={"/frisbee/concepts"}
               />
             </div>
           </div>
