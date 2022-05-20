@@ -8,10 +8,17 @@ the `protoc{:.keyword}` compiler and generates an RPC framework that matches the
 
 Frisbee was designed to allow developers to define their own messaging protocols, while having a library that would handle
 all the lower level implementation for them.
-<Tooltip text={"Request/Reply systems where the request is sent to a remote service which then replies back to the caller"} content={"RPC Frameworks"}/> are
-implementations of the Request/Reply pattern, and so FRPC generates the necessary Frisbee code to handle that messaging pattern.
+
+<Tooltip
+  text={
+    "Request/Reply systems where the request is sent to a remote service which then replies back to the caller"
+  }
+  content={"RPC Frameworks"}
+/> are implementations of the Request/Reply pattern, and so FRPC generates the necessary
+Frisbee code to handle that messaging pattern.
 
 There are three main components to FRPC:
+
 - The Message Types
 - The Client
 - The Server

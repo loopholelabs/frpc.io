@@ -48,7 +48,8 @@ export const Doc = defineDocumentType(() => ({
     },
     section: {
       type: "string",
-      resolve: (doc) => doc._raw.sourceFileDir.split("/")[1].slice(2).toLowerCase(),
+      resolve: (doc) =>
+        doc._raw.sourceFileDir.split("/")[1].slice(2).toLowerCase(),
     },
     sectionOrder: {
       type: "number",
@@ -57,11 +58,13 @@ export const Doc = defineDocumentType(() => ({
     },
     slug: {
       type: "string",
-      resolve: (doc) => doc._raw.sourceFileName.replace(/.mdx\/?/, "").toLowerCase(),
+      resolve: (doc) =>
+        doc._raw.sourceFileName.replace(/.mdx\/?/, "").toLowerCase(),
     },
     url: {
       type: "string",
-      resolve: (doc) => doc._raw.flattenedPath.replace(/docs\/?/, "").toLowerCase(),
+      resolve: (doc) =>
+        doc._raw.flattenedPath.replace(/docs\/?/, "").toLowerCase(),
     },
     headings: {
       type: "json",
