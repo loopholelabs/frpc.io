@@ -18,7 +18,7 @@ which we will use to generate the server and client code.
 
 ## Prerequisites
 
-- [Go](https://golang.org/doc/install) - FRPC works with `Go` version 1.17 or later. For installation instructions see [Go's Getting Started Guide](https://golang.org/doc/install).
+- [Go](https://golang.org) - FRPC works with `Go{:.keyword}` version 1.17 or later. For installation instructions see [Go's Getting Started Guide](https://golang.org/doc/install).
 - [Protocol Buffer Compiler (protoc)](https://developers.google.com/protocol-buffers) - FRPC works with `protoc{:.keyword}` version 3. For installation instructions see the [Protoc Getting Started Guide](https://developers.google.com/protoc/docs/getting_started).
 
 If you're using MacOS and have [Brew](https://brew.sh/) installed, you can use `brew install go{:.keyword}`
@@ -26,14 +26,12 @@ to install Golang, and `brew install protoc{:.keyword}` to install the protoc co
 
 ## Install the FRPC Plugin
 
-To install the `protoc-gen-frpc{:.keyword}` plugin, you'll first need to make sure that your
-
-`$GOBIN{:.keyword}` environment variable is set and available in
-your system path. See the [Go Environment Variables](https://golang.org/doc/code.html#GOPATH)
+To install the `protoc-gen-frpc{:.keyword}` plugin, you'll first need to make sure that your `$GOBIN{:.keyword}` environment variable is set and available in
+your system path. See the [Go Environment Variables](https://golang.org/doc/code.html#GOPATH) page
 for more information, but in general, you can do this by adding the following to
 your `~/.bashrc{:.keyword}` file:
 
-```bash title="~/.bashrc"
+```sh title="~/.bashrc"
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 ```
@@ -60,13 +58,13 @@ Now that we have the prerequisites and the `protoc-gen-frpc{:.keyword}` plugin i
 we can start writing our echo service. Let's start by creating a directory to house our project:
 
 ```bash
-$ mkdir -p ~/frpc/echo
-$ cd ~/frpc/echo
+$ mkdir -p ~/frpc
+$ cd ~/frpc
 ```
 
 Now we'll create an `echo.proto{:.keyword}` file and define our message types:
 
-```proto title="~/echo/echo.proto"
+```proto title="~/frpc/echo.proto"
 syntax = "proto3";
 
 option go_package = "/echo";
@@ -84,7 +82,7 @@ You can see that we've defined two message types, one for the `Request{:.keyword
 
 Next, we will define a new `EchoService{:.variable}` in our `proto3{:.keyword}` file. This tells the compiler that we want to generate a server and client for this service.
 
-```proto {5-7} title="~/echo/echo.proto"
+```proto {5-7} title="~/frpc/echo.proto"
 syntax = "proto3";
 
 option go_package = "/echo";
@@ -122,11 +120,11 @@ If we wanted to be more explicit, we could have run the following command:
 $ protoc --plugin=protoc-gen-frpc=$GOBIN/protoc-gen-frpc --frisbee_out=. echo.proto
 ```
 
-These commands should have generated a new folder at `~/echo/echo{:.keyword}`, which
+These commands should have generated a new folder at `~/frpc/echo{:.keyword}`, which
 contains an `echo.frpc.go{:.keyword}` file containing the server and client code. Within
 that file, you'll find the following interface:
 
-```go title="echo.frisbee.go"
+```go title="~/frpc/echo/echo.frpc.go"
 ...
 
 type EchoService interface {
@@ -142,14 +140,14 @@ and pass that into the server. The generated library will then be able to handle
 # Setting up the Server
 
 To set up our server, we simply need to implement the `EchoService{:.variable}` interface and then start
-the server. We'll start by creating a new `server/main.go{:.keyword}` file in our `~/frpc/echo{:.keyword}` directory:
+the server. We'll start by creating a new `server/main.go{:.keyword}` file in our `~/frpc{:.keyword}` directory:
 
-```go title="~/echo/server/server.go"
+```go title="~/frpc/server/server.go"
 package main
 
 import (
 	"context"
-    "frisbee-examples/echo/echo"
+    "frpc/echo"
 )
 
 type svc struct{}
@@ -168,14 +166,14 @@ same message as the request.
 
 Now we can implement the server itself:
 
-```go {22-32} title="~/echo/server/server.go"
+```go {22-32} title="~/frpc/server/server.go"
 package main
 
 import (
 	"context"
 	"github.com/loopholelabs/frisbee"
 	"github.com/rs/zerolog"
-    "frisbee-examples/echo/echo"
+    "frpc/echo"
 	"log"
 	"os"
 	"runtime"
@@ -201,7 +199,6 @@ func main() {
         panic(err)
     }
 }
-
 ```
 
 This additional `main{:.keyword}` function runs when the server starts up, and passes in our `svc{:.variable}` struct to the
@@ -210,15 +207,15 @@ generated `echo.NewServer(){:go}` function. It then binds the server to port `:8
 # Setting up the Client
 
 To set up our client, we don't need to implement any additional logic, but we do need to create a new `client/main.go{:.keyword}` file
-in our `~/frpc/echo{:.keyword}` directory:
+in our `~/frpc{:.keyword}` directory:
 
-```go title="~/echo/client/client.go"
+```go title="~/frpc/client/client.go"
 package main
 
 import (
 	"context"
 	"fmt"
-	"frisbee-examples/echo/echo"
+	"frpc/echo"
 	"log"
 	"os"
 	"os/signal"
@@ -251,7 +248,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"frisbee-examples/echo/echo"
+	"frpc/echo"
 	"log"
 	"os"
 	"os/signal"
@@ -316,7 +313,7 @@ to learn more about how **FRPC** fares against other RPC frameworks.
 
 If you want to learn more about how **FRPC** works under the hood, you can check out our [FRPC Concepts](/getting-started/concepts) page as well.
 
-Finally, if you'd like to learn how to use [Frisbee](/frisbee/concepts) (the underlying transport mechanism for FRPC)
+Finally, if you'd like to learn how to use [Frisbee](/frisbee/overview) (the underlying transport mechanism for FRPC)
 to implement your **own messaging protocol** that's fast and performant, you can check out our [Custom Protocols with Frisbee](/frisbee/custom-protocols) guide.
 
 If you need any help or have any feedback about Frisbee or FRPC, please to check out our [Discord Community](https://loopholelabs.io/discord)!
