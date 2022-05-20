@@ -14,6 +14,7 @@ import Code from "./render/code";
 import Tooltip from "./tooltip";
 import UL from "./render/ul";
 import LI from "./render/li";
+import A from "./render/a";
 
 const render = {
   p: P,
@@ -23,6 +24,7 @@ const render = {
   h3: H3,
   ul: UL,
   li: LI,
+  a: A,
   div: function (props) {
     if (props["data-rehype-pretty-code-fragment"] === "") {
       return <Code {...props} />;
