@@ -1,10 +1,10 @@
-import Layout from "../../../components/layout";
+import Layout from "../../../../components/layout";
 import { allDocs } from "contentlayer/generated";
-import { getProps } from "../../../utils/props";
-import Content from "../../../components/content";
-import TableOfContents from "../../../components/table-of-contents";
+import { getProps } from "../../../../utils/props";
+import Content from "../../../../components/content";
+import TableOfContents from "../../../../components/table-of-contents";
 
-export default function Documentation(props) {
+export default function Slug(props) {
   return (
     <Layout {...props}>
       <Content {...props} />
@@ -30,8 +30,8 @@ export async function getStaticPaths() {
       };
     });
 
-  return {
-    paths,
+    return {
+    paths: paths,
     fallback: false,
   };
 }
