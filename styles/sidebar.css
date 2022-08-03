@@ -7,7 +7,6 @@
 }
 
 .sidebar-subheading {
-  @apply capitalize;
   @apply py-3;
   @apply text-text;
   @apply dark:text-text-dark;

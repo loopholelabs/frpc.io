@@ -14,7 +14,7 @@ const redirects = [
     permanent: false
   },
   {
-    source: "/performance/optimizations",
+    source: "/performance",
     destination: "/performance/optimizations",
     permanent: false
   }

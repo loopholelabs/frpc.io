@@ -4,8 +4,11 @@ order: 0
 ---
 
 With **Zero Allocations** in the hot-path and an 8-Byte Packet Header, the network overhead of Frisbee is significantly
-lower than that of existing protocols like gRPC (performance comparisons available in our [Performance Index](https://frisbee.sh/performance/introduction))
+lower than that of existing protocols like gRPC (performance comparisons available in our [gRPC Benchmarks](https://frisbee.sh/performance/grpc-benchmarks))
 which use HTTP/2 under the hood.
+
+This, combined with the substantial performance gains over [protobufs](https://github.com/protocolbuffers/protobuf) that come with using
+[polyglot](http://github.com/loopholelabs/polyglot-go) for serialization and deserialization, makes fRPC a great choice for high-performance, high-scalability, and high-reliability RPC frameworks.
 
 We originally designed Frisbee for our own messaging needs at [Loophole Labs](https://loopholelabs.io), where we needed
 to send both large and small amounts of data in a latency-sensitive manner. We also needed it to be massively scalable,
@@ -16,8 +19,8 @@ To fulfill these requirements we spent a lot of time architecting the Frisbee da
 # Data Path Optimizations
 
 Our optimizations began with the `Packet{:.keyword}` package, which efficiently recycles the byte buffers
-that are used throughout Frisbee to hold interstitial data. On top of this, we built our custom `Encoding{:.keyword}`
-and `Decoding{:.keyword}` packages, which read and write directly from the `Packet.packet{:.keyword}`
+that are used throughout Frisbee to hold interstitial data. These make use of the [polyglot](http://github.com/loopholelabs/polyglot-go) library
+to implement `Encoding{:.keyword}` and `Decoding{:.keyword}` packages, which read and write directly from the `Packet.packet{:.keyword}`
 structure. By recycling the `Packet.packet{:.keyword}` structures throughout Frisbee, we can significantly reduce
 the number of allocations in the encoding and decoding functions.
 
@@ -25,8 +28,8 @@ Most of our other optimizations center around our network I/O. Actually reading 
 is extremely slow, and so Frisbee makes an effort to maximize the amount of data that we read or write to a TCP socket
 while avoiding any additional latency.
 
-All these optimizations - as well as Frisbee's architecture, make it feasible to use Frisbee (as well as [Frisbee RPC]())
-in both latency-sensitive applications like in real-time streaming, as well as data-heavy applications like PUB/SUB systems.
+All these optimizations - as well as Frisbee's architecture, make it feasible to use Frisbee (as well as <Tooltip text={"Frisbee RPC"} content={"fRPC"} />)
+in both latency-sensitive applications like in real-time streaming, as well as high-throughput applications like PUB/SUB systems.
 
 # Why TCP?
 
@@ -40,3 +43,5 @@ problem.
 
 For Frisbee, however, we wanted to make use of the existing performance optimizations that networking software and hardware
 have for TCP traffic, and we wanted the strong guarantees around packet delivery that TCP already provides.
+
+<Note content="It's important to note that while Frisbee and fRPC were designed to be used with TCP connections, there's no reason developers can't use other transports. As long as the transport fulfills the 'net.Conn' interface, it will work as expected with Frisbee and fRPC." />
