@@ -171,7 +171,6 @@ package main
 
 import (
 	"context"
-	"github.com/loopholelabs/frisbee"
 	"github.com/rs/zerolog"
     "frpc/echo"
 	"log"
@@ -194,7 +193,7 @@ func main() {
 		panic(err)
 	}
 
-	err = frisbeeServer.Start(":8080")
+	err = frpcServer.Start(":8080")
     if err != nil {
         panic(err)
     }

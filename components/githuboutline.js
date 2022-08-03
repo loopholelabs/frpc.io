@@ -10,7 +10,7 @@ export default function GithubOutline() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <Link href={"https://github.com/loopholelabs/frisbee"}>
+    <Link href={"https://github.com/loopholelabs/frisbee-go"}>
       <a className={"text-text dark:text-icon no-select"}>
         {mounted && (theme === "light" ? <LightMode /> : <DarkMode />)}
       </a>
