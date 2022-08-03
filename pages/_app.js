@@ -1,8 +1,10 @@
 import "../styles/globals.css";
 import Head from "next/head";
 import { usePanelbear } from '@panelbear/panelbear-nextjs';
+import { withPasswordProtect } from "@storyofams/next-password-protect";
+import {LoginComponent} from "../components/login";
 
-export default function Frisbee({ Component, pageProps }) {
+function Frisbee({ Component, pageProps }) {
  usePanelbear('HjrnquHievf', { scriptSrc: "/bear.js" });
   return (
     <>
@@ -14,3 +16,5 @@ export default function Frisbee({ Component, pageProps }) {
     </>
   );
 }
+
+export default withPasswordProtect(Frisbee, {loginApiUrl: "/api/login", checkApiUrl: "/api/passwordCheck", loginComponent: LoginComponent});

@@ -36,6 +36,9 @@ const nextConfig = {
   },
   async redirects() {
     return redirects;
+  },
+  env: {
+    PASSWORD: process.env.PASSWORD
   }
 };
 
