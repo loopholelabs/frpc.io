@@ -19,21 +19,13 @@ export default function Index(props) {
           </h1>
           <P>
             <Tooltip text={"Frisbee RPC"} content={"fRPC"} /> is a{" "}
-            <strong>proto3-compatible</strong> RPC Framework that uses{" "}
-            <Link href="/frisbee/overview">
-              <a>Frisbee</a>
-            </Link>{" "}
-            as its underlying transport mechanism. It was designed from the
-            ground-up to be{" "}
-            <strong>lightweight, extensible, and extremely performant</strong>.
-            Not only is it a <strong>drop-in replacement for GRPC</strong>, but
-            in an apples-to-apples comparison it{" "}
+            <strong>proto3-compatible</strong> RPC Framework that&#39;s designed from the ground up to be
+            <strong>lightweight, extensible, and extremely performant</strong>. On average fRPC outperforms other RPC frameworks{" "}
             <Link href="/performance/grpc-benchmarks">
-              <a>outperforms existing RPC frameworks</a>
-            </Link>{" "}
-            by a significant margin.
+              <a>by 2-4x in an apples-to-apples comparison</a>
+            </Link>{","} and is easily able to handle more than 2 million RPCs/second on a single server.
           </P>
-          <div className={"my-8"}>
+          <div className={"mb-8 mt-6"}>
             <Image
               src={"/landing.svg"}
               layout={"intrinsic"}

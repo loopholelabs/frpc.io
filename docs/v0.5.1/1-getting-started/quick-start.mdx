@@ -13,12 +13,12 @@ you can use the Frisbee framework itself to build a more complex <Tooltip text={
 
 To get started with <Tooltip text={"Frisbee RPC"} content={"fRPC"}/>, you'll need to make sure you have `Go{:.keyword}`
 and the `protoc{:.keyword}` compiler installed. Then, you'll need to install
-the `protoc-gen-frpc{:.keyword}` <Tooltip text={"Plugins hook into the protoc compiler and allow for custom code generation"} content={"protoc plugin"}/>
+the `protoc-gen-go-frpc{:.keyword}` <Tooltip text={"Plugins hook into the protoc compiler and allow for custom code generation"} content={"protoc plugin"}/>
 which we will use to generate the server and client code.
 
 ## Prerequisites
 
-- [Go](https://golang.org) - fRPC works with `Go{:.keyword}` version 1.17 or later. For installation instructions see [Go's Getting Started Guide](https://golang.org/doc/install).
+- [Go](https://golang.org) - fRPC works with `Go{:.keyword}` version 1.18 or later. For installation instructions see [Go's Getting Started Guide](https://golang.org/doc/install).
 - [Protocol Buffer Compiler (protoc)](https://developers.google.com/protocol-buffers) - fRPC works with `protoc{:.keyword}` version 3. For installation instructions see the [Protoc Getting Started Guide](https://developers.google.com/protoc/docs/getting_started).
 
 If you're using MacOS and have [Brew](https://brew.sh/) installed, you can use `brew install go{:.keyword}`
@@ -26,7 +26,7 @@ to install Golang, and `brew install protoc{:.keyword}` to install the protoc co
 
 ## Install the fRPC Plugin
 
-To install the `protoc-gen-frpc{:.keyword}` plugin, you'll first need to make sure that your `$GOBIN{:.keyword}` environment variable is set and available in
+To install the `protoc-gen-go-frpc{:.keyword}` plugin, you'll first need to make sure that your `$GOBIN{:.keyword}` environment variable is set and available in
 your system path. See the [Go Environment Variables](https://golang.org/doc/code.html#GOPATH) page
 for more information, but in general, you can do this by adding the following to
 your `~/.bashrc{:.keyword}` file:
@@ -36,25 +36,25 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 ```
 
-To install the `protoc-gen-frpc{:.keyword}` plugin itself, you'll need to run the following command:
+To install the `protoc-gen-go-frpc{:.keyword}` plugin itself, you'll need to run the following command:
 
 ```bash
-$ go install github.com/loopholelabs/frisbee/protoc-gen-frpc@latest
+$ go install github.com/loopholelabs/frpc-go/protoc-gen-go-frpc@latest
 ```
 
-This will install the `protoc-gen-frpc{:.keyword}` plugin into your `$GOBIN{:.keyword}` directory
+This will install the `protoc-gen-go-frpc{:.keyword}` plugin into your `$GOBIN{:.keyword}` directory
 where it will be available for use by the `protoc{:.keyword}` compiler.
 
 You can check that the plugin is installed and available by running the following command:
 
 ```bash
-$ which protoc-gen-frpc
-/Users/<username>/go/bin/protoc-gen-frpc # or $GOPATH/bin/protoc-gen-frpc
+$ which protoc-gen-go-frpc
+/Users/<username>/go/bin/protoc-gen-go-frpc # or $GOPATH/bin/protoc-gen-go-frpc
 ```
 
 # Create a Proto3 File
 
-Now that we have the prerequisites and the `protoc-gen-frpc{:.keyword}` plugin installed,
+Now that we have the prerequisites and the `protoc-gen-go-frpc{:.keyword}` plugin installed,
 we can start writing our echo service. Let's start by creating a directory to house our project:
 
 ```bash
@@ -108,16 +108,16 @@ our fRPC server and client.
 Let's run the following command to generate the server and client code:
 
 ```bash
-$ protoc --frisbee_out=. echo.proto
+$ protoc --go-frpc_out=. echo.proto
 ```
 
 This command tells the `protoc{:.keyword}` compiler to generate the server and client code for us and
-by specifying the `--frisbee_out{:.keyword}` flag, we're implicitly specifying that we want to use the `protoc-gen-frpc{:.keyword}` plugin.
+by specifying the `--go-frpc_out{:.keyword}` flag, we're implicitly specifying that we want to use the `protoc-gen-go-frpc{:.keyword}` plugin.
 
 If we wanted to be more explicit, we could have run the following command:
 
 ```bash
-$ protoc --plugin=protoc-gen-frpc=$GOBIN/protoc-gen-frpc --frisbee_out=. echo.proto
+$ protoc --plugin=protoc-gen-go-frpc=$GOBIN/protoc-gen-go-frpc --go-frpc_out=. echo.proto
 ```
 
 These commands should have generated a new folder at `~/frpc/echo{:.keyword}`, which
@@ -203,6 +203,9 @@ func main() {
 
 This additional `main{:.keyword}` function runs when the server starts up, and passes in our `svc{:.variable}` struct to the
 generated `echo.NewServer(){:go}` function. It then binds the server to port `:8080{:.keyword}` and starts listening for connections.
+
+We're passing in `nil{:.keyword}` for both the `*tls.Config{:go}` and `logging{:go}` parameters in the generated `echo.NewServer(){:go}` function because
+we don't want to use TLS or logging in this example.
 
 # Setting up the Client
 

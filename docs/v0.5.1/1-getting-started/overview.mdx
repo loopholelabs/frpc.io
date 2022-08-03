@@ -4,20 +4,26 @@ order: 0
 default: true
 ---
 
-**fRPC** (or **Frisbee RPC**), is an <Tooltip text={"Remote Procedure Call"} content={"RPC"}/> Framework (similar to [GRPC](https://grpc.io) or
-[Apache Thrift](https://thrift.apache.org/)) that uses the [Frisbee](/frisbee/overview) messaging framework as its underlying transport mechanism.
+**fRPC** (or **Frisbee RPC**), is an <Tooltip text={"Remote Procedure Call"} content={"RPC"}/> Framework (similar to [gRPC](https://grpc.io) or
+[Apache Thrift](https://thrift.apache.org/)) that’s designed from the ground up to be lightweight, extensible, and extremely performant.
 
 We built <Tooltip text={"Frisbee RPC"} content={"fRPC"}/> because we loved the idea of defining our message types in a standardized
 [proto3](https://developers.google.com/protocol-buffers/docs/proto3) format and having the [protobuf](https://github.com/protocolbuffers/protobuf) compiler generate all the necessary
 glue code for us, but we didn't like the [overhead](https://github.com/boguslaw-wojcik/encoding-benchmarks) of encoding and decoding
-messages in the <Tooltip text={"Data format used to serialize structured data"} content={"protobuf"}/> format, and wanted a wire protocol that was lighter than <Tooltip text={"Wire format used for GRPC"} content={"HTTP\/2"}/>.
+messages in the <Tooltip text={"Data format used to serialize structured data"} content={"protobuf"}/> format, and wanted a wire protocol that was lighter and faster
+than <Tooltip text={"Wire format used for gRPC"} content={"HTTP\/2"}/>.
 
-<Tooltip text={"Frisbee RPC"} content={"fRPC"} /> works by making use of protobuf
-plugins, and allows developers to use their existing proto3 files to generate a full
-RPC Framework that uses Frisbee under the hood. Furthermore, fRPC is a **drop-in
-replacement for GRPC** thanks to its generated interfaces matching GRPC's, and in
-an apples-to-apples comparison it [outperforms existing RPC frameworks](/performance/grpc-benchmarks)
-by a significant margin.
+<Tooltip text={"Frisbee RPC"} content={"fRPC"} /> offers a few major improvements over existing RPC frameworks like gRPC:
+
+- **Speed** - On average fRPC outperforms other RPC frameworks [by 2-4x in an apples-to-apples comparison](/performance/grpc-benchmarks), and is easily able to handle more than __2 million RPCs/second__ on a single server
+- **Flexibility** - Not only does fRPC allow developers to deviate from the standard request/reply messaging pattern and implement custom patterns alongside their existing RPCs, but developers also have the ability to turn fRPC off and retrieve the underlying TCP connections so they can be reused for something else
+- **Familiarity** - Using fRPC feels very familiar to anyone who’s used gRPC before, which means that developers can take advantage of the speed and extensibility that fRPC provides without a steep learning curve
+
+
+fRPC works by making use of protobuf plugins, and allows developers to use their existing proto3 files to generate a full
+RPC Framework that uses Frisbee under the hood. Our goal is to make fRPC a **drop-in
+replacement for gRPC** thanks to its generated interfaces matching gRPC's, however we don’t support all of the features that
+gRPC does yet, most notable being Streaming and OneOf message types.
 
 # fRPC vs Frisbee
 

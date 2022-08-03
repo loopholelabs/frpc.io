@@ -46,5 +46,5 @@ object and sends it to the `Server{:.keyword}`. When a response object is receiv
 deserialized and request ID is looked up in the `in-flight{:.keyword}` requests table.
 
 The response is then pushed into the channel associated with the request ID, where it is read by the RPC function
-that made the request in the first place. This response unblocks the RPC function and the response object (or an error)
-is returned to the caller.
+that made the request in the first place. This response unblocks the RPC caller and the response object (or an error)
+is returned.

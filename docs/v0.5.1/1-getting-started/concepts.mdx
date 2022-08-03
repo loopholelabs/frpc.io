@@ -30,13 +30,17 @@ can be transmitted over the wire. With a code generator like fRPC, that means we
 message definitions and generate the accompanying `structs{:.keyword}` in Go. We then need to create consistent, performant,
 and safe serialization and deserialization functions for those structs.
 
-To do this, fRPC makes use of the `frisbee.Packet{:.keyword}` type, which is a recycled byte buffer that we can serialize
-and deserialize data into with almost no allocations. This makes serialization and deserialization extremely fast, while
-also allowing us to minimize the accompanying memory allocations.
+To do this, fRPC makes use of the [Polyglot](https://github.com/loopholelabs/polyglot-go) library, which is a high-performance
+serialization framework that recycles byte buffers and can serialize and deserialize data with almost no allocations. T
+This makes serialization and deserialization extremely fast, while also allowing us to minimize the accompanying memory allocations.
 
-The `Packet{:.keyword}` type comes with a number of
+[polyglot-go](https://github.com/loopholelabs/polyglot-go) library type comes with a number of
 `encode{:.keyword}` and `decode{:.keyword}` methods for various types, that fRPC chains together to create the
 serialization and deserialization functions for your `proto3{:.keyword}` message definitions.
+
+We're also actively working on a [polyglot-rs](https://github.com/loopholelabs/polyglot-rs) library, which is a Rust
+implementation of `Polyglot{:.keyword}`, as well as [polyglot-ts](https://github.com/loopholelabs/polyglot-ts) which is a
+TypeScript (and Javascript) implementation of `Polyglot{:.keyword}`.
 
 # The Client
 
@@ -62,6 +66,10 @@ As we've mentioned before, it's possible to access the underlying [Frisbee](/fri
 client and the server. This is why fRPC is more flexible than other RPC frameworks, and why it's possible to
 do things like send a few RPC requests using fRPC and then reuse that underlying TCP connection for something like an
 HTTP proxy.
+
+fRPC generates a `frisbee.HandlerTable{:.keyword}` that allows Frisbee to route incoming packets to the correct
+handler functions. It's possible to override this table using the `frisbee.Server.SetHandlerTable(){:go}`
+method (which is exposed in the generated `frpc.Server{:.keyword}` type).
 
 To learn more about how [Frisbee](/frisbee/overview) works and how you can leverage it from within the generated fRPC
 code, check out the [Frisbee Documentation](/frisbee/overview).
