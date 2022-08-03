@@ -20,4 +20,5 @@
 }
 
 .wrapper-code {
+  @apply mt-4 !important;
 }

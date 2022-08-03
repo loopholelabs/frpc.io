@@ -1,10 +1,10 @@
-# Frisbee Documentation
+# fRPC Documentation
 
-Visit [frisbee.sh](https://frisbee.sh)
+Visit [frpc.io](https://frpc.io)
 
 ### About
 
-This is the place where all the documentation about Frisbee is hosted. Contributions are welcome! Change the markdown, make a pull request, and we'll merge it!
+This is the place where all the documentation about fRPC is hosted. Contributions are welcome! Change the markdown, make a pull request, and we'll merge it!
 
 ## Contributing
 
