@@ -3,7 +3,7 @@ title: Quick Start
 order: 1
 ---
 
-In this section we'll be going over how you can quickly get started with <Tooltip text={"Frisbee RPC"} content={"FRPC"}/>,
+In this section we'll be going over how you can quickly get started with <Tooltip text={"Frisbee RPC"} content={"fRPC"}/>,
 from defining your message types in a <Tooltip text={"Syntax used to describe protocol buffers"} content={"proto3"}/> file, to writing your first server and client.
 
 We'll be building a simple echo service that will echo back the message it receives, and later on we'll also show how
@@ -11,20 +11,20 @@ you can use the Frisbee framework itself to build a more complex <Tooltip text={
 
 # Installation
 
-To get started with <Tooltip text={"Frisbee RPC"} content={"FRPC"}/>, you'll need to make sure you have `Go{:.keyword}`
+To get started with <Tooltip text={"Frisbee RPC"} content={"fRPC"}/>, you'll need to make sure you have `Go{:.keyword}`
 and the `protoc{:.keyword}` compiler installed. Then, you'll need to install
 the `protoc-gen-frpc{:.keyword}` <Tooltip text={"Plugins hook into the protoc compiler and allow for custom code generation"} content={"protoc plugin"}/>
 which we will use to generate the server and client code.
 
 ## Prerequisites
 
-- [Go](https://golang.org) - FRPC works with `Go{:.keyword}` version 1.17 or later. For installation instructions see [Go's Getting Started Guide](https://golang.org/doc/install).
-- [Protocol Buffer Compiler (protoc)](https://developers.google.com/protocol-buffers) - FRPC works with `protoc{:.keyword}` version 3. For installation instructions see the [Protoc Getting Started Guide](https://developers.google.com/protoc/docs/getting_started).
+- [Go](https://golang.org) - fRPC works with `Go{:.keyword}` version 1.17 or later. For installation instructions see [Go's Getting Started Guide](https://golang.org/doc/install).
+- [Protocol Buffer Compiler (protoc)](https://developers.google.com/protocol-buffers) - fRPC works with `protoc{:.keyword}` version 3. For installation instructions see the [Protoc Getting Started Guide](https://developers.google.com/protoc/docs/getting_started).
 
 If you're using MacOS and have [Brew](https://brew.sh/) installed, you can use `brew install go{:.keyword}`
 to install Golang, and `brew install protoc{:.keyword}` to install the protoc compiler.
 
-## Install the FRPC Plugin
+## Install the fRPC Plugin
 
 To install the `protoc-gen-frpc{:.keyword}` plugin, you'll first need to make sure that your `$GOBIN{:.keyword}` environment variable is set and available in
 your system path. See the [Go Environment Variables](https://golang.org/doc/code.html#GOPATH) page
@@ -101,7 +101,7 @@ message Response{
 ```
 
 And with that you should be ready. Next we'll start the `protoc{:.keyword}` compiler to generate
-our FRPC server and client.
+our fRPC server and client.
 
 # Generate the Server and Client
 
@@ -301,20 +301,20 @@ and then starts sending a request to the server every second.
 And that's it! We've now set up a simple echo client that can send requests to our server and print out the response.
 
 We were able to use a simple `proto3{:.keyword}` file to define our request and response objects, and all we had to do was
-implement the `EchoService{:.variable}` interface. Everything else was handled for us by **FRPC**.
+implement the `EchoService{:.variable}` interface. Everything else was handled for us by **fRPC**.
 
 The complete code for this example is available in the [frpc-echo-example](https://github.com/loopholelabs/frpc-echo-example)
 repository on [Github](https://github.com/loopholelabs).
 
 # Next Steps
 
-Now that we've seen how easy it is to use **FRPC**, we recommend you check out our [benchmarks](/performance/grpc-benchmarks) pages
-to learn more about how **FRPC** fares against other RPC frameworks.
+Now that we've seen how easy it is to use **fRPC**, we recommend you check out our [benchmarks](/performance/grpc-benchmarks) pages
+to learn more about how **fRPC** fares against other RPC frameworks.
 
-If you want to learn more about how **FRPC** works under the hood, you can check out our [FRPC Concepts](/getting-started/concepts) page as well.
+If you want to learn more about how **fRPC** works under the hood, you can check out our [fRPC Concepts](/getting-started/concepts) page as well.
 
-Finally, if you'd like to learn how to use [Frisbee](/frisbee/overview) (the underlying transport mechanism for FRPC)
+Finally, if you'd like to learn how to use [Frisbee](/frisbee/overview) (the underlying transport mechanism for fRPC)
 to implement your **own messaging protocol** that's fast and performant, you can check out our [Custom Protocols with Frisbee](/frisbee/custom-protocols) guide.
 
-If you need any help or have any feedback about Frisbee or FRPC, please to check out our [Discord Community](https://loopholelabs.io/discord)!
-Our team would love to hear your thoughts and understand how you're planning on using FRPC, and we're always happy to help!
+If you need any help or have any feedback about Frisbee or fRPC, please to check out our [Discord Community](https://loopholelabs.io/discord)!
+Our team would love to hear your thoughts and understand how you're planning on using fRPC, and we're always happy to help!

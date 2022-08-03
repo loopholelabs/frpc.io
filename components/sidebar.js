@@ -146,7 +146,7 @@ export function OverlaySidebar(props) {
                               "font-semibold text-2xl text-dark dark:text-white"
                             }
                           >
-                            FRPC
+                            fRPC
                           </h1>
                         </a>
                         <div className="ml-3 flex h-7 items-center">

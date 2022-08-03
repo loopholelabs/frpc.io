@@ -3,7 +3,7 @@ title: Concepts
 order: 2
 ---
 
-FRPC is, at its core, a code generator - one which uses the Frisbee messaging framework as its underlying transport mechanism. It hooks into
+fRPC is, at its core, a code generator - one which uses the Frisbee messaging framework as its underlying transport mechanism. It hooks into
 the `protoc{:.keyword}` compiler and generates an RPC framework that matches the `proto3{:.keyword}` spec provided to it.
 
 Frisbee was designed to allow developers to define their own messaging protocols, while having a library that would handle
@@ -14,10 +14,10 @@ all the lower level implementation for them.
     "Request/Reply systems where the request is sent to a remote service which then replies back to the caller"
   }
   content={"RPC Frameworks"}
-/> are implementations of the Request/Reply pattern, and so FRPC generates the necessary
+/> are implementations of the Request/Reply pattern, and so fRPC generates the necessary
 Frisbee code to handle that messaging pattern.
 
-There are three main components to FRPC:
+There are three main components to fRPC:
 
 - The Message Types
 - The Client
@@ -26,29 +26,29 @@ There are three main components to FRPC:
 # Message Types
 
 One of the challenges with any messaging system is that the messages must be serialized and deserialized into formats that
-can be transmitted over the wire. With a code generator like FRPC, that means we need to take your `proto3{:.keyword}`
+can be transmitted over the wire. With a code generator like fRPC, that means we need to take your `proto3{:.keyword}`
 message definitions and generate the accompanying `structs{:.keyword}` in Go. We then need to create consistent, performant,
 and safe serialization and deserialization functions for those structs.
 
-To do this, FRPC makes use of the `frisbee.Packet{:.keyword}` type, which is a recycled byte buffer that we can serialize
+To do this, fRPC makes use of the `frisbee.Packet{:.keyword}` type, which is a recycled byte buffer that we can serialize
 and deserialize data into with almost no allocations. This makes serialization and deserialization extremely fast, while
 also allowing us to minimize the accompanying memory allocations.
 
 The `Packet{:.keyword}` type comes with a number of
-`encode{:.keyword}` and `decode{:.keyword}` methods for various types, that FRPC chains together to create the
+`encode{:.keyword}` and `decode{:.keyword}` methods for various types, that fRPC chains together to create the
 serialization and deserialization functions for your `proto3{:.keyword}` message definitions.
 
 # The Client
 
-The FRPC Client is a simple wrapper around the `frisbee.Client{:.keyword}` type, and contains generated helper
-functions for creating and sending requests to an FRPC Server and then returning the accompanying response.
+The fRPC Client is a simple wrapper around the `frisbee.Client{:.keyword}` type, and contains generated helper
+functions for creating and sending requests to an fRPC Server and then returning the accompanying response.
 
 It's also possible to deviate from those helper functions and access the underlying `frisbee.Client{:.keyword}` directly.
 This allows you to do things like turn Frisbee off (and thus retrieve the underlying TCP connection).
 
 # The Server
 
-The FRPC Server is a simple wrapper around the `frisbee.Server{:.keyword}` type, and contains generated helper
+The fRPC Server is a simple wrapper around the `frisbee.Server{:.keyword}` type, and contains generated helper
 functions for handling incoming requests and returning the accompanying response based on the handlers you've passed in
 to the constructor.
 
@@ -59,9 +59,9 @@ underlying TCP connection), or write your own middleware functions for incoming 
 # Accessing Frisbee Directly
 
 As we've mentioned before, it's possible to access the underlying [Frisbee](/frisbee/overview) primitives from both the
-client and the server. This is why FRPC is more flexible than other RPC frameworks, and why it's possible to
-do things like send a few RPC requests using FRPC and then reuse that underlying TCP connection for something like an
+client and the server. This is why fRPC is more flexible than other RPC frameworks, and why it's possible to
+do things like send a few RPC requests using fRPC and then reuse that underlying TCP connection for something like an
 HTTP proxy.
 
-To learn more about how [Frisbee](/frisbee/overview) works and how you can leverage it from within the generated FRPC
+To learn more about how [Frisbee](/frisbee/overview) works and how you can leverage it from within the generated fRPC
 code, check out the [Frisbee Documentation](/frisbee/overview).

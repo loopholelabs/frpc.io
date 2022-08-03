@@ -46,7 +46,7 @@ export default function Navbar(props) {
                   "font-semibold md:mt-1 hidden sm:block text-2xl md:text-3xl text-dark dark:text-white"
                 }
               >
-                FRPC
+                fRPC
               </h1>
             </a>
           </Link>

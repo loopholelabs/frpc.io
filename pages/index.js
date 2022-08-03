@@ -15,10 +15,10 @@ export default function Index(props) {
         <div className={"pb-4 content code"}>
           <p className={"font-semibold text-primary capitalize"}>Welcome</p>
           <h1 className={"py-3 md:py-5 text-3xl md:text-4xl font-semibold"}>
-            FRPC Documentation
+            fRPC Documentation
           </h1>
           <P>
-            <Tooltip text={"Frisbee RPC"} content={"FRPC"} /> is a{" "}
+            <Tooltip text={"Frisbee RPC"} content={"fRPC"} /> is a{" "}
             <strong>proto3-compatible</strong> RPC Framework that uses{" "}
             <Link href="/frisbee/overview">
               <a>Frisbee</a>
@@ -53,14 +53,14 @@ export default function Index(props) {
               <Button
                 title={"Getting Started"}
                 text={
-                  "Quickly get up and running with FRPC by following our getting started guide."
+                  "Quickly get up and running with fRPC by following our getting started guide."
                 }
                 href={"/getting-started/overview"}
               />
               <Button
                 title={"Concepts"}
                 text={
-                  "Take a look at how FRPC works and how it differs from other RPC frameworks."
+                  "Take a look at how fRPC works and how it differs from other RPC frameworks."
                 }
                 href={"/getting-started/concepts"}
               />
@@ -80,7 +80,7 @@ export default function Index(props) {
               <Button
                 title={"How Frisbee Works"}
                 text={
-                  "FRPC uses Frisbee at its core - check out how Frisbee works under the hood."
+                  "fRPC uses Frisbee at its core - check out how Frisbee works under the hood."
                 }
                 href={"/frisbee/overview"}
               />
@@ -109,7 +109,7 @@ export default function Index(props) {
               <p className={"px-2 py-3 text-text dark:text-text-dark text-lg"}>
                 The footer of each page contains an &quot;Edit on Github&quot;
                 link. Please feel free to contribute both to the documentation
-                for FRPC as well as the project itself by making a pull request!
+                for fRPC as well as the project itself by making a pull request!
               </p>
               <div
                 className={
@@ -163,7 +163,7 @@ export default function Index(props) {
                   </code>
                 </span>{" "}
                 Channel in our Discord server is a great place to get help with
-                all things Frisbee and FRPC.
+                all things Frisbee and fRPC.
               </p>
               <div
                 className={

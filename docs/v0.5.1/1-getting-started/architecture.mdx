@@ -3,7 +3,7 @@ title: Architecture
 order: 3
 ---
 
-The architecture of FRPC is based on the standard Server/Client model that a lot of other RPC frameworks are follow.
+The architecture of fRPC is based on the standard Server/Client model that a lot of other RPC frameworks are follow.
 The idea is that the `Client{:.keyword}` makes a connection with the `Server{:.keyword}`, and then sends a structured
 request. Based on the request type, the `Server{:.keyword}` runs a handler that then returns a response or an error.
 The `Server{:.keyword}` then forwards that response object (or the error) back to the `Client{:.keyword}`.
@@ -15,11 +15,11 @@ To dig into how the underlying architecture of both the `Server{:.keyword}` and 
 important to understand that the underlying [Frisbee](/frisbee/overview) protocol does not have any notion of a request
 or response. When Frisbee sends a `Packet{:.keyword}` of data, it does not wait for a response. This makes
 the protocol suitable for a number of use cases (like real-time streaming), but also means that Request/Reply semantics
-need to be implemented in the application logic - in this case, the code that FRPC generates.
+need to be implemented in the application logic - in this case, the code that fRPC generates.
 
 # Server Architecture
 
-The generated FRPC `Server{:.keyword}` is based on the RPC `Services{:.variable}` that are defined in the `proto3{:.keyword}`
+The generated fRPC `Server{:.keyword}` is based on the RPC `Services{:.variable}` that are defined in the `proto3{:.keyword}`
 file that is passed to the `protoc{:.keyword}` compiler. Developers are responsible for implementing the generated
 `Service{:.variable}` interfaces and passing that into the `Server{:.keyword}` constructor.
 
@@ -32,15 +32,15 @@ is serialized and sent back to the `Client{:.keyword}`.
 
 # Client Architecture
 
-The generated FRPC `Client{:.keyword}` is also based on the RPC `Services{:.variable}` that are defined in the
+The generated fRPC `Client{:.keyword}` is also based on the RPC `Services{:.variable}` that are defined in the
 `proto3{:.keyword}` file that is passed to the `protoc{:.keyword}` compiler. Based on the RPC Calls defined in those services,
-FRPC generates a number of `Client{:.keyword}` helper functions - one for each possible RPC Call.
+fRPC generates a number of `Client{:.keyword}` helper functions - one for each possible RPC Call.
 
 As mentioned before, Frisbee does not have any notion of a request or response - this means that we must implement
 the ability to wait for a response from the `Server{:.keyword}` in the application logic. We need to also be able to map
 those incoming responses to the correct ongoing request.
 
-To achieve this, FRPC Clients make use of an `in-flight{:.keyword}` requests table that maps a request ID to a channel
+To achieve this, fRPC Clients make use of an `in-flight{:.keyword}` requests table that maps a request ID to a channel
 that can be listened to for a response. When an RPC function is called, it generates a request ID, serializes the request
 object and sends it to the `Server{:.keyword}`. When a response object is received from the `Server{:.keyword}`, it is
 deserialized and request ID is looked up in the `in-flight{:.keyword}` requests table.
