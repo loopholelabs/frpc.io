@@ -109,7 +109,7 @@ export default function Index(props) {
                 }
               >
                 <a
-                  href={"https://github.com/loopholelabs/frisbee"}
+                  href={"https://github.com/loopholelabs/frisbee-go"}
                   className={
                     "-ml-2 px-4 py-2 text-primary hover:bg-primary hover:bg-opacity-5 transition rounded-3xl inline-flex"
                   }

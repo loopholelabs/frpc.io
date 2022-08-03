@@ -27,6 +27,10 @@ const nextConfig = {
       {
         source: "/:section/:slug",
         destination: `/${config.defaultVersion}/:section/:slug`
+      },
+      {
+        source: "/bear.js",
+        destination: "https://cdn.panelbear.com/analytics.js"
       }
     ];
   },
