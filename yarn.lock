@@ -457,6 +457,18 @@
   resolved "https://registry.yarnpkg.com/@opentelemetry/semantic-conventions/-/semantic-conventions-1.2.0.tgz#1549c1d88dc45d720b8487e39077eacc69636c73"
   integrity sha512-BNKB9fiYVghALJzCuWO3eNYfdTExPVK4ykrtmfNfy0A6UWYhOYjGMXifUmkunDJNL8ju9tBobo8jF0WR9zGy1Q==
 
+"@panelbear/panelbear-js@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@panelbear/panelbear-js/-/panelbear-js-1.3.3.tgz#f27e2abeefc751b83e23d107e4ba160f63f65eff"
+  integrity sha512-LsAxdlvdvyoQy04no/VsSMQd1i1qGFNMy328VG/BI5N5hQXIa8CZjCWNXuOjIMbJcltt7QjESMr6BgHuEeo5AA==
+
+"@panelbear/panelbear-nextjs@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@panelbear/panelbear-nextjs/-/panelbear-nextjs-1.0.3.tgz#35f97e55ffe4dcb057eee14edea25c855294eebb"
+  integrity sha512-UAwcBXiJYhJLywrY/3ZRDtcTDU+4k+Bs1dTC2EXUN8/+I07dssIiCdaw5S/SbF4WQgb4y9mxRJBBfvnU/tK+Tg==
+  dependencies:
+    "@panelbear/panelbear-js" "^1.3.3"
+
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@protobufjs/aspromise/-/aspromise-1.1.2.tgz#9b8b0cc663d669a7d8f6f5d0893a14d348f30fbf"
