@@ -17,4 +17,5 @@ function Frisbee({ Component, pageProps }) {
   );
 }
 
-export default withPasswordProtect(Frisbee, {loginApiUrl: "/api/login", checkApiUrl: "/api/passwordCheck", loginComponent: LoginComponent});
+// export default withPasswordProtect(Frisbee, {loginApiUrl: "/api/login", checkApiUrl: "/api/passwordCheck", loginComponent: LoginComponent});
+export default Frisbee
