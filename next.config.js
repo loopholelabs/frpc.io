@@ -9,13 +9,18 @@ const redirects = [
     permanent: false
   },
   {
-    source: "/frisbee",
-    destination: "/frisbee/overview",
+    source: "/performance",
+    destination: "/performance/optimizations",
     permanent: false
   },
   {
-    source: "/performance",
-    destination: "/performance/optimizations",
+    source: "/reference",
+    destination: "/reference/overview",
+    permanent: false
+  },
+  {
+    source: "/frisbee",
+    destination: "/frisbee/overview",
     permanent: false
   }
 ]

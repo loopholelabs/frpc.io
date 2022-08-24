@@ -1,5 +1,5 @@
 {
-  "defaultVersion": "v0.5.1",
+  "defaultVersion": "v0.6.0",
   "defaultRedirect": "/getting-started/overview",
   "editBase": "https://github.com/loopholelabs/frpc.io/tree/staging/docs"
 }

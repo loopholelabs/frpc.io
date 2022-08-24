@@ -31,6 +31,17 @@ while avoiding any additional latency.
 All these optimizations - as well as Frisbee's architecture, make it feasible to use Frisbee (as well as <Tooltip text={"Frisbee RPC"} content={"fRPC"} />)
 in both latency-sensitive applications like in real-time streaming, as well as high-throughput applications like PUB/SUB systems.
 
+# Scheduling Optimizations
+
+By default, fRPC creates a new goroutine for each incoming RPC. This is a very similar approach to the one used by gRPC,
+and is a good choice for high-throughput applications where handling the RPC can be a blocking operation (like querying a remote
+database).
+
+However, fRPC can also be configured to create a single goroutine to handle all the RPCs from
+each incoming connection. This is a good choice for applications that require very low latency and where the handlers are not blocking operations (such as metrics streaming).
+
+<Note content="In our benchmarks we've tested both approaches, though it should be noted that the single-goroutine approach is not as efficient as the multi-goroutine approach when the blocking time of the RPC handler is high." />
+
 # Why TCP?
 
 Many of the recently released wire protocols like [Wireguard](https://www.wireguard.com/) and [QUIC](https://datatracker.ietf.org/doc/html/rfc9000)

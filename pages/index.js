@@ -63,11 +63,11 @@ export default function Index(props) {
               }
             >
               <Button
-                title={"Custom Protocols"}
+                title={"Roadmap"}
                 text={
-                  "Frisbee allows you to create your own custom protocols in just a couple of minutes."
+                  "Check out our planned technical roadmap to see how we'll be improving fRPC in the future."
                 }
-                href={"/frisbee/custom-protocols"}
+                href={"/getting-started/roadmap"}
               />
               <Button
                 title={"How Frisbee Works"}

@@ -93,5 +93,31 @@ clear that fRPC does not get as slowed down as the gRPC server does. It’s able
 
 In the case where we have 8192 connected clients, we can see that the gRPC server is able to handle just less than 500,000 RPCs/second - whereas **fRPC can easily handle more than 4x that**.
 
+# Multi-Threaded Performance
+
+By default, fRPC creates a new goroutine for each incoming RPC. This is a very similar approach to the one used by gRPC,
+and is a good choice for high-throughput applications where handling the RPC can be a blocking operation (like querying a remote
+database).
+
+However, fRPC can also be configured to create a single goroutine to handle all the RPCs from
+each incoming connection. This is a good choice for applications that require very low latency and where the
+handlers are not blocking operations (such as metrics streaming).
+
+The benchmarks above were all run with the single-goroutine option enabled, because our
+BenchmarkService implementation is a simple `Echo{:.keyword}` service that does little to no processing and does
+not block.
+
+It's also important, however, to benchmark an application where the RPCs are blocking operations - and for those we'll go back
+to fRPCs default behavior to create a new goroutine to handle each incoming RPC.
+
+Our blocking operation for the following benchmark is a simple `time.Sleep{:go}` call that sleeps for exactly 50 Microseconds.
+
+![Multi-threaded Throughput](/images/grpc/multi.png)
+
+The trend above is very similar to the single-threaded benchmarks above - fRPC is still leading gRPC in throughput, but it's also clear that boht gRPC and fRPC have suffered a performance penalty. For gRPC this is likely because the RPCs are now doing "work" and are blocking operations, but
+for fRPC it's a mixture of the added computation as well as the multi-threaded behaviour.
+
+In the case where we have 8192 connected clients, we can see that the performance of fRPC has dropped from 2,000,000 RPCs/second to about 1,600,000 RPCs/second, and gRPC has dropped from 500,000 RPCs/second to about 400,000 RPCs/second.
+
 These benchmarks show off just a small portion of fRPCs capabilities, and we encourage everyone to run
 these for themselves. We also have [benchmarks comparing fRPCs messaging format with protobuf and other serialization frameworks](https://github.com/loopholelabs/polyglot-go-benchmarks).
