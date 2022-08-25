@@ -285,7 +285,7 @@ func main() {
 		default:
 			req.Message = fmt.Sprintf("#%d", i)
 			log.Printf("Sending Request %s\n", req.Message)
-			res, err := c.Echo(context.Background(), req)
+			res, err := c.EchoService.Echo(context.Background(), req)
 			if err != nil {
 				panic(err)
 			}
@@ -313,10 +313,10 @@ repository on [Github](https://github.com/loopholelabs).
 Now that we've seen how easy it is to use **fRPC**, we recommend you check out our [benchmarks](/performance/grpc-benchmarks) pages
 to learn more about how **fRPC** fares against other RPC frameworks.
 
-If you want to learn more about how **fRPC** works under the hood, you can check out our [fRPC Concepts](/getting-started/concepts) page as well.
+If you want to learn more about how **fRPC** works under the hood, you can check out our [fRPC Concepts](/getting-started/concepts) page, or our [technical reference](/reference/overview).
 
-Finally, if you'd like to learn how to use [Frisbee](/frisbee/overview) (the underlying transport mechanism for fRPC)
-to implement your **own messaging protocol** that's fast and performant, you can check out our [Custom Protocols with Frisbee](/frisbee/custom-protocols) guide.
+Finally, if you'd like to learn how to use [Frisbee](https://github.com/loopholelabs/frisbee-go) (the underlying transport mechanism for fRPC)
+to implement your **own messaging protocol** that's fast and performant, you can check out the [frisbee-go Github repository](https://github.com/loopholelabs/frisbee-go).
 
 If you need any help or have any feedback about Frisbee or fRPC, please to check out our [Discord Community](https://loopholelabs.io/discord)!
 Our team would love to hear your thoughts and understand how you're planning on using fRPC, and we're always happy to help!

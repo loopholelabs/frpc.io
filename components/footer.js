@@ -1,4 +1,5 @@
 import Link from "next/link";
+import * as Panelbear from "@panelbear/panelbear-js";
 
 export default function Footer(props) {
   const editBase = props.editBase;
@@ -111,12 +112,12 @@ export default function Footer(props) {
             <p className={"footer-copyright"}>
               Copyright &copy; {new Date().getFullYear()}&nbsp;
             </p>
-            <a href={"https://loopholelabs.io"} className={"footer-edit"}>
+            <a href={"https://loopholelabs.io"} onClick={(e) => {e.preventDefault(); Panelbear.track("footer-loopholelabs.io"); window.open("https://loopholelabs.io")}} className={"footer-edit"}>
               Loophole Labs, Inc.
             </a>
           </div>
           <a
-            href={`${editBase}/${currentVersion}/${currentDoc.sectionOrder}-${currentSection}/${currentSlug}.mdx`}
+            href={`${editBase}/${currentVersion}/${currentDoc.sectionOrder}-${currentSection}/${currentSlug}.mdx`} onClick={(e) => {e.preventDefault(); Panelbear.track("footer-github-frpc-go"); window.open(`${editBase}/${currentVersion}/${currentDoc.sectionOrder}-${currentSection}/${currentSlug}.mdx`)}}
             className={"footer-edit"}
           >
             Edit This Page on Github

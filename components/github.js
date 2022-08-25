@@ -2,6 +2,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import * as Panelbear from "@panelbear/panelbear-js";
 
 export default function Github() {
   const [mounted, setMounted] = useState(false);
@@ -11,7 +12,7 @@ export default function Github() {
 
   return (
     <Link href={"https://github.com/loopholelabs/frpc-go"}>
-      <a className={"text-text dark:text-icon no-select"}>
+      <a onClick={(e) => {e.preventDefault(); Panelbear.track("navbar-github-frpc-go"); window.open("https://github.com/loopholelabs/frpc-go")}} className={"text-text dark:text-icon no-select"}>
         {mounted && (theme === "light" ? <LightMode /> : <DarkMode />)}
       </a>
     </Link>

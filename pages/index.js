@@ -7,6 +7,7 @@ import Image from "next/image";
 import GithubOutline from "../components/githuboutline";
 import { ArrowRightIcon } from "@heroicons/react/solid";
 import DiscordOutline from "../components/discordoutline";
+import * as Panelbear from "@panelbear/panelbear-js";
 
 export default function Index(props) {
   return (
@@ -39,42 +40,42 @@ export default function Index(props) {
           <div className={"space-y-6"}>
             <div
               className={
-                "w-full md:flex items-center justify-between space-y-6 md:space-y-0 md:space-x-6"
+                "w-full xl:flex items-center justify-between space-y-6 xl:space-y-0 xl:space-x-6 xl:h-44 2xl:h-32"
               }
             >
               <Button
                 title={"Getting Started"}
                 text={
-                  "Quickly get up and running with fRPC by following our getting started guide."
+                  "Quickly get up and running with fRPC by following  our getting started guide."
                 }
                 href={"/getting-started/overview"}
               />
               <Button
                 title={"Concepts"}
                 text={
-                  "Take a look at how fRPC works and how it differs from other RPC frameworks."
+                  "Take a look at some unique fRPC concepts and how it differs from other frameworks."
                 }
                 href={"/getting-started/concepts"}
               />
             </div>
             <div
               className={
-                "w-full md:flex items-center justify-between space-y-6 md:space-y-0 md:space-x-6"
+                "w-full xl:flex items-center justify-between space-y-6 xl:space-y-0 xl:space-x-6 xl:h-44 2xl:h-32"
               }
             >
               <Button
-                title={"Custom Protocols"}
+                title={"Roadmap"}
                 text={
-                  "Frisbee allows you to create your own custom protocols in just a couple of minutes."
+                  "Check out our planned technical roadmap to see how we'll be improving fRPC in the future."
                 }
-                href={"/frisbee/custom-protocols"}
+                href={"/getting-started/roadmap"}
               />
               <Button
-                title={"How Frisbee Works"}
+                title={"Technical Docs"}
                 text={
-                  "fRPC uses Frisbee at its core - check out how Frisbee works under the hood."
+                  "Take a look at our technical docs to dig into the details of fRPC and how you can use it."
                 }
-                href={"/frisbee/overview"}
+                href={"/reference/overview"}
               />
             </div>
           </div>
@@ -108,15 +109,17 @@ export default function Index(props) {
                   "w-full flex items-center justify-start pt-2.5 space-x-4"
                 }
               >
-                <a
+                <a onClick={(e) => {e.preventDefault(); Panelbear.track("index-github-frpc-go"); window.open("https://github.com/loopholelabs/frpc-go");}}
                   href={"https://github.com/loopholelabs/frpc-go"}
                   className={
                     "-ml-2 px-4 py-2 text-primary hover:bg-primary hover:bg-opacity-5 transition rounded-3xl inline-flex"
                   }
+
                 >
                   fRPC Repo <ArrowRightIcon className={"ml-2 w-5"} />
                 </a>
                 <a
+                  onClick={(e) => {e.preventDefault(); Panelbear.track("index-github-frpc.io"); window.open("https://github.com/loopholelabs/frpc.io");}}
                   href={"https://github.com/loopholelabs/frpc.io"}
                   className={
                     "-ml-2 px-4 py-2 text-primary hover:bg-primary hover:bg-opacity-5 transition rounded-3xl inline-flex"
@@ -163,6 +166,7 @@ export default function Index(props) {
                 }
               >
                 <a
+                  onClick={(e) => {e.preventDefault(); Panelbear.track("index-discord"); window.open("https://loopholelabs.io/discord");}}
                   href={"https://loopholelabs.io/discord"}
                   className={
                     "-ml-2 px-4 py-2 text-primary hover:bg-primary hover:bg-opacity-5 transition rounded-3xl inline-flex"
@@ -188,7 +192,7 @@ function Button(props) {
     <Link href={href}>
       <a
         className={
-          "border border-control hover:bg-primary hover:bg-opacity-10 transition-all rounded-xl max-h-48 w-full px-4 flex items-center justify-start"
+          "border border-control hover:bg-primary hover:bg-opacity-10 transition-all rounded-xl max-h-48 w-full px-4 flex items-center justify-start h-full"
         }
       >
         <div className={"w-auto py-5"}>

@@ -53,7 +53,7 @@ export default function Layout(props) {
               currentSection={currentSection}
               docs={docs}
             />
-            <CommandPalette set={setShowSearch} show={showSearch} />
+            {/*<CommandPalette set={setShowSearch} show={showSearch} />*/}
             <Breadcrumbs
               currentSection={currentSection}
               currentSlug={currentSlug}
