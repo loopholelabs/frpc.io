@@ -10,7 +10,7 @@ const password = process.env.PASSWORD;
 function Frisbee({ Component, pageProps }) {
     if (panelbear) {
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        usePanelbear(panelbear, { scriptSrc: "/bear.js", debug: true });
+        usePanelbear(panelbear, { scriptSrc: "/bear.js"});
     }
   return (
     <>
