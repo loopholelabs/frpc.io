@@ -4,8 +4,14 @@ import { usePanelbear } from '@panelbear/panelbear-nextjs';
 import { withPasswordProtect } from "@storyofams/next-password-protect";
 import {LoginComponent} from "../components/login";
 
+const panelbear = process.env.PANELBEAR;
+const password = process.env.PASSWORD;
+
 function Frisbee({ Component, pageProps }) {
- usePanelbear('HjrnquHievf', { scriptSrc: "/bear.js" });
+    if (panelbear) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        usePanelbear(panelbear, { scriptSrc: "/bear.js", debug: true });
+    }
   return (
     <>
       <Head>
@@ -17,5 +23,4 @@ function Frisbee({ Component, pageProps }) {
   );
 }
 
-// export default withPasswordProtect(Frisbee, {loginApiUrl: "/api/login", checkApiUrl: "/api/passwordCheck", loginComponent: LoginComponent});
-export default Frisbee
+export default password ? withPasswordProtect(Frisbee, {loginApiUrl: "/api/login", checkApiUrl: "/api/passwordCheck", loginComponent: LoginComponent}) : Frisbee;

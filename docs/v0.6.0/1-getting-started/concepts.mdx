@@ -62,7 +62,7 @@ underlying TCP connection), or write your own middleware functions for incoming 
 
 # Accessing Frisbee Directly
 
-As we've mentioned before, it's possible to access the underlying [Frisbee](/frisbee/overview) primitives from both the
+As we've mentioned before, it's possible to access the underlying [Frisbee](https://github.com/loopholelabs/frisbee-go) primitives from both the
 client and the server. This is why fRPC is more flexible than other RPC frameworks, and why it's possible to
 do things like send a few RPC requests using fRPC and then reuse that underlying TCP connection for something like an
 HTTP proxy.
@@ -71,5 +71,5 @@ fRPC generates a `frisbee.HandlerTable{:.keyword}` that allows Frisbee to route 
 handler functions. It's possible to override this table using the `frisbee.Server.SetHandlerTable(){:go}`
 method (which is exposed in the generated `frpc.Server{:.keyword}` type).
 
-To learn more about how [Frisbee](/frisbee/overview) works and how you can leverage it from within the generated fRPC
-code, check out the [Frisbee Documentation](/frisbee/overview).
+To learn more about how [Frisbee](https://github.com/loopholelabs/frisbee-go) works and how you can leverage it from within the generated fRPC
+code, check out the [frisbee-go Github Repository](https://github.com/loopholelabs/frisbee-go).

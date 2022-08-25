@@ -43,7 +43,8 @@ const nextConfig = {
     return redirects;
   },
   env: {
-    PASSWORD: process.env.PASSWORD
+    PASSWORD: process.env.PASSWORD,
+    PANELBEAR: process.env.PANELBEAR
   }
 };
 
