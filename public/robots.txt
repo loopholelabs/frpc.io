@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://frpc.io
+
+# Sitemaps
+Sitemap: https://frpc.io/sitemap.xml
