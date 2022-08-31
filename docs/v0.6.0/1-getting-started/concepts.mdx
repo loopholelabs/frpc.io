@@ -31,7 +31,7 @@ message definitions and generate the accompanying `structs{:.keyword}` in Go. We
 and safe serialization and deserialization functions for those structs.
 
 To do this, fRPC makes use of the [Polyglot](https://github.com/loopholelabs/polyglot-go) library, which is a high-performance
-serialization framework that recycles byte buffers and can serialize and deserialize data with almost no allocations. T
+serialization framework that recycles byte buffers and can serialize and deserialize data with almost no allocations.
 This makes serialization and deserialization extremely fast, while also allowing us to minimize the accompanying memory allocations.
 
 [polyglot-go](https://github.com/loopholelabs/polyglot-go) library type comes with a number of
