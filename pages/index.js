@@ -20,7 +20,7 @@ export default function Index(props) {
           </h1>
           <P>
             <Tooltip text={"Frisbee RPC"} content={"fRPC"} /> is a{" "}
-            <strong>proto3-compatible</strong> RPC Framework that&#39;s designed from the ground up to be
+            <strong>proto3-compatible</strong> RPC Framework that&#39;s designed from the ground up to be 
             <strong>lightweight, extensible, and extremely performant</strong>. On average fRPC outperforms other RPC frameworks{" "}
             <Link href="/performance/grpc-benchmarks">
               <a>by 2-4x in an apples-to-apples comparison</a>
